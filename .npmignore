@@ -3,6 +3,7 @@ node_modules
 src
 coverage
 .storybook
+storybook-static
 
 # config
 rollup.config.js

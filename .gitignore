@@ -3,6 +3,7 @@ node_modules
 
 # storybook
 .storybooks
+storybook-static
 
 # auto generated file
 dist
