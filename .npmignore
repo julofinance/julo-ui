@@ -1,0 +1,11 @@
+# module
+node_modules
+src
+coverage
+.storybook
+
+# config
+rollup.config.js
+ts.config.js
+babel.config.js
+jest.config.js
