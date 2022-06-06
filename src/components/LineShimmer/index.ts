@@ -1,1 +1,1 @@
-export { default } from './LineShimmer'
+export { default } from './LineShimmer';

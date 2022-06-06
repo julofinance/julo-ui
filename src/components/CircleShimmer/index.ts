@@ -1,1 +1,1 @@
-export { default } from './CircleShimmer'
+export { default } from './CircleShimmer';

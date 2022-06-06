@@ -1,10 +1,10 @@
-import React, { memo } from 'react'
+import React, { memo } from 'react';
 
-import { shimmerCss } from './styles'
-import type { LineShimmerProps } from './types'
+import { shimmerCss } from './styles';
+import type { LineShimmerProps } from './types';
 
 const LineShimmer = (props: LineShimmerProps) => {
-  return <span className={shimmerCss(props)} />
-}
+  return <span className={shimmerCss(props)} />;
+};
 
-export default memo(LineShimmer)
+export default memo(LineShimmer);

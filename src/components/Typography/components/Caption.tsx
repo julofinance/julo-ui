@@ -1,18 +1,18 @@
-import React, { memo } from 'react'
+import React, { memo } from 'react';
 
-import { TypographyProps } from '../types'
+import { TypographyProps } from '../types';
 
-import { styledCaption } from '../styles'
+import { styledCaption } from '../styles';
 
 const Caption = (props: TypographyProps) => {
   return (
     <p
-      className={`${styledCaption(props)} ${props.className}`}
+      className={`${styledCaption(props)} ${props.className || ''}`}
       onClick={props.onClick}
     >
       {props.children}
     </p>
-  )
-}
+  );
+};
 
-export default memo(Caption)
+export default memo(Caption);

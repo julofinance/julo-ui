@@ -1,21 +1,21 @@
-import React, { memo } from 'react'
+import React, { memo } from 'react';
 
-import Heading from './components/Heading'
-import Body from './components/Body'
-import Caption from './components/Caption'
+import Heading from './components/Heading';
+import Body from './components/Body';
+import Caption from './components/Caption';
 
-import type { TypographyProps } from './types'
+import type { TypographyProps } from './types';
 
 const Typography = (props: TypographyProps) => {
   if (props.tag) {
-    return <Heading {...props} />
+    return <Heading {...props} />;
   }
 
   if (props.caption) {
-    return <Caption {...props} />
+    return <Caption {...props} />;
   }
 
-  return <Body {...props} />
-}
+  return <Body {...props} />;
+};
 
-export default memo(Typography)
+export default memo(Typography);

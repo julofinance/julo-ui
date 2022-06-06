@@ -1,4 +1,4 @@
 export type CircleShimmerProps = {
-  size?: string
-  margin?: string
-}
+  size?: string;
+  margin?: string;
+};

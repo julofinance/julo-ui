@@ -1,6 +1,6 @@
-import { css } from '@emotion/css'
+import { css } from '@emotion/css';
 
-import type { LineShimmerProps } from './types'
+import type { LineShimmerProps } from './types';
 
 export const shimmerCss = ({
   width,
@@ -40,4 +40,4 @@ export const shimmerCss = ({
       background-position: 468px 0;
     }
   }
-`
+`;

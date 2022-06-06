@@ -1,6 +1,6 @@
-import { css } from '@emotion/css'
+import { css } from '@emotion/css';
 
-import type { CircleShimmerProps } from './types'
+import type { CircleShimmerProps } from './types';
 
 export const shimmerCss = ({ size, margin }: CircleShimmerProps) => css`
   width: ${size || '55px'};
@@ -35,4 +35,4 @@ export const shimmerCss = ({ size, margin }: CircleShimmerProps) => css`
       background-position: 468px 0;
     }
   }
-`
+`;

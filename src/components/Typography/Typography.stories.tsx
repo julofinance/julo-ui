@@ -1,6 +1,6 @@
-import React from 'react'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
-import Typography from './Typography'
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import Typography from './Typography';
 
 export default {
   title: 'Components/Typography',
@@ -8,13 +8,13 @@ export default {
   argTypes: {
     color: { control: 'color' },
   },
-} as ComponentMeta<typeof Typography>
+} as ComponentMeta<typeof Typography>;
 
 const Template: ComponentStory<typeof Typography> = (args) => (
   <Typography {...args} />
-)
+);
 
-export const Heading1 = Template.bind({})
+export const Heading1 = Template.bind({});
 Heading1.args = {
   children: 'Heading 1',
-}
+};

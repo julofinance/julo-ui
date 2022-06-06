@@ -12,6 +12,7 @@
 		"prettier"
 	],
 	"rules": {
+		"semi": "error",
 		"max-len": [
 			"error",
 			{

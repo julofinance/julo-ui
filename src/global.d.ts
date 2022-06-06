@@ -1,1 +1,1 @@
-declare module '@julofinance/color-token'
+declare module '@julofinance/color-token';
