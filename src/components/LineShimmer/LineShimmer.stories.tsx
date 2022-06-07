@@ -5,6 +5,14 @@ import LineShimmer from './LineShimmer';
 export default {
   title: 'Components/Shimmer',
   component: LineShimmer,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "`import { LineShimmer } from '@julofinance/react-components';`",
+      },
+    },
+  },
 } as ComponentMeta<typeof LineShimmer>;
 
 const Template: ComponentStory<typeof LineShimmer> = (args) => (

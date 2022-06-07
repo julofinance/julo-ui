@@ -10,6 +10,7 @@ const defaultProps = ({ textAlign, fontSize }: TypographyProps) =>
   } as CSSInterpolation);
 
 const commonStyles = (props: TypographyProps) => css`
+  font-family: 'Nunito', sans-serif;
   margin: ${props.margin || 0};
   color: ${props.color || NT100};
   font-weight: ${props.fontWeight || (props.bold ? 700 : 400)};

@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, MouseEvent } from 'react';
 
 export type TypographyProps = {
   children: ReactElement | string;
@@ -8,7 +8,7 @@ export type TypographyProps = {
   margin?: string;
   color?: string;
   bold?: boolean | false;
-  onClick?: () => void;
+  onClick?: (event: MouseEvent<HTMLElement>) => void;
   className?: string;
   fontWeight?: number;
   fontSize?: string;
