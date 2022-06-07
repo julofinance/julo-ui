@@ -1,4 +1,5 @@
 import { css } from '@emotion/css';
+import { NT20, NT30 } from '@julofinance/color-token';
 
 import type { LineShimmerProps } from './types';
 
@@ -8,17 +9,17 @@ export const shimmerCss = ({
   margin,
   borderRadius,
 }: LineShimmerProps) => css`
-  width: ${width || '100%'};
-  height: ${height || '1rem'};
-  margin: ${margin || '0'};
-  border-radius: ${borderRadius || '4px'};
-  background: #f6f7f8;
+  width: ${width};
+  height: ${height};
+  margin: ${margin};
+  border-radius: ${borderRadius};
+  background: ${NT20};
   background-image: linear-gradient(
     to right,
-    #f6f7f8 0%,
-    #edeef1 20%,
-    #f6f7f8 40%,
-    #f6f7f8 100%
+    ${NT20} 0%,
+    ${NT30} 20%,
+    ${NT20} 40%,
+    ${NT20} 100%
   );
   background-repeat: no-repeat;
   background-size: 800px 104px;

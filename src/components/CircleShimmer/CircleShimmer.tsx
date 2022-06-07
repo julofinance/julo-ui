@@ -7,4 +7,9 @@ const CircleShimmer = (props: CircleShimmerProps) => {
   return <span className={shimmerCss(props)} />;
 };
 
+CircleShimmer.defaultProps = {
+  size: '55px',
+  margin: 0,
+};
+
 export default memo(CircleShimmer);

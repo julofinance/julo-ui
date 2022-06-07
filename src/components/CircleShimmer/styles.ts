@@ -1,19 +1,20 @@
 import { css } from '@emotion/css';
+import { NT20, NT30 } from '@julofinance/color-token';
 
 import type { CircleShimmerProps } from './types';
 
 export const shimmerCss = ({ size, margin }: CircleShimmerProps) => css`
-  width: ${size || '55px'};
-  height: ${size || '55px'};
-  margin: ${margin || '0'};
+  width: ${size};
+  height: ${size};
+  margin: ${margin};
   border-radius: 100%;
-  background: #f6f7f8;
+  background: ${NT20};
   background-image: linear-gradient(
     to right,
-    #f6f7f8 0%,
-    #edeef1 20%,
-    #f6f7f8 40%,
-    #f6f7f8 100%
+    ${NT20} 0%,
+    ${NT30} 20%,
+    ${NT20} 40%,
+    ${NT20} 100%
   );
   background-repeat: no-repeat;
   background-size: 800px 104px;
