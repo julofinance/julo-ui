@@ -2,14 +2,14 @@ import React, { memo } from 'react';
 
 import { TypographyProps } from '../types';
 
-import { styledHeading } from '../styles';
+import { styledDisplay } from '../styles';
 
-const Heading = (props: TypographyProps) => {
+const Display = (props: TypographyProps) => {
   switch (props.heading) {
     case 1:
       return (
         <h1
-          className={`${styledHeading(props)} ${props.className || ''}`}
+          className={`${styledDisplay(props)} ${props.className || ''}`}
           onClick={props.onClick}
         >
           {props.children}
@@ -19,7 +19,7 @@ const Heading = (props: TypographyProps) => {
     case 2:
       return (
         <h2
-          className={`${styledHeading(props)} ${props.className || ''}`}
+          className={`${styledDisplay(props)} ${props.className || ''}`}
           onClick={props.onClick}
         >
           {props.children}
@@ -29,7 +29,7 @@ const Heading = (props: TypographyProps) => {
 
   return (
     <h3
-      className={`${styledHeading(props)} ${props.className || ''}`}
+      className={`${styledDisplay(props)} ${props.className || ''}`}
       onClick={props.onClick}
     >
       {props.children}
@@ -37,4 +37,4 @@ const Heading = (props: TypographyProps) => {
   );
 };
 
-export default memo(Heading);
+export default memo(Display);

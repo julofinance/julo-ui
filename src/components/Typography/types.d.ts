@@ -2,7 +2,8 @@ import { ReactElement, MouseEvent } from 'react';
 
 export type TypographyProps = {
   children: ReactElement | string;
-  tag?: 1 | 2;
+  display?: 1 | 2 | 3;
+  heading?: 1 | 2 | 3;
   body?: 1 | 2;
   caption?: 1 | 2;
   margin?: string;

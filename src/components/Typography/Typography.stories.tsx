@@ -23,44 +23,74 @@ const Template: ComponentStory<typeof Typography> = (args) => (
   <Typography {...args} />
 );
 
+const text = 'Hello World!';
+
 export const DisplayLarge = Template.bind({});
 DisplayLarge.args = {
-  children: 'Hello World!',
-  tag: 1,
+  children: text,
+  display: 1,
   bold: true,
 };
 
 export const DisplayMedium = Template.bind({});
 DisplayMedium.args = {
-  children: 'Hello World!',
-  tag: 2,
+  children: text,
+  display: 2,
   bold: true,
 };
 
 export const DisplaySmall = Template.bind({});
 DisplaySmall.args = {
-  children: 'Hello World!',
-  body: 1,
-  bold: false,
+  children: text,
+  display: 3,
+  bold: true,
 };
 
 export const HeadingLarge = Template.bind({});
 HeadingLarge.args = {
-  children: 'Hello World!',
-  body: 2,
+  children: text,
+  heading: 1,
   bold: false,
 };
 
 export const HeadingReguler = Template.bind({});
 HeadingReguler.args = {
-  children: 'Hello World!',
-  caption: 1,
+  children: text,
+  heading: 2,
   bold: false,
 };
 
 export const HeadingSmall = Template.bind({});
 HeadingSmall.args = {
-  children: 'Hello World!',
+  children: text,
+  heading: 2,
+  bold: false,
+};
+
+export const BodyLarge = Template.bind({});
+BodyLarge.args = {
+  children: text,
+  body: 1,
+  bold: false,
+};
+
+export const BodySmall = Template.bind({});
+BodySmall.args = {
+  children: text,
+  body: 2,
+  bold: false,
+};
+
+export const CaptionLarge = Template.bind({});
+CaptionLarge.args = {
+  children: text,
+  caption: 1,
+  bold: false,
+};
+
+export const CaptionSmall = Template.bind({});
+CaptionSmall.args = {
+  children: text,
   caption: 2,
   bold: false,
 };
