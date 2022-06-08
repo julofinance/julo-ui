@@ -1,12 +1,13 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
-import dts from "rollup-plugin-dts";
+import url from '@rollup/plugin-url';
+import svgr from '@svgr/rollup';
 
 import { terser } from "rollup-plugin-terser";
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
-const packageJson = require("./package.json");
+import packageJson from './package.json';
 
 export default [
     {
@@ -29,11 +30,8 @@ export default [
             commonjs(),
             typescript({ tsconfig: "./tsconfig.json" }),
             terser(),
+            url(),
+            svgr({ icon: true })
         ],
-    },
-    {
-        input: "dist/esm/types/index.d.ts",
-        output: [{ file: "dist/index.d.ts", format: "esm" }],
-        plugins: [dts()],
-    },
+    }
 ];
