@@ -10,3 +10,4 @@ rollup.config.js
 ts.config.js
 babel.config.js
 jest.config.js
+.github
