@@ -1,4 +1,5 @@
 export { default as Avatar } from './Avatar';
+export { default as Checkbox } from './Checkbox';
 export { default as CircleShimmer } from './CircleShimmer';
 export { default as LineShimmer } from './LineShimmer';
 export { default as Radio } from './Radio';
