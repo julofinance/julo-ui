@@ -20,31 +20,31 @@ const Template: ComponentStory<typeof Checkbox> = (args) => <Checkbox {...args} 
 
 export const Default = Template.bind({});
 Default.args = {
-  size: '25px',
+  size: '20px',
 };
 
 export const Checked = Template.bind({});
 Checked.args = {
-  size: '25px',
+  size: '20px',
   defaultChecked: true,
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  size: '25px',
+  size: '20px',
   disabled: true,
 };
 
 export const DisabledSelected = Template.bind({});
 DisabledSelected.args = {
-  size: '25px',
+  size: '20px',
   defaultChecked: true,
   disabled: true,
 };
 
 export const Labeled = Template.bind({});
 Labeled.args = {
-  size: '25px',
+  size: '20px',
   label: <Typography body={1}>Label</Typography>,
 };
 

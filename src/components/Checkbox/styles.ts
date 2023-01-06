@@ -1,5 +1,5 @@
 import { css, CSSInterpolation } from '@emotion/css';
-import { PR30, NT30, NT50 } from '@julofinance/color-token';
+import { PR20, PR30, NT30, NT50 } from '@julofinance/color-token';
 import type { CheckboxProps } from './types';
 
 const defaultProps = ({ margin, padding }: CheckboxProps) =>
@@ -7,8 +7,6 @@ const defaultProps = ({ margin, padding }: CheckboxProps) =>
     margin,
     padding,
   } as CSSInterpolation);
-
-const colorMap = (isDisabled = false): boolean => (isDisabled ? NT50 : PR30);
 
 export const hiddenCheckbox = css`
   cursor: pointer;  
@@ -30,8 +28,9 @@ export const styledCheckbox = (props: CheckboxProps) => css`
   appearance: none;
   width: ${props.size};
   height: ${props.size};
-  border: 2px solid ${colorMap(props.disabled)};
   background: ${props.disabled ? NT30 : 'white'};
+  border: 2px solid ${NT50};
+  border-radius: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,22 +41,24 @@ export const styledCheckbox = (props: CheckboxProps) => css`
   }
 
   &.checked{
-    background: ${colorMap(props.disabled)};
-    svg{
-      display:block;
+    border: 2px solid ${PR20};
+    background: ${props.disabled ? NT30 : PR30};
+    svg.white{
+      display: ${props.disabled ? 'none' : 'block'};
+    }
+    svg.grey{
+      display: ${props.disabled ? 'block' : 'none'};
     }
   }
 
   &.disabled{
-    border: 2px solid ${colorMap(props.disabled)};
-    background: ${colorMap(props.disabled)};
+    border: 2px solid ${props.disabled ? NT50 : PR30};
     pointer-events: none;
   }
 `;
 
 export const styledCheckboxGroup = (inline: boolean) => css`
   display: flex;
-  padding: 5px;
   align-items: ${inline? 'center': 'start'};
   flex-direction: ${inline ? 'row': 'column'};
   gap:5px;
