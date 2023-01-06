@@ -2,7 +2,7 @@ import React, { memo , ReactNode} from 'react';
 import { styledCheckboxGroup } from './styles';
 
 type Props = {
-  children: ReactNode;
+  children: ReactNode | ReactNode[];
   inline: boolean;
 };
 

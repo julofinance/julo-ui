@@ -11,9 +11,9 @@ const Checkbox = (props: CheckboxProps) => {
   }
 
   useEffect(() => {
-    if (defaultChecked){
+    if (defaultChecked) {
       setChecked(true);
-    }else{
+    } else {
       setChecked(false);
     }
   }, [defaultChecked])
@@ -25,7 +25,7 @@ const Checkbox = (props: CheckboxProps) => {
         defaultChecked={defaultChecked}
         disabled={props.disabled}
         onChange={onChange}
-        name={`${name ? name : ''}`}
+        name={name || ''}
         onClick={handleClick}
         value={value}
       />
