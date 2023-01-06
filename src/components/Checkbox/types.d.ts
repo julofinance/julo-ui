@@ -11,5 +11,6 @@ export type CheckboxProps = {
   padding?: string;
   size?: string;
   value?: string;
+  'data-testid'?: string;
 };
 

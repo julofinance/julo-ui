@@ -3,7 +3,16 @@ import { hiddenCheckbox, styledCheckbox, styledCheckboxWrapper } from './styles'
 import type { CheckboxProps } from './types';
 
 const Checkbox = (props: CheckboxProps) => {
-  const { defaultChecked, label, name, value, onClick, onChange, ...otherProps } = props;
+  const { 
+    defaultChecked, 
+    label, 
+    name, 
+    value, 
+    onClick, 
+    onChange, 
+    'data-testid': dataTestId,
+    ...otherProps 
+  } = props;
   const [checked, setChecked] = useState(false);
 
   const handleClick = () => {
@@ -27,6 +36,7 @@ const Checkbox = (props: CheckboxProps) => {
         onChange={onChange}
         name={name || ''}
         onClick={handleClick}
+        data-testid={dataTestId}
         value={value}
       />
       <div className={`${styledCheckbox(otherProps)} ${checked ? 'checked' : ''} ${props.disabled ? 'disabled' : ''}`}>
