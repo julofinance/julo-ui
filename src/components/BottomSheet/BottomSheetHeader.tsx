@@ -12,7 +12,7 @@ const BottomSheetHeader: FC<Props> = ({ children }) => {
   if(isString){
     return (
       <div className={bSheetHeader}>
-        <Typography heading={3} fontWeight={700}>
+        <Typography fontSize="16px" fontWeight={700}>
           {children}
         </Typography>
       </div>

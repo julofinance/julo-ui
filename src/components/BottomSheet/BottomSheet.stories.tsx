@@ -30,7 +30,7 @@ export const Default: ComponentStory<typeof BottomSheet> = ({onClose, ...args}) 
           Bottom Sheet Title
         </BottomSheetHeader>
         <BottomSheetContent>
-          <Typography>
+          <Typography fontSize="14px">
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
             ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
             laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
@@ -77,7 +77,7 @@ export const HiddenDragBar: ComponentStory<typeof BottomSheet> = ({onClose, ...a
           Bottom Sheet Title
         </BottomSheetHeader>
         <BottomSheetContent>
-          <Typography>
+          <Typography fontSize="14px">
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
             ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
             laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
@@ -125,7 +125,7 @@ export const DisableCloseOnOverlayClick: ComponentStory<typeof BottomSheet> = ({
           Bottom Sheet Title
         </BottomSheetHeader>
         <BottomSheetContent>
-          <Typography>
+          <Typography fontSize="14px">
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
             ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
             laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
