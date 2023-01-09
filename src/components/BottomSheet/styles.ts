@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import { NT50 } from "@julofinance/color-token";
+import { NT50, NT20 } from "@julofinance/color-token";
 import { BSheetContainer, BSheetWrapper } from './types';
 
 const BSHEET_MAX_H_OFFSET =  "7.5rem";
@@ -19,9 +19,10 @@ export const bSheetWrapper = (props: BSheetWrapper) => css`
 `;
 
 export const bSheetContainer = (props: BSheetContainer) => css`
+  display: flex;
+  flex-direction: column;
   margin-top: auto;
   width: 100%;
-  padding: 16px;
   max-height: calc(100% - ${BSHEET_MAX_H_OFFSET});
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.14);
   border-radius: 16px 16px 0 0;
@@ -31,24 +32,30 @@ export const bSheetContainer = (props: BSheetContainer) => css`
 `;
 
 export const bSheetHeader = css`
-  margin-bottom: 16px;
+  padding: 16px;
+  border-bottom: 1px solid ${NT20}
 `
 
 export const bSheetContent = css`
-  max-height: calc(100vh - ${BSHEET_MAX_H_OFFSET});
+  padding: 16px;
   overflow: auto;
+`
+
+export const bSheetFooter = css`
+  padding: 16px;
 `
 
 export const dBarWrapper = css`
   display: flex;
   width: 100%;
+  margin-top: 16px;
+  margin-bottom: 16px;
 `;
 
 export const dBar = css`
   margin: auto;
-  width: 40px;
+  width: 22.222%;
   height: 4px;
   background-color: ${NT50};
   border-radius: 8px;
-  margin-bottom: 16px;
 `;
