@@ -17,6 +17,7 @@ export interface Props {
   isNumeric?: boolean;
   leftAdornment?: ReactNode;
   rightAdornment?: ReactNode;
+  'data-testid'?: string;
 }
 
 export interface IInput {

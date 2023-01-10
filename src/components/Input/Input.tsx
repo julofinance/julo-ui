@@ -33,6 +33,7 @@ const Input: FC<Props> = ({
   errorClassName,
   leftAdornment,
   rightAdornment,
+  'data-testid': dataTestId
 }) => {
   const [inputValue, setInputValue] = useState(value);
   const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
@@ -79,7 +80,7 @@ const Input: FC<Props> = ({
 
   return (
     <div
-      data-testid='input-component'
+      data-testid={dataTestId}
       className={cx(
         inputContainerCss({ error: !!errorMessage }),
         containerClassName,

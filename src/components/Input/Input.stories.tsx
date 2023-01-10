@@ -1,7 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Input from './Input';
-import LocationMarker from './assets/LocationMarker';
 
 export default {
   title: 'Components/Input',
@@ -38,6 +37,6 @@ Error.args = {
 
 export const WithAdornement = Template.bind({});
 WithAdornement.args = {
-  rightAdornment: <LocationMarker/>,
-  leftAdornment: <LocationMarker/>,
+  rightAdornment: <img width={20} height={20} src={require('./assets/ic-location.svg')}/>,
+  leftAdornment: <img width={20} height={20} src={require('./assets/ic-location.svg')}/>,
 };
