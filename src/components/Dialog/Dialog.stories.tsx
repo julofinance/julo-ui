@@ -16,14 +16,16 @@ export default {
 } as ComponentMeta<typeof Dialog>;
 
 export const Basic: ComponentStory<typeof Dialog> = (args) => {
-    const [_, updateArgs] = useArgs();
+  const [_, updateArgs] = useArgs();
 
   return (
     <>
-      <button onClick={() => updateArgs({...args, show: true})}>Press me</button>
+      <button onClick={() => updateArgs({ ...args, show: true })}>
+        Press me
+      </button>
 
-      <Dialog {...args} onClose={()=>updateArgs({...args, show: false})} >
-          <div>this is a dialog</div>
+      <Dialog {...args} onClose={() => updateArgs({ ...args, show: false })}>
+        <div>this is a dialog</div>
       </Dialog>
     </>
   );

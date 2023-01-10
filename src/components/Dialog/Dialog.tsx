@@ -7,11 +7,10 @@ import { Props } from './types';
 
 const Dialog: FC<Props> = ({
   children,
-  clickOutside = true,
+  persistent = true,
   onClose,
   show = false,
-  containerClassName,
-  contentClassName,
+  className,
   animation,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,7 +20,7 @@ const Dialog: FC<Props> = ({
   }, [show]);
 
   const handleClick = () => {
-    if (clickOutside) {
+    if (persistent) {
       setIsOpen(false);
       if (onClose) {
         onClose(false);
@@ -31,12 +30,11 @@ const Dialog: FC<Props> = ({
 
   return (
     <div
-      className={cx(dialogWrapperCss(isOpen), containerClassName)}
-      style={{ pointerEvents: isOpen ? 'visible' : 'none' }}
+      className={cx(dialogWrapperCss(isOpen), className)}
       onClick={handleClick}
     >
       <div
-        className={cx(cardCss({ isOpen, animation }), contentClassName)}
+        className={cx(cardCss({ isOpen, animation }))}
         onClick={(e) => e.stopPropagation()}
       >
         {children}

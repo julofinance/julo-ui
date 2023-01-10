@@ -1,5 +1,4 @@
 import { css } from '@emotion/css';
-import {} from '@julofinance/color-token';
 import { IAnimation, ICardCss } from './types';
 
 export const dialogWrapperCss = (isOpen: boolean) => css`
@@ -15,6 +14,7 @@ export const dialogWrapperCss = (isOpen: boolean) => css`
   transition: all 0.3s ease-in-out;
   z-index: 99;
   opacity: ${isOpen ? 1 : 0};
+  pointer-events: ${isOpen ? 'visible' : 'none'};
 `;
 
 const setTransform = (animation?: IAnimation) => {
