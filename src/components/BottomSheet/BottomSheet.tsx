@@ -6,13 +6,13 @@ type Props = {
   onClose: () => void;
   isOpen: boolean;
   showDragBar?: boolean;
-  closeOnOverlayClick?: boolean;
+  closeOnClickOutside?: boolean;
   children: ReactNode | ReactNode[];
 };
 
-const BottomSheet:FC<Props> = ({ onClose, isOpen, closeOnOverlayClick = true, showDragBar = true, children }) => {
+const BottomSheet:FC<Props> = ({ onClose, isOpen, closeOnClickOutside = true, showDragBar = true, children }) => {
   const handleClick = () => {
-    if (closeOnOverlayClick) {
+    if (closeOnClickOutside) {
       onClose();
     }
   };

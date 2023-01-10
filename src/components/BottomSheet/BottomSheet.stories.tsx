@@ -117,7 +117,7 @@ HiddenDragBar.args = {
   showDragBar: false
 };
 
-export const DisableCloseOnOverlayClick: ComponentStory<typeof BottomSheet> = ({onClose, ...args}) => {
+export const DisableCloseOnClickOutside: ComponentStory<typeof BottomSheet> = ({onClose, ...args}) => {
   const [, updateArgs] = useArgs()
 
   return (
@@ -160,9 +160,9 @@ export const DisableCloseOnOverlayClick: ComponentStory<typeof BottomSheet> = ({
     </>
   );
 };
-DisableCloseOnOverlayClick.args = {
+DisableCloseOnClickOutside.args = {
   isOpen: true,
-  closeOnOverlayClick: false
+  closeOnClickOutside: false
 };
 
 export const WithFooter: ComponentStory<typeof BottomSheet> = ({onClose, ...args}) => {
