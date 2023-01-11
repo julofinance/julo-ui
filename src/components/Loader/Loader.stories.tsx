@@ -18,22 +18,22 @@ const Template: ComponentStory<typeof Loader> = (args) => <Loader {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  theme: 'Dark',
-  size: '156px'
+  dark: false,
+  size: '50px'
 };
 
 export const Dark = Template.bind({});
 Dark.args = {
-  theme: 'Dark'
+  dark: true
 };
 
 export const Light = Template.bind({});
 Light.args = {
-  theme: 'Light'
+  dark: false
 };
 
 export const CustomSize = Template.bind({});
 CustomSize.args = {
-  size: '156px',
-  theme: 'Dark'
+  size: '50px',
+  dark: false
 };

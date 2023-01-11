@@ -17,8 +17,8 @@ const Loader = (props: LoaderProps) => {
 };
 
 Loader.defaultProps = {
-    theme: 'Dark',
-    size: '156px',
+    dark: 'false',
+    size: '50px'
 };
 
 export default memo(Loader);

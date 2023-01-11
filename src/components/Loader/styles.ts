@@ -5,14 +5,9 @@ import LoaderDark from './assets/loader-dark.svg';
 import LoaderLight from './assets/loader-light.svg';
 
 const themeMap = (props: LoaderProps) => {
-  switch (props.theme) {
-    case 'Dark':
-      return `background: url(${LoaderDark});`
-    case 'Light':
-      return `background: url(${LoaderLight});`
-    default:
-      return `background: url(${LoaderDark});`
-  }
+  if (props.dark) return `background: url(${LoaderDark});`
+  
+  return `background: url(${LoaderLight});`
 };
 
 export const styledLoader = (props: LoaderProps) => css`

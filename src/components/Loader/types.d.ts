@@ -1,5 +1,5 @@
 export type LoaderProps = {
-  theme?: 'Dark' | 'Light';
+  dark?: boolean;
   size?: string;
   'data-testid'?: string;
 };
