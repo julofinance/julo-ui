@@ -4,4 +4,6 @@ export type BSheetWrapper = {
   
 export type BSheetContainer = {
   isOpen?: boolean;
+  isDragging: boolean;
+  yPos: number;
 }

@@ -27,8 +27,9 @@ export const bSheetContainer = (props: BSheetContainer) => css`
   box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.14);
   border-radius: 16px 16px 0 0;
   background-color: white;
-  transform: ${props.isOpen ? "translateY(0)" : "translateY(200px)"};
+  transform: ${props.isOpen ? props.isDragging ? `translateY(${props.yPos}px)` :  "translateY(0)" : "translateY(200px)"};
   transition: all 0.3s ease-in-out;
+  touch-action: none;
 `;
 
 export const bSheetHeader = css`
@@ -48,8 +49,10 @@ export const bSheetFooter = css`
 export const dBarWrapper = css`
   display: flex;
   width: 100%;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  cursor: ns-resize;
+  touch-action: none;
 `;
 
 export const dBar = css`
@@ -58,4 +61,5 @@ export const dBar = css`
   height: 4px;
   background-color: ${NT50};
   border-radius: 8px;
+  pointer-events: none;
 `;
