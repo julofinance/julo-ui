@@ -59,7 +59,7 @@ export const Multiple: ComponentStory<typeof Checkbox> = ({ onClick, onChange, v
   const [optionClicked, setOptionClicked] = useState('');
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>, index:number) => {
-    const updOptions = options.map(opt => ({...opt}));
+    const updOptions = options;
     updOptions[index].checked = !options[index].checked;
     setOptions(updOptions);
 
