@@ -1,5 +1,5 @@
 import { css } from '@emotion/css';
-import { NT50, NT20 } from "@julofinance/color-token";
+import { NT50, NT20, OVERLAY70 } from "@julofinance/color-token";
 import { BSheetContainer, BSheetWrapper } from './types';
 
 const BSHEET_MAX_H_OFFSET =  "7.5rem";
@@ -11,7 +11,7 @@ export const bSheetWrapper = (props: BSheetWrapper) => css`
   top: 0;
   bottom: 0;
   display: flex;
-  background-color: rgba(24, 24, 24, 0.25);
+  background-color: ${OVERLAY70};
   transition: all 0.3s ease-in-out;
   z-index: 2;
   opacity: ${props.isOpen ? 1 : 0};
