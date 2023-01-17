@@ -4,4 +4,5 @@ export { default as LineShimmer } from './LineShimmer';
 export { default as Loader } from './Loader';
 export { default as Radio } from './Radio';
 export { default as Typography } from './Typography';
+export { default as Toggle} from './Toggle';
 export * from './Accordion';
