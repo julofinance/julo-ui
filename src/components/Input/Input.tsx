@@ -36,9 +36,10 @@ const Input: FC<Props> = ({
   leftAdornment,
   rightAdornment,
   helperText,
-  'data-testid': dataTestId
+  'data-testid': dataTestId,
 }) => {
   const [inputValue, setInputValue] = useState(value);
+  const [isFocused, setIsFocused] = useState(false);
   const inputRef = useRef() as MutableRefObject<HTMLInputElement>;
 
   /**
@@ -55,6 +56,7 @@ const Input: FC<Props> = ({
     if (onChange) {
       onChange(result);
     }
+    setInputValue(result);
   };
 
   const onKeyDownValidation = (event: KeyboardEvent<HTMLInputElement>) => {
@@ -89,14 +91,25 @@ const Input: FC<Props> = ({
         containerClassName,
       )}
     >
-      <label className={cx(inputLabelCss, labelClassName)}>{label}</label>
-      <div className={cx(inputWrapperCss, inputWrapperClassName)}>
+      <div className={cx(inputLabelCss, labelClassName)}>{label}</div>
+      <div
+        className={cx(
+          inputWrapperCss({
+            isFocused,
+            isError: !!errorMessage,
+            hasValue: !!inputValue,
+          }),
+          inputWrapperClassName,
+        )}
+      >
         {leftAdornment && (
           <div className={adornmentWrapperCss}>{leftAdornment}</div>
         )}
         <input
           {...inputProps}
           className={inputComponentCss({ error: !!errorMessage })}
+          onBlur={() => setIsFocused(false)}
+          onFocus={() => setIsFocused(true)}
           ref={inputRef}
           onKeyDown={onKeyDownValidation}
           name={name}
@@ -110,8 +123,10 @@ const Input: FC<Props> = ({
           <div className={adornmentWrapperCss}>{rightAdornment}</div>
         )}
       </div>
-      {(helperText && !errorMessage) && (
-        <div className={cx(helperTextClassName, helperTextCss)}>{helperText}</div>
+      {helperText && !errorMessage && (
+        <div className={cx(helperTextClassName, helperTextCss)}>
+          {helperText}
+        </div>
       )}
 
       {errorMessage && (

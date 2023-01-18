@@ -25,3 +25,9 @@ export interface Props {
 export interface IInput {
   error?: boolean;
 }
+
+export interface IInputState {
+  isFocused: boolean;
+  hasValue: boolean;
+  isError: boolean;
+}

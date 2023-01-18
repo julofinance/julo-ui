@@ -8,28 +8,26 @@ import {
   NT50,
   NT30,
   ER30,
+  ER20,
   NT100,
   PR10,
   PR30,
 } from '@julofinance/color-token';
-import { IInput } from './types';
+import { IInput, IInputState } from './types';
 
 export const inputContainerCss = (props: IInput) => css`
   width: 100%;
   position: relative;
   background: white;
-
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
-
   /* Firefox */
   input[type='number'] {
     -moz-appearance: textfield;
   }
-
   margin-bottom: ${props.error ? '6px' : 'inherit'};
 `;
 
@@ -39,12 +37,28 @@ export const inputLabelCss = css`
   line-height: 16px;
   color: ${NT90};
   font-family: 'Nunito';
+  padding-bottom: 4px;
 `;
 
-export const inputWrapperCss = css`
+const getBorderColor = ({isFocused, isError, hasValue}: IInputState) => {
+  let borderColor = NT40;
+
+  if (isError) {
+    borderColor = ER20;
+  }
+  else if (isFocused) {
+    borderColor = PR10;
+  }
+  else if (hasValue) {
+    borderColor = NT50;
+  }
+  return borderColor;
+}
+
+export const inputWrapperCss = (state: IInputState) => css`
   background: ${NT10};
   background-image: none;
-  border: 1px solid ${NT40};
+  border: 1px solid ${getBorderColor(state)};
   border-radius: 8px;
   width: 100%;
   height: 100%;
@@ -54,6 +68,7 @@ export const inputWrapperCss = css`
 
 export const inputComponentCss = (props: IInput) => css`
   background: white;
+  border: none;
   border-radius: inherit;
   color: ${NT100};
   width: 100%;
@@ -63,15 +78,12 @@ export const inputComponentCss = (props: IInput) => css`
   font-family: 'Nunito';
   font-size: 14px;
   display: block;
-  border: ${props.error ? '1px solid #f44336' : 'none'};
   caret-color: ${PR30};
-
   &:focus {
-    outline: ${props.error ? 'none' : `1px solid ${PR10}`};
+    outline: none;
   }
   &:disabled {
     background: ${NT30};
-    border-color: ${NT50};
     color: ${NT70};
     &::placeholder {
       color: ${NT50};
@@ -92,12 +104,12 @@ export const errorCss = css`
   position: relative;
   left: 0;
   font-family: 'Nunito';
-  margin-top: 2px;
+  padding-top: 4px;
 `;
 
 export const helperTextCss = css`
   color: ${NT80};
-  margin-top: 2px;
+  padding-top: 4px;
   font-size: 10px;
   position: relative;
   left: 0;
