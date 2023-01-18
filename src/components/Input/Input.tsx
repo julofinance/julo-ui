@@ -123,6 +123,7 @@ const Input: FC<Props> = ({
           <div className={adornmentWrapperCss}>{rightAdornment}</div>
         )}
       </div>
+      
       {helperText && !errorMessage && (
         <div className={cx(helperTextClassName, helperTextCss)}>
           {helperText}
