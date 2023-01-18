@@ -68,3 +68,21 @@ WithAdornement.args = {
     />
   ),
 };
+
+export const WithPrefix = Template.bind({});
+WithPrefix.args = {
+  label: "Nomor Handphone",
+  placeholder: "81234567890",
+  leftAdornment: (
+    <p
+      style={{
+        padding: '12px',
+        margin: 0,
+        paddingRight: 0,
+        color: "#757575",
+        fontSize: "14px",
+        fontWeight: 700
+      }}
+    >+62</p>
+  ),
+};
