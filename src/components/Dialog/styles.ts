@@ -1,4 +1,5 @@
 import { css } from '@emotion/css';
+import { OVERLAY70 } from '@julofinance/color-token';
 import { IAnimation, ICardCss } from './types';
 
 export const dialogWrapperCss = (isOpen: boolean) => css`
@@ -7,7 +8,7 @@ export const dialogWrapperCss = (isOpen: boolean) => css`
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(24, 24, 24, 0.25);
+  background-color: ${OVERLAY70};
   display: flex;
   align-items: center;
   justify-content: center;
