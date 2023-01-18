@@ -18,25 +18,42 @@ const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  placeholder: 'Please type your input',
-  label: 'Input label',
-  name: 'input-component'
+  placeholder: 'Default',
+  label: 'Label',
+  name: 'input-component',
+  helperText: 'Helper Text',
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  value: 'This is disabled example',
+export const DisabledWithValue = Template.bind({});
+DisabledWithValue.args = {
+  label: 'Label',
+  value: 'Fill',
   inputProps: { disabled: true },
+  helperText: 'Helper Text',
+};
+
+export const DisabledWithoutValue = Template.bind({});
+DisabledWithoutValue.args = {
+  label: 'Label',
+  placeholder: 'Default',
+  inputProps: { disabled: true },
+  helperText: 'Helper Text',
 };
 
 export const Error = Template.bind({});
 Error.args = {
-  value: 'This is disabled example',
-  errorMessage: 'Error example',
+  label: 'Label',
+  value: 'Error',
+  errorMessage: 'Error Message',
+  helperText: 'Helper Text',
 };
 
 export const WithAdornement = Template.bind({});
 WithAdornement.args = {
-  rightAdornment: <img width={20} height={20} src={require('./assets/ic-location.svg')}/>,
-  leftAdornment: <img width={20} height={20} src={require('./assets/ic-location.svg')}/>,
+  rightAdornment: (
+    <img width={20} height={20} src={require('./assets/ic-location.svg')} />
+  ),
+  leftAdornment: (
+    <img width={20} height={20} src={require('./assets/ic-location.svg')} />
+  ),
 };

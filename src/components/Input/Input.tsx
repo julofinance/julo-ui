@@ -12,6 +12,7 @@ import {
   inputContainerCss,
   inputLabelCss,
   errorCss,
+  helperTextCss,
   inputWrapperCss,
   adornmentWrapperCss,
 } from './styles';
@@ -20,6 +21,7 @@ import { Props } from './types';
 const Input: FC<Props> = ({
   containerClassName,
   inputWrapperClassName,
+  helperTextClassName,
   errorMessage,
   label,
   labelClassName,
@@ -33,6 +35,7 @@ const Input: FC<Props> = ({
   errorClassName,
   leftAdornment,
   rightAdornment,
+  helperText,
   'data-testid': dataTestId
 }) => {
   const [inputValue, setInputValue] = useState(value);
@@ -107,6 +110,9 @@ const Input: FC<Props> = ({
           <div className={adornmentWrapperCss}>{rightAdornment}</div>
         )}
       </div>
+      {(helperText && !errorMessage) && (
+        <div className={cx(helperTextClassName, helperTextCss)}>{helperText}</div>
+      )}
 
       {errorMessage && (
         <div className={cx(errorClassName, errorCss)}>{errorMessage}</div>

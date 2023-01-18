@@ -4,6 +4,7 @@ export interface Props {
   labelClassName?: string;
   errorMessage?: string;
   errorClassName?: string;
+  helperTextClassName?: string;
   label?: string;
   onChange?: (event: string | number) => void;
   type?: HTMLInputTypeAttribute;
@@ -14,6 +15,7 @@ export interface Props {
   >;
   name: string;
   placeholder?: string;
+  helperText?: string;
   isNumeric?: boolean;
   leftAdornment?: ReactNode;
   rightAdornment?: ReactNode;
