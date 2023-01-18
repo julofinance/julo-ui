@@ -40,20 +40,18 @@ export const inputLabelCss = css`
   padding-bottom: 4px;
 `;
 
-const getBorderColor = ({isFocused, isError, hasValue}: IInputState) => {
+const getBorderColor = ({ isFocused, isError, hasValue }: IInputState) => {
   let borderColor = NT40;
 
   if (isError) {
     borderColor = ER20;
-  }
-  else if (isFocused) {
+  } else if (isFocused) {
     borderColor = PR10;
-  }
-  else if (hasValue) {
+  } else if (hasValue) {
     borderColor = NT50;
   }
   return borderColor;
-}
+};
 
 export const inputWrapperCss = (state: IInputState) => css`
   background: ${NT10};
@@ -66,14 +64,18 @@ export const inputWrapperCss = (state: IInputState) => css`
   font-family: 'Nunito';
 `;
 
-export const inputComponentCss = (props: IInput) => css`
+export const inputComponentCss = (
+  leftAdornment: boolean,
+  rightAdornment: boolean,
+) => css`
   background: white;
   border: none;
   border-radius: inherit;
   color: ${NT100};
   width: 100%;
   height: 100%;
-  padding: 12px;
+  padding: 12px ${rightAdornment ? '8px' : '12px'} 12px
+    ${leftAdornment ? '8px' : '12px'};
   font-weight: normal;
   font-family: 'Nunito';
   font-size: 14px;
@@ -96,6 +98,7 @@ export const inputComponentCss = (props: IInput) => css`
 
 export const adornmentWrapperCss = css`
   align-self: center;
+  display: flex;
 `;
 
 export const errorCss = css`

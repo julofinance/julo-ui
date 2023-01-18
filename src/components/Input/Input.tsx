@@ -107,7 +107,7 @@ const Input: FC<Props> = ({
         )}
         <input
           {...inputProps}
-          className={inputComponentCss({ error: !!errorMessage })}
+          className={inputComponentCss(!!leftAdornment, !!rightAdornment)}
           onBlur={() => setIsFocused(false)}
           onFocus={() => setIsFocused(true)}
           ref={inputRef}

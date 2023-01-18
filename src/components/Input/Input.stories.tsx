@@ -51,9 +51,20 @@ Error.args = {
 export const WithAdornement = Template.bind({});
 WithAdornement.args = {
   rightAdornment: (
-    <img width={20} height={20} src={require('./assets/ic-location.svg')} />
+    <img
+      style={{ padding: '12px', paddingLeft: 0, width: '16px', height: '16px' }}
+      src={require('./assets/ic-id.svg')}
+    />
   ),
   leftAdornment: (
-    <img width={20} height={20} src={require('./assets/ic-location.svg')} />
+    <img
+      style={{
+        padding: '12px',
+        paddingRight: 0,
+        width: '16px',
+        height: '16px',
+      }}
+      src={require('./assets/ic-id.svg')}
+    />
   ),
 };
