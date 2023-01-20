@@ -9,6 +9,7 @@ import Typography from '../Typography';
 import docs from './readme.md'
 import BottomSheetFooter from './BottomSheetFooter';
 import { css } from '@emotion/css';
+import Button from '../Button';
 
 export default {
   title: 'Components/BottomSheet',
@@ -27,7 +28,7 @@ export const Default: ComponentStory<typeof BottomSheet> = ({onClose, ...args}) 
 
   return (
     <>
-      <button onClick={() => updateArgs({isOpen: true})}>Open Bottom Sheet</button>
+      <Button onClick={() => updateArgs({isOpen: true})}>Open Bottom Sheet</Button>
       <BottomSheet {...args} onClose={() => updateArgs({isOpen: false})}>
         <BottomSheetHeader>
           Bottom Sheet Title
@@ -74,7 +75,7 @@ export const HiddenDragBar: ComponentStory<typeof BottomSheet> = ({onClose, ...a
 
   return (
     <>
-      <button onClick={() => updateArgs({isOpen: true})}>Open Bottom Sheet</button>
+      <Button onClick={() => updateArgs({isOpen: true})}>Open Bottom Sheet</Button>
       <BottomSheet {...args} onClose={() => updateArgs({isOpen: false})}>
         <BottomSheetHeader>
           Bottom Sheet Title
@@ -122,7 +123,7 @@ export const DisableCloseOnClickOutside: ComponentStory<typeof BottomSheet> = ({
 
   return (
     <>
-      <button onClick={() => updateArgs({isOpen: true})}>Open Bottom Sheet</button>
+      <Button onClick={() => updateArgs({isOpen: true})}>Open Bottom Sheet</Button>
       <BottomSheet {...args} onClose={() => updateArgs({isOpen: false})}>
         <BottomSheetHeader>
           Bottom Sheet Title
@@ -170,7 +171,7 @@ export const WithFooter: ComponentStory<typeof BottomSheet> = ({onClose, ...args
 
   return (
     <>
-      <button onClick={() => updateArgs({isOpen: true})}>Open Bottom Sheet</button>
+      <Button onClick={() => updateArgs({isOpen: true})}>Open Bottom Sheet</Button>
       <BottomSheet {...args} onClose={() => updateArgs({isOpen: false})}>
         <BottomSheetHeader>
           Bottom Sheet Title
@@ -205,9 +206,9 @@ export const WithFooter: ComponentStory<typeof BottomSheet> = ({onClose, ...args
           </Typography>
         </BottomSheetContent>
         <BottomSheetFooter>
-          <button>
-            Bottom sheet footer
-          </button>
+          <Button onClick={() => updateArgs({isOpen: false})} width="100%">
+            Action button in the footer
+          </Button>
         </BottomSheetFooter>
       </BottomSheet>
     </>
@@ -222,7 +223,7 @@ export const CustomHeader: ComponentStory<typeof BottomSheet> = ({onClose, ...ar
 
   return (
     <>
-      <button onClick={() => updateArgs({isOpen: true})}>Open Bottom Sheet</button>
+      <Button onClick={() => updateArgs({isOpen: true})}>Open Bottom Sheet</Button>
       <BottomSheet {...args} onClose={() => updateArgs({isOpen: false})}>
         <BottomSheetHeader>
           <div 
@@ -277,9 +278,9 @@ export const CustomHeader: ComponentStory<typeof BottomSheet> = ({onClose, ...ar
           </Typography>
         </BottomSheetContent>
         <BottomSheetFooter>
-          <button>
-            Bottom sheet footer
-          </button>
+          <Button onClick={() => updateArgs({isOpen: false})} width="100%">
+            Action button in the footer
+          </Button>
         </BottomSheetFooter>
       </BottomSheet>
     </>
