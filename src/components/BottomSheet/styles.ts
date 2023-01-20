@@ -7,9 +7,9 @@ const BSHEET_MAX_H_OFFSET =  "7.5rem";
 export const bSheetWrapper = (props: BSheetWrapper) => css`
   position: fixed;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   top: 0;
-  bottom: 0;
+  left: 0;
   display: flex;
   background-color: ${OVERLAY70};
   transition: all 0.3s ease-in-out;
@@ -33,7 +33,10 @@ export const bSheetContainer = (props: BSheetContainer) => css`
 `;
 
 export const bSheetHeader = css`
-  padding: 16px;
+  padding: 12px 16px;
+  .b-sheet-dragbar ~ & {
+    padding: 8px 16px;
+  }
   border-bottom: 1px solid ${NT20}
 `
 
@@ -49,8 +52,8 @@ export const bSheetFooter = css`
 export const dBarWrapper = css`
   display: flex;
   width: 100%;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
   cursor: ns-resize;
   touch-action: none;
 `;

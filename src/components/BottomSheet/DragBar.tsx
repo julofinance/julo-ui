@@ -1,3 +1,4 @@
+import { cx } from "@emotion/css";
 import React from "react";
 import { dBar, dBarWrapper } from "./styles";
 import { DragBarProps } from "./types";
@@ -7,7 +8,7 @@ const DragBar = (props: DragBarProps) => {
 
   return (
     <div 
-      className={dBarWrapper} 
+      className={cx(dBarWrapper, 'b-sheet-dragbar')} 
       onPointerDown={e => onPointerDown(e.pageY)}
       onPointerUp={onPointerUp}
     >
