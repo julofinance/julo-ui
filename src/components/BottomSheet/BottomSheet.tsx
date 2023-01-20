@@ -1,16 +1,18 @@
 import React, { FC, ReactNode, useEffect, useState, PointerEvent } from "react";
 import DragBar from "./DragBar";
 import { bSheetContainer, bSheetWrapper } from "./styles";
+import { BottomSheetProps } from "./types";
 
-type Props = {
-  onClose: () => void;
-  isOpen: boolean;
-  showDragBar?: boolean;
-  closeOnClickOutside?: boolean;
-  children: ReactNode | ReactNode[];
-};
+const BottomSheet = (props: BottomSheetProps) => {
+  const {
+    isOpen, 
+    onClose, 
+    closeOnClickOutside = true, 
+    showDragBar = true, 
+    children, 
+    ...bottomSheetprops
+  } = props;
 
-const BottomSheet:FC<Props> = ({ onClose, isOpen, closeOnClickOutside = true, showDragBar = true, children }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [yPos, setYPos] = useState(0);
   const [lastY, setLastY] = useState(0);
@@ -49,7 +51,12 @@ const BottomSheet:FC<Props> = ({ onClose, isOpen, closeOnClickOutside = true, sh
   }
 
   return (
-    <div className={bSheetWrapper({isOpen})} onClick={handleClick} onPointerMove={onMove}>
+    <div 
+      className={bSheetWrapper({isOpen})} 
+      onClick={handleClick} 
+      onPointerMove={onMove}
+      {...bottomSheetprops}
+    >
       <div className={bSheetContainer({isOpen, isDragging, yPos})} onClick={e => e.stopPropagation()}>
         {
           showDragBar && 

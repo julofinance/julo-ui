@@ -1,12 +1,8 @@
 import React from "react";
 import { dBar, dBarWrapper } from "./styles";
+import { DragBarProps } from "./types";
 
-type Props = {
-  onPointerDown: (pageY: number) => void
-  onPointerUp: () => void
-}
-
-const DragBar = (props: Props) => {
+const DragBar = (props: DragBarProps) => {
   const {onPointerDown, onPointerUp} = props
 
   return (

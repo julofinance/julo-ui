@@ -1,12 +1,8 @@
-import React, { FC, isValidElement, ReactNode } from "react";
+import React, { isValidElement, ReactNode } from "react";
 import Typography from "../Typography";
 import { bSheetHeader } from "./styles";
 
-type Props = {
-  children: string | ReactNode;
-};
-
-const BottomSheetHeader: FC<Props> = ({ children }) => {
+const BottomSheetHeader = ({ children } : {children: string | ReactNode}) => {
   const isString = typeof children === "string";
 
   if(isString){

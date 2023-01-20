@@ -1,11 +1,8 @@
-import React, { FC, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { bSheetContent } from "./styles";
 
-type Props = {
-  children: ReactNode | ReactNode[]
-}
 
-const BottomSheetContent: FC<Props> = ({ children }) => {
+const BottomSheetContent = ({ children } : {children: ReactNode | ReactNode[]}) => {
   return (
     <div className={bSheetContent}>
       {children}      

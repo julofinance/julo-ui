@@ -1,11 +1,7 @@
-import React, { FC, ReactNode } from "react";
+import React, { ReactNode } from "react";
 import { bSheetFooter } from "./styles";
 
-type Props = {
-  children: ReactNode
-};
-
-const BottomSheetFooter: FC<Props> = ({ children }) => {
+const BottomSheetFooter = ({ children } : {children: ReactNode}) => {
   return (
     <div className={bSheetFooter}>
       {children}   
