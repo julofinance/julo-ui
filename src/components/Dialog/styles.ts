@@ -36,13 +36,13 @@ const setTransform = (animation?: IAnimation) => {
 };
 
 export const cardCss = (props: ICardCss) => css`
-  padding: 15px;
+  padding: 16px;
   max-height: 93vh;
   overflow: auto;
   max-width: 500;
   min-width: 320;
-  box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.14);
-  border-radius: 8px;
+  box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.16);
+  border-radius: 16px;
   background-color: #fff;
   transform: ${props.isOpen ? 'translateX(0)' : setTransform(props.animation)};
   transition: all 0.3s ease-in-out;
