@@ -14,6 +14,7 @@ export type BottomSheetProps = {
   onClose: () => void;
   isOpen: boolean;
   showDragBar?: boolean;
+  showCloseIcon?: boolean;
   closeOnClickOutside?: boolean;
   children: ReactNode | ReactNode[];
   'data-testid'?: string;

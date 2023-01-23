@@ -1,14 +1,17 @@
-import React, { FC, ReactNode, useEffect, useState, PointerEvent } from "react";
+import { cx } from "@emotion/css";
+import React, { useEffect, useState, PointerEvent } from "react";
+import CloseIcon from "./assets/CloseIcon";
 import DragBar from "./DragBar";
-import { bSheetContainer, bSheetWrapper } from "./styles";
+import { bSheetContainer, bSheetWrapper, closeIconWrapper } from "./styles";
 import { BottomSheetProps } from "./types";
 
 const BottomSheet = (props: BottomSheetProps) => {
   const {
     isOpen, 
     onClose, 
-    closeOnClickOutside = true, 
+    closeOnClickOutside = true,
     showDragBar = true, 
+    showCloseIcon,
     children, 
     ...bottomSheetprops
   } = props;
@@ -64,6 +67,12 @@ const BottomSheet = (props: BottomSheetProps) => {
             onPointerDown={pageY => onDown(pageY)} 
             onPointerUp={() => setIsDragging(false)}
           />
+        }
+        {
+          showCloseIcon && 
+          <div className={cx(closeIconWrapper)} onClick={onClose}>
+            <CloseIcon/>
+          </div>
         }
         {children}
       </div>

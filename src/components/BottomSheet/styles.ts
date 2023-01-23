@@ -1,4 +1,5 @@
 import { css } from '@emotion/css';
+import { PR30 } from '@julofinance/color-token';
 import { NT50, NT20, OVERLAY70 } from "@julofinance/color-token";
 import { BSheetContainer, BSheetWrapper } from './types';
 
@@ -21,6 +22,7 @@ export const bSheetWrapper = (props: BSheetWrapper) => css`
 export const bSheetContainer = (props: BSheetContainer) => css`
   display: flex;
   flex-direction: column;
+  position: relative;
   margin-top: auto;
   width: 100%;
   max-height: calc(100% - ${BSHEET_MAX_H_OFFSET});
@@ -65,4 +67,18 @@ export const dBar = css`
   background-color: ${NT50};
   border-radius: 8px;
   pointer-events: none;
+`;
+
+export const closeIconWrapper = css`
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 12px;
+  .b-sheet-dragbar + & {
+    top: 36px;
+  }
+  right: 16px;
+  border-bottom: none;
+  color: ${PR30};
+  cursor: pointer;
 `;
