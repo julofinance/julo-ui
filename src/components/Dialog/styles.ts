@@ -4,6 +4,7 @@ import { IAnimation, ICardCss } from './types';
 
 export const dialogWrapperCss = (isOpen: boolean) => css`
   position: fixed;
+  padding: 15px;
   left: 0;
   top: 0;
   right: 0;
@@ -23,15 +24,15 @@ const setTransform = (animation?: IAnimation) => {
     case 'fade':
       return 'none';
     case 'slideUp':
-      return 'translateY(-200px)';
+      return 'translateY(-50px)';
     case 'slideDown':
-      return 'translateY(200px)';
+      return 'translateY(50px)';
     case 'slideLeft':
-      return 'translateX(-200px)';
+      return 'translateX(-50px)';
     case 'slideRight':
-      return 'translateX(200px)';
+      return 'translateX(50px)';
     default:
-      return 'translateX(200px)';
+      return 'translateY(30px)';
   }
 };
 

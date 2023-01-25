@@ -3,7 +3,7 @@ import { css } from '@emotion/css';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
 import Dialog from './Dialog';
-import { PR20, NT80 } from '@julofinance/color-token';
+import { PR30, NT80 } from '@julofinance/color-token';
 import Typography from '../Typography';
 import Button from '../Button';
 
@@ -47,14 +47,14 @@ export const Small: ComponentStory<typeof Dialog> = (args) => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            width: '328px',
+            maxWidth: '328px',
           }}
         >
           <img
             style={{ marginTop: '10px' }}
             src={require('./assets/placeholder.svg')}
           />
-          <Typography className={titleCss} bold color={PR20}>
+          <Typography className={titleCss} bold color={PR30}>
             Title
           </Typography>
           <Typography className={descCss} color={NT80} body={2}>
@@ -82,14 +82,14 @@ export const Medium: ComponentStory<typeof Dialog> = (args) => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            width: '552px',
+            maxWidth: '552px',
           }}
         >
           <img
             style={{ marginTop: '10px' }}
             src={require('./assets/placeholder.svg')}
           />
-          <Typography className={titleCss} bold color={PR20}>
+          <Typography className={titleCss} bold color={PR30}>
             Title
           </Typography>
           <Typography className={descCss} color={NT80} body={2}>
@@ -117,12 +117,12 @@ export const Large: ComponentStory<typeof Dialog> = (args) => {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            width: '936px',
+            maxWidth: '936px',
             padding: '16px 56px',
           }}
         >
           <img src={require('./assets/placeholder.svg')} />
-          <Typography className={titleCss} bold color={PR20}>
+          <Typography className={titleCss} bold color={PR30}>
             Title
           </Typography>
           <Typography className={descCss} color={NT80} body={2}>
