@@ -1,4 +1,4 @@
-import React, { FC, memo, useEffect, useState } from 'react';
+import React, { FC, memo, useEffect, useMemo, useState } from 'react';
 
 import CountdownMessage from './CountdownMessage';
 
@@ -66,18 +66,20 @@ const Countdown: FC<CountdownProps> = (props) => {
     // call function every 'date' data has changed
   }, [date]);
 
+  const countdownMessage = useMemo(() => {
+    if (showError) return messageError;
+    if (isTimesUp) return messageTimesUp;
+
+    return '';
+  }, [messageError, messageTimesUp, isTimesUp, showError]);
+
   return (
     <div className={wrapperCountdown} data-testid={dataTestId}>
       <div className={wrapperCountdownTimer}>
         <Clock />
         <span className={cStyle}>{timer}</span>
       </div>
-      <CountdownMessage
-        isTimesUp={isTimesUp}
-        messageError={messageError}
-        messageTimesUp={messageTimesUp}
-        showError={showError}
-      />
+      <CountdownMessage message={countdownMessage} />
     </div>
   );
 };
