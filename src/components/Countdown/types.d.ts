@@ -1,4 +1,4 @@
-export type CountdownProps = {
+export interface CountdownProps {
   date: number; // Epoch miliseconds
   messageError: string; // custom message error
   messageTimesUp: string; // custom message times up
