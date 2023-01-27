@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { cErrorMessageStyle } from './styles';
 
-type Props = {
+interface Props {
   message: string;
 };
 
