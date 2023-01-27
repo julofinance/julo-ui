@@ -1,16 +1,12 @@
-import React, { memo, useEffect, useState } from 'react';
+import React, { FC, memo, useEffect, useState } from 'react';
 
 import CountdownMessage from './CountdownMessage';
 
-import {
-  cStyle,
-  wrapperCountdown,
-  wrapperCountdownTimer,
-} from './styles';
+import { cStyle, wrapperCountdown, wrapperCountdownTimer } from './styles';
 import type { CountdownProps } from './types';
 import Clock from './assets/Clock';
 
-const Countdown = (props: CountdownProps) => {
+const Countdown: FC<CountdownProps> = (props) => {
   const {
     'data-testid': dataTestId,
     date,
@@ -31,6 +27,7 @@ const Countdown = (props: CountdownProps) => {
     const currentEpochDate = new Date(); // generate new Date every function has called
 
     if (expiredTime < currentEpochDate.getTime()) {
+      // reset if times up
       onReset(true);
       setIsTimesUp(true);
       setTimer('-- : --');

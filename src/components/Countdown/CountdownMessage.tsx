@@ -18,8 +18,11 @@ const CountdownMessage: FC<Props> = ({
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    if (showError) setMessage(messageError);
-    else if (isTimesUp) setMessage(messageTimesUp);
+    if (showError) return setMessage(messageError);
+    else if (isTimesUp) return setMessage(messageTimesUp);
+
+    setMessage('');
+    setMessage('');
   }, [showError, isTimesUp, messageTimesUp, messageError]);
 
   return <div className={cErrorMessageStyle}>{message}</div>;

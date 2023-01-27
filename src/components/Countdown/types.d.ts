@@ -5,5 +5,5 @@ export interface CountdownProps {
   showError: boolean; // to show messageError
   onComplete: (value: boolean) => void; // sent true value if complete
   onReset: (value: boolean) => void; // sent true value if reset
-  'data-testid'?: string; 
-};
+  'data-testid'?: string;
+}
