@@ -36,7 +36,7 @@ const Countdown: FC<CountdownProps> = (props) => {
 
       const timerInterval = setInterval(() => {
         const currentEpochDate = new Date(); // generate new Date every function has called
-        const expiredTimeEpoch = expiredTime || 0;
+        const expiredTimeEpoch = expiredTime ?? 0;
         const getTimer = expiredTimeEpoch - currentEpochDate.getTime(); // get current time for generate minutes and seconds
 
         const timeLeft = {
