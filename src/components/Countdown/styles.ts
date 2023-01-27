@@ -15,7 +15,7 @@ export const wrapperCountdownTimer = css`
 `;
 
 export const cStyle = css`
-  font-size: 16px !important;
+  font-size: 16px;
   color: ${NT90};
 `;
 
