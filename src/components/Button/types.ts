@@ -1,7 +1,6 @@
 import { RefObject, MouseEvent } from 'react';
 
 export type ButtonProps = {
-  disabled?: boolean;
   onClick?: (event: MouseEvent<HTMLElement>) => void;
   onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
   margin?: string;
