@@ -1,16 +1,16 @@
 import { ReactNode } from "react";
 
-export type BSheetWrapper = {
+export interface BSheetWrapper  {
   isOpen?: boolean;
 }
   
-export type BSheetContainer = {
+export interface BSheetContainer  {
   isOpen?: boolean;
   isDragging: boolean;
   yPos: number;
 }
 
-export type BottomSheetProps = {
+export interface BottomSheetProps  {
   onClose: () => void;
   isOpen: boolean;
   showDragBar?: boolean;
@@ -20,7 +20,7 @@ export type BottomSheetProps = {
   'data-testid'?: string;
 }
 
-export type DragBarProps = {
+export interface DragBarProps  {
   onPointerDown: (pageY: number) => void;
   onPointerUp: () => void;
 }
