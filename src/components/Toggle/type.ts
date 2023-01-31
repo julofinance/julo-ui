@@ -2,24 +2,24 @@ import { ChangeEvent } from "react";
 
 export type Size = "sm" | "md" | "lg";
 
-export type TgWrapperProps = {
+export interface TgWrapperProps  {
   disabled?: boolean;
 }
   
-export type TgInputProps = {
+export interface TgInputProps  {
   backgroundColor?: string;
   size: Size;
 }
   
-export type TgSliderTrackProps = {
+export interface TgSliderTrackProps  {
   size: Size;
 }
   
-export type TgThumbProps = {
+export interface TgThumbProps  {
   size: Size;
 }
 
-export type ToggleProps = {
+export interface ToggleProps  {
   id?: string;
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   checked?: boolean;
