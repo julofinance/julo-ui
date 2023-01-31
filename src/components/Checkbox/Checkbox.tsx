@@ -41,19 +41,13 @@ const Checkbox: FC<CheckboxProps> = (props) =>{
         data-testid={dataTestId}
         value={value}
       />
-      <div className={`${styledCheckbox(props)} ${checked ? 'checked' : ''} ${props.disabled ? 'disabled' : ''}`}>
+      <div className={`${styledCheckbox({margin, size, ...props})} ${checked ? 'checked' : ''} ${props.disabled ? 'disabled' : ''}`}>
         <WhiteTick />
         <GreyTick />
       </div>
       {label}
     </div>
   );
-};
-
-Checkbox.defaultProps = {
-  defaultChecked: false,
-  margin: '5px',
-  size: '20px',
 };
 
 export default memo(Checkbox);

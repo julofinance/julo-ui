@@ -2,12 +2,6 @@ import { css, CSSInterpolation } from '@emotion/css';
 import { PR20, PR30, NT30, NT50 } from '@julofinance/color-token';
 import type { CheckboxProps } from './types';
 
-const defaultProps = ({ margin, padding }: CheckboxProps) =>
-  ({
-    margin,
-    padding,
-  } as CSSInterpolation);
-
 export const hiddenCheckbox = css`
   cursor: pointer;  
   position: absolute;
@@ -23,7 +17,6 @@ export const styledCheckboxWrapper = css`
   align-items: center;
   position: relative;
 `;
-
 export const styledCheckbox = (props: CheckboxProps) => css`
   appearance: none;
   width: ${props.size};
@@ -34,7 +27,7 @@ export const styledCheckbox = (props: CheckboxProps) => css`
   display: flex;
   align-items: center;
   justify-content: center;
-  ${defaultProps(props)}
+  margin: ${props.margin};
 
   svg{
     display:none;
