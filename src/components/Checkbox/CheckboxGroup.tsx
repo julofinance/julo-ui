@@ -1,12 +1,12 @@
-import React, { memo , ReactNode} from 'react';
+import React, { FC, memo , ReactNode} from 'react';
 import { styledCheckboxGroup } from './styles';
 
-type Props = {
+interface Props {
   children: ReactNode | ReactNode[];
   inline: boolean;
 };
 
-const CheckboxGroup = ({ children, inline }: Props) => {
+const CheckboxGroup: FC<Props> = ({ children, inline }) => {
   return (
     <div className={styledCheckboxGroup(inline)}>
       {children}

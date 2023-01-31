@@ -1,6 +1,6 @@
 import { MouseEvent, ReactNode } from 'react';
 
-export type CheckboxProps = {
+export interface CheckboxProps {
   defaultChecked?: boolean;
   disabled?: boolean;
   label?: ReactNode;
