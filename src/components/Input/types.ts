@@ -1,3 +1,5 @@
+import { DetailedHTMLProps, HTMLInputTypeAttribute, InputHTMLAttributes, ReactNode } from "react";
+
 export interface Props {
   containerClassName?: string;
   inputWrapperClassName?: string;
@@ -17,8 +19,8 @@ export interface Props {
   placeholder?: string;
   helperText?: string;
   isNumeric?: boolean;
-  leftAdornment?: ReactNode;
-  rightAdornment?: ReactNode;
+  preAppend?: ReactNode;
+  append?: ReactNode;
   'data-testid'?: string;
 }
 
