@@ -1,12 +1,6 @@
-import { ReactNode } from "react";
+import { ReactNode, MouseEvent, LegacyRef } from 'react';
 
-type breakpointCodes = {
-  xs?: string;
-  sm?: string;
-  md?: string;
-  lg?: string;
-  xl?: string;
-}
+type breakpointCodes = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 export type GridProps = {
   align?: 'flex-start' | 'center' | 'flex-end' | 'stretch' | 'baseline';
@@ -25,7 +19,7 @@ export type GridProps = {
     | 'space-evenly';
   padding?: number;
   margin?: number;
-  ref?: RefObject<HTMLButtonElement>;
+  ref?: LegacyRef<HTMLDivElement>;
   onClick?: (event: MouseEvent<HTMLElement>) => void;
   border?: string;
   borderRadius?: number;
@@ -34,14 +28,14 @@ export type GridProps = {
 
 export type GridItemProps = {
   children: ReactNode | ReactNode[];
-  breakpoints?: { [key: breakpointCodes]: number };
+  breakpoints?: { [key in breakpointCodes]?: number };
   className?: any;
   'data-testid'?: string;
   padding?: number;
   margin?: number;
-  ref?: RefObject<HTMLButtonElement>;
+  ref?: LegacyRef<HTMLDivElement>;
   onClick?: (event: MouseEvent<HTMLElement>) => void;
   border?: string;
   borderRadius?: number;
   background?: string;
-}
+};
