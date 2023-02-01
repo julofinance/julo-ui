@@ -14,7 +14,7 @@ import {
   errorCss,
   helperTextCss,
   inputWrapperCss,
-  adornmentWrapperCss,
+  appendWrapperCss,
 } from './styles';
 import { Props } from './types';
 
@@ -33,8 +33,8 @@ const Input: FC<Props> = ({
   placeholder,
   isNumeric,
   errorClassName,
-  leftAdornment,
-  rightAdornment,
+  preAppend,
+  append,
   helperText,
   'data-testid': dataTestId,
 }) => {
@@ -102,12 +102,12 @@ const Input: FC<Props> = ({
           inputWrapperClassName,
         )}
       >
-        {leftAdornment && (
-          <div className={adornmentWrapperCss}>{leftAdornment}</div>
+        {preAppend && (
+          <div className={appendWrapperCss}>{preAppend}</div>
         )}
         <input
           {...inputProps}
-          className={inputComponentCss(!!leftAdornment, !!rightAdornment)}
+          className={inputComponentCss(!!preAppend, !!append)}
           onBlur={() => setIsFocused(false)}
           onFocus={() => setIsFocused(true)}
           ref={inputRef}
@@ -119,8 +119,8 @@ const Input: FC<Props> = ({
           placeholder={placeholder}
           onChange={handleOnChange}
         />
-        {rightAdornment && (
-          <div className={adornmentWrapperCss}>{rightAdornment}</div>
+        {append && (
+          <div className={appendWrapperCss}>{append}</div>
         )}
       </div>
       
