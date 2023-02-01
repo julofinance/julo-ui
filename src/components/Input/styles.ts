@@ -65,8 +65,8 @@ export const inputWrapperCss = (state: IInputState) => css`
 `;
 
 export const inputComponentCss = (
-  leftAdornment: boolean,
-  rightAdornment: boolean,
+  preAppend: boolean,
+  append: boolean,
 ) => css`
   background: white;
   border: none;
@@ -74,8 +74,8 @@ export const inputComponentCss = (
   color: ${NT100};
   width: 100%;
   height: 100%;
-  padding: 12px ${rightAdornment ? '8px' : '12px'} 12px
-    ${leftAdornment ? '8px' : '12px'};
+  padding: 12px ${append ? '8px' : '12px'} 12px
+    ${preAppend ? '8px' : '12px'};
   font-weight: normal;
   font-family: 'Nunito';
   font-size: 14px;
@@ -96,7 +96,7 @@ export const inputComponentCss = (
   }
 `;
 
-export const adornmentWrapperCss = css`
+export const appendWrapperCss = css`
   align-self: center;
   display: flex;
 `;
