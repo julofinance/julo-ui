@@ -50,13 +50,13 @@ Error.args = {
 
 export const WithAdornement = Template.bind({});
 WithAdornement.args = {
-  rightAdornment: (
+  append: (
     <img
       style={{ padding: '12px', paddingLeft: 0, width: '16px', height: '16px' }}
       src={require('./assets/ic-id.svg')}
     />
   ),
-  leftAdornment: (
+  preAppend: (
     <img
       style={{
         padding: '12px',
@@ -73,7 +73,7 @@ export const WithPrefix = Template.bind({});
 WithPrefix.args = {
   label: "Nomor Handphone",
   placeholder: "81234567890",
-  leftAdornment: (
+  preAppend: (
     <p
       style={{
         padding: '12px',
