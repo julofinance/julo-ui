@@ -21,20 +21,5 @@ const Template: ComponentStory<typeof Countdown> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  date: 2000,
-  messageTimesUp: 'Waktu habis',
-  messageError: 'Error Message',
-};
-
-export const Error = Template.bind({});
-Error.args = {
-  date: 2000,
-  messageError: 'Error Message',
-  showError: true
-};
-
-export const TimesUp = Template.bind({});
-TimesUp.args = {
-  date: 2000,
-  messageTimesUp: 'Waktu habis',
+  date: 2000
 };

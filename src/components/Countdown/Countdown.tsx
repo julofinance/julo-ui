@@ -1,8 +1,6 @@
-import React, { FC, memo, useEffect, useMemo, useState } from 'react';
+import React, { FC, memo, useEffect, useState } from 'react';
 
-import CountdownMessage from './CountdownMessage';
-
-import { cStyle, wrapperCountdown, wrapperCountdownTimer } from './styles';
+import { clockIcon, cStyle, wrapperCountdown } from './styles';
 import type { CountdownProps } from './types';
 import Clock from './assets/Clock';
 
@@ -10,16 +8,12 @@ const Countdown: FC<CountdownProps> = (props) => {
   const {
     'data-testid': dataTestId,
     date,
-    messageError,
-    messageTimesUp,
-    showError,
     onComplete,
-    onReset,
+    onReset = () => {},
   } = props;
 
   const [timerInterval, setTimerInterval] = useState<NodeJS.Timer>();
   const [timer, setTimer] = useState('-- : --');
-  const [isTimesUp, setIsTimesUp] = useState(false);
   const expiredTime = date;
 
   useEffect(() => {
@@ -29,10 +23,9 @@ const Countdown: FC<CountdownProps> = (props) => {
     if (expiredTime < currentEpochDate.getTime()) {
       // reset if times up
       onReset(true);
-      setIsTimesUp(true);
       setTimer('-- : --');
     } else {
-      setIsTimesUp(false);
+      onComplete(false);
 
       const timerInterval = setInterval(() => {
         const currentEpochDate = new Date(); // generate new Date every function has called
@@ -55,7 +48,6 @@ const Countdown: FC<CountdownProps> = (props) => {
         } else {
           // timeout
           clearInterval(timerInterval);
-          setIsTimesUp(true);
           onComplete(true);
         }
       }, 1000);
@@ -66,20 +58,10 @@ const Countdown: FC<CountdownProps> = (props) => {
     // call function every 'date' data has changed
   }, [date]);
 
-  const countdownMessage = useMemo(() => {
-    if (showError) return messageError;
-    if (isTimesUp) return messageTimesUp;
-
-    return '';
-  }, [messageError, messageTimesUp, isTimesUp, showError]);
-
   return (
     <div className={wrapperCountdown} data-testid={dataTestId}>
-      <div className={wrapperCountdownTimer}>
-        <Clock />
-        <span className={cStyle}>{timer}</span>
-      </div>
-      <CountdownMessage message={countdownMessage} />
+      <Clock className={clockIcon} />
+      <span className={cStyle}>{timer}</span>
     </div>
   );
 };
