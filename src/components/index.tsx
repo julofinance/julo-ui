@@ -1,5 +1,4 @@
 export { default as Avatar } from './Avatar';
-export { default as Checkbox } from './Checkbox';
 export { default as CircleShimmer } from './CircleShimmer';
 export { default as LineShimmer } from './LineShimmer';
 export { default as Countdown } from './Countdown';
@@ -12,4 +11,5 @@ export { default as Input } from './Input';
 export { default as Button } from './Button';
 export * from './Accordion';
 export * from './BottomSheet';
+export * from './Checkbox';
 export * from './Grid';
