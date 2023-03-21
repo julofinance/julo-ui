@@ -1,40 +1,60 @@
-import React, { memo } from 'react';
+import { forwardRef, memo, useMemo } from 'react';
 
 import { cx } from '@emotion/css';
 
 import Typography from '../Typography';
-import { styledButton } from './styles';
 import type { ButtonProps } from './types';
+import {
+  buttonCx,
+  primaryButtonCx,
+  secondaryButtonCx,
+  tertiaryButtonCx,
+} from './styles';
 
-const Button = (props: ButtonProps) => {
+const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
     children,
-    ref,
-    onClick,
     className,
-    type = 'button',
-    'data-testid': dataTestId,
-    ...otherProps
+    inverted,
+    size = 'regular',
+    variant = 'primary',
+    block,
+    ...resProps
   } = props;
 
-  return (
-    <button
-      ref={ref}
-      className={cx(styledButton(otherProps), className)}
-      onClick={onClick}
-      disabled={otherProps.disabled}
-      type={type}
-      data-testid={dataTestId}
-    >
-      <Typography body={otherProps.small ? 2 : 1} bold color='inherit'>
-        {children}
-      </Typography>
-    </button>
-  );
-};
+  const variantClass = useMemo(() => {
+    switch (variant) {
+      case 'secondary':
+        return secondaryButtonCx;
 
-Button.defaultProps = {
-  disabled: false,
-};
+      case 'tertiary':
+        return tertiaryButtonCx;
+
+      default:
+        return primaryButtonCx;
+    }
+  }, [variant]);
+
+  return (
+    <Typography type='body' size={size} bold asChild>
+      <button
+        ref={ref}
+        className={cx(
+          buttonCx,
+          variantClass,
+          {
+            inverted: inverted,
+            block,
+            small: size === 'small',
+          },
+          className,
+        )}
+        {...resProps}
+      >
+        {children}
+      </button>
+    </Typography>
+  );
+});
 
 export default memo(Button);

@@ -1,138 +1,116 @@
-import { css, CSSInterpolation } from '@emotion/css';
-import { PR10, PR30, PR40, PR50, NT10, NT30, NT40, NT50, NT60 } from '@julofinance/color-token';
+import { css } from '@emotion/css';
 
-import type { ButtonProps } from './types';
+export const buttonCx = css`
+  cursor: pointer;
 
-// Props that doesn't have default value can be listed here
-const defaultProps = ({ margin, padding, width }: ButtonProps) =>
-  ({
-    margin,
-    padding,
-    width
-  } as CSSInterpolation);
+  border: 0;
+  border-radius: 0.5rem;
 
-const colorMap = ({ color, disabled, inverted }: ButtonProps) => {
-  // fallback to primary type
-  let textColor = NT10;
-  let background = PR30;
-  let borderColor = PR30;
-  let hoverStyles = `
-    background: ${PR40};
-    border-color: ${PR40};
-  `;
-  let selectedStyles = `
-    background: ${PR50};
-    border-color: ${PR50};
-  `
+  padding: 0.75rem 1rem;
 
-  // primary disabled
-  if (disabled) {
-    background = borderColor = NT30;
-    textColor = NT60;
-    hoverStyles = selectedStyles = '';
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+
+  &.small {
+    padding: 0.5rem 1rem;
   }
 
-  if (inverted) {
-    background = borderColor = NT10;
-    textColor = PR30;
-    hoverStyles = `
-      color: ${PR40};
-    `;
-    selectedStyles = `
-      color: ${PR50};
-    `;
+  &:disabled {
+    cursor: not-allowed;
   }
 
-  if (color == 'secondary') {
-    textColor = borderColor = PR30;
-    background = NT10;
-    hoverStyles = `
-      background: ${PR10};
-    `;
-    selectedStyles = `
-      color: ${PR50};
-      border-color: ${PR50};
-    `;
+  &.block {
+    width: 100%;
+  }
+`;
 
-    if (disabled) {
-      background = NT10;
-      textColor = NT50;
-      borderColor = NT40;
-      hoverStyles = selectedStyles = '';
-    }
+export const primaryButtonCx = css`
+  color: var(--colors-neutrals-10);
+  background-color: var(--colors-primary-30);
 
-    if (inverted) {
-      background = borderColor = PR30;
-      textColor = NT10;
-      hoverStyles = `
-        color: ${NT10};
-        background: ${PR40};
-        border-color: ${PR40};
-      `;
-      selectedStyles = `
-        color: ${NT10};
-        background: ${PR50};
-        border-color: ${PR50};
-      `;
-    }
-  } else if (color == 'tertiary') {
-    textColor = PR30;
-    background = 'transparent';
-    borderColor = 'transparent';
-    hoverStyles = `
-      background: ${PR10};
-      border-color: ${PR10};
-    `;
-    selectedStyles = `
-      color: ${PR50};
-      border-color: ${PR10};
-    `;
-
-    if (disabled) {
-      textColor = NT50;
-      hoverStyles = selectedStyles = '';
-    }
-
-    if (inverted) {
-      background = borderColor = 'transparent';
-      textColor = PR10;
-      hoverStyles = `
-        color: ${PR40};
-        background: ${PR10};
-        border-color: ${PR10};
-      `;
-      selectedStyles = `
-        color: ${PR50};
-        background: ${PR10};
-        border-color: ${PR10};
-      `;
-    }
+  &:hover {
+    background-color: var(--colors-primary-40);
   }
 
-  return `
-    font-weight: 700;
-    color: ${textColor};
-    background: ${background};
-    border: 1px solid ${borderColor};
-    cursor: ${disabled ? 'not-allowed' : 'pointer'};
+  &:active {
+    background-color: var(--colors-primary-50);
+  }
+
+  &:disabled {
+    background-color: var(--colors-neutrals-30);
+    color: var(--colors-neutrals-60);
+  }
+
+  &.inverted {
+    color: var(--colors-primary-30);
+    background-color: var(--colors-neutrals-10);
+    border-color: var(--colors-neutrals-10);
 
     &:hover {
-      ${hoverStyles}
+      color: var(--colors-primary-40);
     }
 
-    &:selected {
-      ${selectedStyles}
+    &:active {
+      color: var(--colors-primary-50);
     }
-  `;
-};
+  }
+`;
 
-export const styledButton = (props: ButtonProps) => css`
-  font-family: 'Nunito', sans-serif;
-  background: #eee;
-  color: #222;
-  border-radius: 8px;
-  padding: ${props.small ? '8px 16px' : '12px 16px'};
-  ${props.block ? 'width: 100%;' : ''}
-  ${colorMap(props)}
-  ${defaultProps(props)}
+export const secondaryButtonCx = css`
+  color: var(--colors-primary-30);
+  background-color: var(--colors-neutrals-10);
+  border: 1px solid var(--colors-primary-30);
+
+  &:hover {
+    color: var(--colors-primary-40);
+    background-color: var(--colors-primary-10);
+    border-color: var(--colors-primary-30);
+  }
+
+  &:active {
+    color: var(--colors-primary-50);
+    border-color: var(--colors-primary-50);
+  }
+
+  &:disabled {
+    color: var(--colors-neutrals-50);
+    background-color: var(--colors-neutrals-10);
+    border-color: var(--colors-neutrals-40);
+  }
+
+  &.inverted {
+    color: var(--colors-neutrals-10);
+    background-color: var(--colors-primary-30);
+
+    &:hover {
+      background-color: var(--colors-primary-40);
+    }
+
+    &:active {
+      background-color: var(--colors-primary-50);
+    }
+  }
+`;
+
+export const tertiaryButtonCx = css`
+  color: var(--colors-primary-30);
+  background-color: transparent;
+
+  &.inverted {
+    color: var(--colors-primary-10);
+  }
+
+  &:hover {
+    color: var(--colors-primary-40);
+    background-color: var(--colors-primary-10);
+  }
+
+  &:active {
+    color: var(--colors-primary-50);
+    background-color: var(--colors-primary-10);
+  }
+
+  &:disabled {
+    color: var(--colors-neutrals-50);
+    background-color: transparent;
+  }
 `;

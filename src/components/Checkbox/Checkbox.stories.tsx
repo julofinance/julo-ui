@@ -10,13 +10,16 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "`import { Checkbox } from '@julofinance/react-components';`",
+        component:
+          "`import { Checkbox } from '@julofinance/react-components';`",
       },
     },
   },
 } as ComponentMeta<typeof Checkbox>;
 
-const Template: ComponentStory<typeof Checkbox> = (args) => <Checkbox {...args} />;
+const Template: ComponentStory<typeof Checkbox> = (args) => (
+  <Checkbox {...args} />
+);
 
 export const Default = Template.bind({});
 Default.args = {
@@ -45,41 +48,49 @@ DisabledSelected.args = {
 export const Labeled = Template.bind({});
 Labeled.args = {
   size: '20px',
-  label: <Typography body={1}>Label</Typography>,
+  label: <Typography type='body'>Label</Typography>,
 };
 
-export const Multiple: ComponentStory<typeof Checkbox> = ({ onClick, onChange, value, ...args}) => {
+export const Multiple: ComponentStory<typeof Checkbox> = ({
+  onClick,
+  onChange,
+  value,
+  ...args
+}) => {
   const [options, setOptions] = useState([
-    {label: 'A', checked: false, value: 'A'},
-    {label: 'B', checked: false, value: 'B'},
-    {label: 'C', checked: false, value: 'C'},
-    {label: 'D', checked: false, value: 'D'},
-    {label: 'E', checked: false, value: 'E'},
+    { label: 'A', checked: false, value: 'A' },
+    { label: 'B', checked: false, value: 'B' },
+    { label: 'C', checked: false, value: 'C' },
+    { label: 'D', checked: false, value: 'D' },
+    { label: 'E', checked: false, value: 'E' },
   ]);
   const [optionClicked, setOptionClicked] = useState('');
 
-  const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>, index:number) => {
+  const handleOptionChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+    index: number,
+  ) => {
     const updOptions = options;
     updOptions[index].checked = !options[index].checked;
     setOptions(updOptions);
 
     let temp = '';
-    updOptions.map(opt => ( opt.checked ? temp += opt.value : null));
+    updOptions.map((opt) => (opt.checked ? (temp += opt.value) : null));
     setOptionClicked(temp);
   };
 
   return (
     <>
-      <CheckboxGroup inline={true} >
+      <CheckboxGroup inline={true}>
         {options.map((opt, index) => (
           <Checkbox
             {...args}
             defaultChecked={opt.checked}
             key={index}
-            label={<Typography body={1}>{opt.label}</Typography>}
+            label={<Typography type='body'>{opt.label}</Typography>}
             name={'checkboxOptions[]'}
             value={opt.value}
-            onChange={(event) => handleOptionChange(event,index)}
+            onChange={(event) => handleOptionChange(event, index)}
           />
         ))}
       </CheckboxGroup>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { css } from '@emotion/css';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { useArgs } from '@storybook/client-api';
@@ -54,13 +53,13 @@ export const Small: ComponentStory<typeof Dialog> = (args) => {
             style={{ marginTop: '10px' }}
             src={require('./assets/placeholder.svg')}
           />
-          <Typography className={titleCss} bold color={PR30}>
+          <Typography type='body' className={titleCss} bold color={PR30}>
             Title
           </Typography>
-          <Typography className={descCss} color={NT80} body={2}>
+          <Typography className={descCss} color={NT80} type='body' size='small'>
             {descriptionText}
           </Typography>
-          <Button width='100%'>Action 1</Button>
+          <Button block>Action 1</Button>
         </div>
       </Dialog>
     </>
@@ -89,13 +88,13 @@ export const Medium: ComponentStory<typeof Dialog> = (args) => {
             style={{ marginTop: '10px' }}
             src={require('./assets/placeholder.svg')}
           />
-          <Typography className={titleCss} bold color={PR30}>
+          <Typography type='body' className={titleCss} bold color={PR30}>
             Title
           </Typography>
-          <Typography className={descCss} color={NT80} body={2}>
+          <Typography className={descCss} color={NT80} type='body' size='small'>
             {descriptionText}
           </Typography>
-          <Button width='100%'>Action 1</Button>
+          <Button block>Action 1</Button>
         </div>
       </Dialog>
     </>
@@ -122,10 +121,10 @@ export const Large: ComponentStory<typeof Dialog> = (args) => {
           }}
         >
           <img src={require('./assets/placeholder.svg')} />
-          <Typography className={titleCss} bold color={PR30}>
+          <Typography type='body' className={titleCss} bold color={PR30}>
             Title
           </Typography>
-          <Typography className={descCss} color={NT80} body={2}>
+          <Typography className={descCss} color={NT80} type='body' size='small'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus at
             sagittis, dictum ac lacinia. Sit amet, porta non orci. Erat diam
             fames pretium leo. Lacus donec elementum vulputate nisl quis. Non
@@ -133,7 +132,7 @@ export const Large: ComponentStory<typeof Dialog> = (args) => {
             tincidunt consectetur fringilla sed. Posuere sem urna dictum cras
             sem lectus massa.
           </Typography>
-          <Button width='100%'>Action 1</Button>
+          <Button block>Action 1</Button>
         </div>
       </Dialog>
     </>

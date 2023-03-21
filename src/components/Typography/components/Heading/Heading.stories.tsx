@@ -1,14 +1,12 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { Story, Meta } from '@storybook/react';
 
-import Typography from './Typography';
+import Typography from '../../Typography';
+import Heading from './Heading';
+import { HeadingProps } from '../../types';
 
 export default {
   title: 'Components/Typography',
-  component: Typography,
-  argTypes: {
-    color: { control: 'color' },
-  },
+  component: Heading,
   parameters: {
     docs: {
       description: {
@@ -17,80 +15,69 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Typography>;
-
-const Template: ComponentStory<typeof Typography> = (args) => (
-  <Typography {...args} />
-);
+  argTypes: {
+    type: {
+      table: { disable: true },
+    },
+  },
+} as Meta<typeof Heading>;
 
 const text = 'Hello World!';
+
+const Template: Story<Omit<HeadingProps, 'type'>> = (args) => (
+  <Typography type='heading' {...args} />
+);
 
 export const DisplayLarge = Template.bind({});
 DisplayLarge.args = {
   children: text,
-  display: 1,
+  headingType: 1,
+  onClick: () => console.log(typeof Heading),
   bold: true,
 };
 
 export const DisplayMedium = Template.bind({});
 DisplayMedium.args = {
   children: text,
-  display: 2,
+  headingType: 2,
   bold: true,
 };
 
 export const DisplaySmall = Template.bind({});
 DisplaySmall.args = {
   children: text,
-  display: 3,
+  headingType: 3,
   bold: true,
 };
 
 export const HeadingLarge = Template.bind({});
 HeadingLarge.args = {
   children: text,
-  heading: 1,
+  headingType: 4,
   bold: false,
 };
 
 export const HeadingReguler = Template.bind({});
 HeadingReguler.args = {
   children: text,
-  heading: 2,
+  headingType: 5,
   bold: false,
 };
 
 export const HeadingSmall = Template.bind({});
 HeadingSmall.args = {
   children: text,
-  heading: 2,
+  headingType: 6,
   bold: false,
 };
 
-export const BodyLarge = Template.bind({});
-BodyLarge.args = {
-  children: text,
-  body: 1,
-  bold: false,
-};
-
-export const BodySmall = Template.bind({});
-BodySmall.args = {
-  children: text,
-  body: 2,
-  bold: false,
-};
-
-export const CaptionLarge = Template.bind({});
-CaptionLarge.args = {
-  children: text,
-  caption: 1,
-  bold: false,
-};
-
-export const CaptionSmall = Template.bind({});
-CaptionSmall.args = {
-  children: text,
-  caption: 2,
-  bold: false,
+export const HeadingAsChild = Template.bind({});
+HeadingAsChild.args = {
+  children: (
+    <div>
+      <span>{text}</span>
+    </div>
+  ),
+  headingType: 1,
+  asChild: true,
 };

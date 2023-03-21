@@ -1,4 +1,4 @@
 module.exports = {
-    testEnvironment: "jest-environment-jsdom",
-    testPathIgnorePatterns: ['node_modules', 'dist']
+  testEnvironment: 'jest-environment-jsdom',
+  testPathIgnorePatterns: ['node_modules', 'dist'],
 };

@@ -1,19 +1,21 @@
-import { RefObject, MouseEvent } from 'react';
+import { RefObject, DetailedHTMLProps } from 'react';
 
-export type ButtonProps = {
-  onClick?: (event: MouseEvent<HTMLElement>) => void;
-  onChange?: (event: React.FormEvent<HTMLInputElement>) => void;
-  margin?: string;
-  padding?: string;
-  children?: any;
-  className?: string;
-  ref?: RefObject<HTMLButtonElement>
-  disabled?: boolean;
-  type?: 'button' | 'submit';
+export interface ButtonProps
+  extends Omit<
+    DetailedHTMLProps<
+      React.ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    >,
+    'ref'
+  > {
   block?: boolean;
   inverted?: boolean | false;
-  small?: boolean | false;
-  width?: string | number;
-  color?: string | 'primary' | 'secondary' | 'tertiary';
-  'data-testid'?: string;
-};
+  /**
+   * @default regular
+   */
+  size?: 'regular' | 'small';
+  /**
+   * @default primary
+   */
+  variant?: 'primary' | 'secondary' | 'tertiary';
+}
