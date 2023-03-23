@@ -1,4 +1,10 @@
-import { cloneElement, createElement, isValidElement, memo } from 'react';
+import {
+  cloneElement,
+  createElement,
+  forwardRef,
+  isValidElement,
+  memo,
+} from 'react';
 import { cx } from '@emotion/css';
 
 import callAllFn from '@julofinance/web-helpers/dist/fn/callAllFn';
@@ -8,7 +14,7 @@ import { commonStyles } from '../../styles';
 import { omitHTMLProps, omitStyleProps } from '../../utils';
 import { bodyTypographyCx } from './styles';
 
-const Body = (props: Omit<BodyProps, 'type'>) => {
+const Body = forwardRef<HTMLElement, Omit<BodyProps, 'type'>>((props, ref) => {
   const {
     asChild,
     children,
@@ -35,9 +41,9 @@ const Body = (props: Omit<BodyProps, 'type'>) => {
         commonStyles(styleProps),
         { small: size === 'small' },
         className,
-        childProps.className,
+        childProps?.className,
       ),
-      onClick: callAllFn(onClick, childProps.onClick),
+      onClick: callAllFn(onClick, childProps?.onClick),
     });
   }
 
@@ -54,6 +60,6 @@ const Body = (props: Omit<BodyProps, 'type'>) => {
     onClick,
     ...htmlProps,
   });
-};
+});
 
 export default memo(Body);

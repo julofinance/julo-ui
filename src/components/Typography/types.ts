@@ -1,8 +1,4 @@
-import {
-  ReactElement,
-  DetailedHTMLProps,
-  HTMLAttributes,
-} from 'react';
+import { ReactElement, DetailedHTMLProps, HTMLAttributes } from 'react';
 
 export interface TypographyStyleProps {
   fontWeight?: number;

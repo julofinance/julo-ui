@@ -1,6 +1,6 @@
 {
   "name": "@julofinance/react-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Julo react components library",
   "scripts": {
     "build": "rollup -c",

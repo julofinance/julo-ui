@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { forwardRef, memo } from 'react';
 
 import Heading from './components/Heading';
 import Body from './components/Body';
@@ -6,19 +6,21 @@ import Caption from './components/Caption/Caption';
 
 import type { TypographyProps } from './types';
 
-const Typography = (props: TypographyProps) => {
-  const { type } = props;
+const Typography = forwardRef<HTMLElement, TypographyProps>(
+  (props: TypographyProps, ref) => {
+    const { type } = props;
 
-  switch (type) {
-    case 'heading':
-      return <Heading {...props} />;
+    switch (type) {
+      case 'heading':
+        return <Heading ref={ref} {...props} />;
 
-    case 'caption':
-      return <Caption {...props} />;
+      case 'caption':
+        return <Caption ref={ref} {...props} />;
 
-    default:
-      return <Body {...props} />;
-  }
-};
+      default:
+        return <Body ref={ref} {...props} />;
+    }
+  },
+);
 
 export default memo(Typography);
