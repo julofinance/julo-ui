@@ -1,0 +1,40 @@
+{
+  "name": "@julo-ui/button",
+  "version": "1.0.0",
+  "description": "A simple and accessible button component for Julo UI",
+  "main": "dist/index.js",
+  "files": ["dist"],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup --dts",
+    "build:fast": "tsup",
+    "prebuild": "npx rimraf dist .turbo",
+    "dev": "pnpm run build:fast"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julofinance/julo-react-components.git",
+    "directory": "packages/components/button"
+  },
+  "author": "Fransiscus Hermanto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julofinance/julo-react-components/issues"
+  },
+  "homepage": "https://github.com/julofinance/julo-react-components#readme",
+  "dependencies": {
+    "@julo-ui/typography": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "tsup": {
+    "entry": ["src", "!src/**/*.md"],
+    "clean": true,
+    "target": "es2019",
+    "format": ["cjs", "esm"]
+  }
+}

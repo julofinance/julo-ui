@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "outDir": "dist",
-    "declaration": true
+    "downlevelIteration": true,
+    "declaration": true,
+    "strictFunctionTypes": false,
+    "preserveSymlinks": false
   },
   "extends": "@julofinance/tsconfig/index.json",
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["packages", "tooling", "scripts", "@types"],
+  "exclude": ["**/node_modules", "packages/**/dist"]
 }

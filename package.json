@@ -1,60 +1,45 @@
 {
-  "name": "@julofinance/react-components",
-  "version": "1.0.2",
-  "description": "Julo react components library",
+  "name": "julo-ui",
+  "version": "1.0.0",
+  "private": true,
   "scripts": {
-    "build": "rollup -c",
+    "build": "turbo run build",
+    "build:fast": "turbo run build:fast",
+    "dev": "turbo run dev",
+    "ts-check": "tsc -p tsconfig.json --emitDeclarationOnly false --noEmit true",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "lint": "eslint --fix src --ext .ts,.tsx",
+    "lint-staged": "lint-staged",
+    "lint": "eslint packages/**/**/src --ext .ts,.tsx --config .eslintrc --cache",
     "lint:fix": "prettier --write src --config ./.prettierrc",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "pnpm run build",
+    "prepare": "husky install"
   },
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "files": [
-    "dist"
-  ],
-  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/julofinance/julo-react-components.git"
   },
-  "keywords": [
-    "julo",
-    "react",
-    "julo",
-    "react",
-    "components"
-  ],
-  "author": "Kevin Giovanni",
+  "author": "Fransiscus Hermanto",
   "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/julofinance/julo-react-components/issues"
-  },
-  "homepage": "https://github.com/julofinance/julo-react-components#readme",
   "devDependencies": {
     "@babel/core": "^7.18.2",
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
     "@babel/preset-typescript": "^7.17.12",
+    "@commitlint/cli": "^17.6.3",
+    "@commitlint/config-conventional": "^17.6.3",
     "@component-controls/storybook-custom-docs": "^3.14.6",
     "@julofinance/eslint-config": "0.0.8",
     "@julofinance/tsconfig": "0.0.5",
     "@mdx-js/react": "^2.1.1",
-    "@rollup/plugin-commonjs": "^22.0.0",
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@rollup/plugin-typescript": "^8.3.2",
-    "@rollup/plugin-url": "^7.0.0",
-    "@storybook/addon-actions": "^6.5.5",
     "@storybook/addon-essentials": "^6.5.5",
     "@storybook/addon-interactions": "^6.5.5",
     "@storybook/addon-links": "^6.5.5",
     "@storybook/builder-webpack5": "^6.5.5",
     "@storybook/manager-webpack5": "^6.5.5",
     "@storybook/react": "^6.5.5",
-    "@storybook/testing-library": "0.0.11",
+    "@storybook/testing-library": "0.1.0",
     "@svgr/rollup": "^6.2.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^14.0.0",
@@ -68,32 +53,38 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-testing-library": "^5.10.3",
     "eslint-plugin-unused-imports": "^2.0.0",
+    "husky": "^8.0.0",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
+    "lint-staged": "^13.2.2",
     "prettier": "2.6.2",
-    "rollup": "^2.75.0",
-    "rollup-plugin-dts": "^5.1.1",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-    "rollup-plugin-terser": "^7.0.2",
     "ts-node": "^10.8.1",
     "tslib": "^2.4.0",
+    "tsup": "^6.5.0",
     "typescript": "^4.7.2",
     "webpack": "^5.76.1"
-  },
-  "peerDependencies": {
-    "react-dom": "^18.1.0",
-    "react": "^18.1.0"
   },
   "dependencies": {
     "@emotion/css": "^11.9.0",
     "@emotion/react": "^11.10.6",
+    "@julo-ui/rtl-utils": "workspace:*",
     "@julofinance/color-token": "^1.0.3",
     "@julofinance/web-helpers": "1.0.3",
+    "@swc/core": "^1.3.57",
+    "@swc/jest": "^0.2.26",
     "eslint-config-prettier": "^8.5.0",
+    "jest-watch-typeahead": "^2.2.2",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "turbo": "^1.9.3"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+  "pnpm": {
+    "overrides": {
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0"
+    }
+  },
+  "engines": {
+    "node": ">=16.x"
   }
 }

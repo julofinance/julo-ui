@@ -1,0 +1,37 @@
+{
+  "name": "@julo-ui/providers",
+  "version": "0.0.1",
+  "description": "Providers for Julo UI and component agnostic JuloProvider",
+  "main": "dist/index.js",
+  "files": ["dist"],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup --dts",
+    "build:fast": "tsup",
+    "prebuild": "npx rimraf dist .turbo",
+    "dev": "pnpm run build:fast"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julofinance/julo-react-components.git",
+    "directory": "packages/components/providers"
+  },
+  "author": "Fransiscus Hermanto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julofinance/julo-react-components/issues"
+  },
+  "homepage": "https://github.com/julofinance/julo-react-components#readme",
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "tsup": {
+    "entry": ["src", "!src/**/*.md"],
+    "clean": true,
+    "target": "es2019",
+    "format": ["cjs", "esm"]
+  }
+}
