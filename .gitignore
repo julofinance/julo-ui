@@ -6,5 +6,7 @@ node_modules
 storybook-static
 
 # auto generated file
+.DS_Store
 dist
 coverage
+.turbo
