@@ -1,4 +1,4 @@
-import { forwardRef, memo, useMemo } from 'react';
+import { forwardRef, useMemo } from 'react';
 
 import { cx } from '@emotion/css';
 
@@ -19,6 +19,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     size = 'regular',
     variant = 'primary',
     block,
+    typographyProps,
     ...resProps
   } = props;
 
@@ -36,19 +37,14 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   }, [variant]);
 
   return (
-    <Typography type='body' size={size} bold asChild>
+    <Typography type='body' size={size} {...typographyProps} bold asChild>
       <button
         ref={ref}
-        className={cx(
-          buttonCx,
-          variantClass,
-          {
-            inverted: inverted,
-            block,
-            small: size === 'small',
-          },
-          className,
-        )}
+        className={cx(buttonCx, variantClass, className)}
+        data-button-size={size}
+        data-button-variant={variant}
+        data-button-variant-inverted={inverted}
+        data-button-block={block}
         {...resProps}
       >
         {children}
@@ -57,4 +53,4 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   );
 });
 
-export default memo(Button);
+export default Button;

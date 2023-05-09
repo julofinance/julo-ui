@@ -18,7 +18,7 @@ export const buttonCx = css`
     cursor: not-allowed;
   }
 
-  &.block {
+  &[data-button-block='true'] {
     width: 100%;
   }
 `;
@@ -40,7 +40,7 @@ export const primaryButtonCx = css`
     color: var(--colors-neutrals-60);
   }
 
-  &.inverted {
+  &[data-button-variant-inverted='true'] {
     color: var(--colors-primary-30);
     background-color: var(--colors-neutrals-10);
     border-color: var(--colors-neutrals-10);
@@ -77,7 +77,7 @@ export const secondaryButtonCx = css`
     border-color: var(--colors-neutrals-40);
   }
 
-  &.inverted {
+  &[data-button-variant-inverted='true'] {
     color: var(--colors-neutrals-10);
     background-color: var(--colors-primary-30);
 
@@ -95,7 +95,7 @@ export const tertiaryButtonCx = css`
   color: var(--colors-primary-30);
   background-color: transparent;
 
-  &.inverted {
+  &[data-button-variant-inverted='true'] {
     color: var(--colors-primary-10);
   }
 

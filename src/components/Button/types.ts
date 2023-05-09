@@ -1,4 +1,5 @@
-import { RefObject, DetailedHTMLProps } from 'react';
+import { DetailedHTMLProps } from 'react';
+import { TypographyProps } from '../Typography';
 
 export interface ButtonProps
   extends Omit<
@@ -18,4 +19,8 @@ export interface ButtonProps
    * @default primary
    */
   variant?: 'primary' | 'secondary' | 'tertiary';
+  typographyProps?: Omit<
+    Extract<TypographyProps, { type: 'body' }>,
+    'type' | 'asChild' | 'as' | 'children'
+  >;
 }
