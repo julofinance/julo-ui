@@ -28,8 +28,8 @@ const Template: Story<Omit<BodyProps, 'type'>> = (args) => (
   <Typography type='body' {...args} />
 );
 
-export const BodyLarge = Template.bind({});
-BodyLarge.args = {
+export const BodyRegular = Template.bind({});
+BodyRegular.args = {
   children: text,
   size: 'regular',
   bold: false,

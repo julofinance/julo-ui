@@ -36,28 +36,23 @@ const Body = forwardRef<HTMLElement, Omit<BodyProps, 'type'>>((props, ref) => {
     return cloneElement(children, {
       ...htmlProps,
       ...childProps,
+      'data-typography-size': size,
       className: cx(
         bodyTypographyCx,
         commonStyles(styleProps),
-        { small: size === 'small' },
         className,
         childProps?.className,
       ),
       onClick: callAllFn(onClick, childProps?.onClick),
-    });
+    } as BodyProps);
   }
 
   return createElement(as, {
+    ref,
     children,
-    className: cx(
-      bodyTypographyCx,
-      commonStyles(styleProps),
-      {
-        small: size === 'small',
-      },
-      className,
-    ),
+    className: cx(bodyTypographyCx, commonStyles(styleProps), className),
     onClick,
+    'data-typography-size': size,
     ...htmlProps,
   });
 });

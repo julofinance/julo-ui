@@ -5,7 +5,7 @@ export interface TypographyStyleProps {
   fontSize?: string;
   lineHeight?: string;
   color?: string;
-  bold?: boolean | false;
+  bold?: boolean;
 }
 
 export interface BaseTypographyProps

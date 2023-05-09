@@ -28,14 +28,15 @@ const Template: Story<Omit<CaptionProps, 'type'>> = (args) => (
   <Typography type='caption' {...args} />
 );
 
-export const CaptionLarge = Template.bind({});
-CaptionLarge.args = {
+export const CaptionRegular = Template.bind({});
+CaptionRegular.args = {
   children: text,
   bold: false,
 };
 
 export const CaptionSmall = Template.bind({});
 CaptionSmall.args = {
+  size: 'small',
   children: text,
   bold: false,
 };

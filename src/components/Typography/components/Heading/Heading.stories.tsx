@@ -32,7 +32,6 @@ export const DisplayLarge = Template.bind({});
 DisplayLarge.args = {
   children: text,
   headingType: 1,
-  onClick: () => console.log(typeof Heading),
   bold: true,
 };
 

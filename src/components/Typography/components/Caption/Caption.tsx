@@ -41,13 +41,13 @@ const Caption = forwardRef<HTMLElement, Omit<CaptionProps, 'type'>>(
         className: cx(
           'caption',
           captionTypographyCx,
-          { small: size === 'small' },
           commonStyles(styleProps),
           className,
           childProps?.className,
         ),
+        'data-typography-size': size,
         onClick: callAllFn(onClick, childProps?.onClick),
-      });
+      } as CaptionProps);
     }
 
     return createElement(as, {
@@ -56,10 +56,10 @@ const Caption = forwardRef<HTMLElement, Omit<CaptionProps, 'type'>>(
         'caption',
         commonStyles(styleProps),
         captionTypographyCx,
-        { small: size === 'small' },
         className,
       ),
       ref,
+      'data-typography-size': size,
       onClick,
       ...htmlProps,
     });

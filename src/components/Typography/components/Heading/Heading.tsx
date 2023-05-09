@@ -40,13 +40,13 @@ const Heading = forwardRef<HTMLElement, Omit<HeadingProps, 'type'>>(
         ...childProps,
         className: cx(
           headingTypographyCx(fontSize, lineHeight),
-          `heading-${headingType}`,
           commonStyles(styleProps),
           className,
           childProps?.className,
         ),
+        'data-heading-type': headingType,
         onClick: callAllFn(onClick, childProps?.onClick),
-      });
+      } as HeadingProps);
     }
 
     return createElement(`h${headingType}`, {
@@ -54,6 +54,7 @@ const Heading = forwardRef<HTMLElement, Omit<HeadingProps, 'type'>>(
       children,
       className: cx(className, commonStyles(styleProps)),
       onClick,
+      'data-heading-type': headingType,
       ...htmlProps,
     });
   },
