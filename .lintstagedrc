@@ -3,7 +3,7 @@
     "eslint",
     "prettier --write"
   ],
-  "**/*.{md,mdx,yml,json,babelrc,eslintrc,prettierrc}": [
+  "**/*.{md,mdx,json,babelrc,eslintrc,prettierrc}": [
     "prettier --write"
   ]
 }
