@@ -2,6 +2,11 @@
 module.exports = {
   testEnvironment: 'jsdom',
   collectCoverageFrom: ['packages/**/*.{ts,tsx}'],
+  /**
+   * @description temporary add this config
+   * @todo remove this config after finish migrate all component to packages
+   */
+  modulePathIgnorePatterns: ['<rootDir>/src'],
   transform: {
     '^.+\\.(ts|tsx|js|jsx)?$': [
       '@swc/jest',
@@ -16,7 +21,6 @@ module.exports = {
       },
     ],
   },
-  // transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
   setupFilesAfterEnv: ['./scripts/setup-test.ts'],
   globals: {
     'ts-jest': {

@@ -1,0 +1,33 @@
+name: "Install"
+description: "Sets up Node.js and run install"
+
+input:
+  token: 
+    description: 'GITHUB TOKEN'
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Install Dependencies
+      uses: pnpm/action-setup@v2.2.4
+      with:
+        version: 8
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version-file: ".nvmrc"
+        registry-url: "https://npm.pkg.github.com"
+        cache: "pnpm"
+      env:
+        NODE_AUTH_TOKEN: ${{ inputs.token }}
+      
+    - name: Setup Git User
+      shell: bash
+      run: |
+        git config --global user.email "fransiscus.hermanto@julofinance.com"
+        git config --global user.name "Fransiscus Hermanto"
+    
+    - name: Install Dependencies
+      shell: bash
+      run: pnpm install
