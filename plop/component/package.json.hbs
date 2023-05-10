@@ -1,7 +1,8 @@
 {
-  "name": "@julo-ui/providers",
+  "name": "@julo-ui/{{componentName}}",
   "version": "0.0.1",
-  "description": "Providers for Julo UI and component agnostic JuloProvider",
+  "description": "{{description}}",
+  "keywords": ["{{componentName}}"],
   "main": "src/index.ts",
   "files": ["dist"],
   "sideEffects": false,
@@ -20,7 +21,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/julofinance/julo-react-components.git",
-    "directory": "packages/components/providers"
+    "directory": "{{outDir}}/{{componentName}}"
   },
   "author": "Fransiscus Hermanto",
   "license": "ISC",
@@ -28,6 +29,7 @@
     "url": "https://github.com/julofinance/julo-react-components/issues"
   },
   "homepage": "https://github.com/julofinance/julo-react-components#readme",
+  "dependencies": {},
   "peerDependencies": {
     "react": ">=18"
   },

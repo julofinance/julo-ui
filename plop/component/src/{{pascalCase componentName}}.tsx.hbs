@@ -1,0 +1,10 @@
+import { forwardRef } from 'react';
+
+import { {{camelCase componentName}}Cx } from './styles';
+import type { {{pascalCase componentName}}Props } from './types';
+
+const {{pascalCase componentName}} = forwardRef<HTMLDivElement, {{pascalCase componentName}}Props>((props, ref) => {
+    return <div ref={ref} className={ {{camelCase componentName}}Cx }>Hello World</div>;
+});
+
+export default {{pascalCase componentName}};

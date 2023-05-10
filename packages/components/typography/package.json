@@ -1,15 +1,18 @@
 {
   "name": "@julo-ui/typography",
   "version": "1.0.0",
-  "description": "A simple and accessible typography component for Julo UI",
-  "main": "dist/index.js",
+  "description": "A Component used to give other component Typography style",
+  "main": "src/index.ts",
   "files": ["dist"],
   "sideEffects": false,
   "scripts": {
     "build": "tsup --dts",
     "build:fast": "tsup",
-    "prebuild": "npx rimraf dist .turbo",
-    "dev": "pnpm run build:fast"
+    "clean": "rimraf dist .turbo",
+    "prebuild": "pnpm run clean",
+    "dev": "pnpm run build:fast",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
   },
   "publishConfig": {
     "access": "public"
@@ -31,6 +34,7 @@
   "peerDependencies": {
     "react": ">=18"
   },
+  "clean-package": "../../../clean-package.config.json",
   "tsup": {
     "entry": ["src", "!src/**/*.md"],
     "clean": true,

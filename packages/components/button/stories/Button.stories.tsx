@@ -8,7 +8,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "`import { Button } from '@julofinance/react-components';`",
+        component: "`import { Button } from '@julo-ui/button';`",
       },
     },
   },

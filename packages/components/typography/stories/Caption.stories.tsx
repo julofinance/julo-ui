@@ -9,8 +9,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component:
-          "`import { Typography } from '@julofinance/react-components';`",
+        component: "`import { Typography } from '@julo-ui/typography';`",
       },
     },
   },

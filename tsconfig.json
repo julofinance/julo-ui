@@ -2,8 +2,7 @@
   "compilerOptions": {
     "downlevelIteration": true,
     "declaration": true,
-    "strictFunctionTypes": false,
-    "preserveSymlinks": false
+    "strictFunctionTypes": false
   },
   "extends": "@julofinance/tsconfig/index.json",
   "include": ["packages", "tooling", "scripts", "@types"],

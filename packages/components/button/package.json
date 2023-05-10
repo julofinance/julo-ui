@@ -2,14 +2,17 @@
   "name": "@julo-ui/button",
   "version": "1.0.0",
   "description": "A simple and accessible button component for Julo UI",
-  "main": "dist/index.js",
+  "main": "src/index.ts",
   "files": ["dist"],
   "sideEffects": false,
   "scripts": {
     "build": "tsup --dts",
     "build:fast": "tsup",
-    "prebuild": "npx rimraf dist .turbo",
-    "dev": "pnpm run build:fast"
+    "clean": "rimraf dist .turbo",
+    "prebuild": "pnpm run clean",
+    "dev": "pnpm run build:fast",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
   },
   "publishConfig": {
     "access": "public"
@@ -31,6 +34,7 @@
   "peerDependencies": {
     "react": ">=18"
   },
+  "clean-package": "../../../clean-package.config.json",
   "tsup": {
     "entry": ["src", "!src/**/*.md"],
     "clean": true,
