@@ -34,8 +34,13 @@
     "@julo-ui/typography": "workspace:*",
     "@julo-ui/button": "workspace:*"
   },
+  "devDependencies": {
+    "@emotion/react": "^11.10.6"
+  },
   "peerDependencies": {
-    "react": ">=18"
+    "@emotion/react": "^11.10.6",
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "clean-package": "../../../clean-package.config.json",
   "tsup": {

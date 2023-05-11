@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/providers",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Providers for Julo UI and component agnostic JuloProvider",
   "main": "src/index.ts",
   "files": ["dist"],
@@ -28,8 +28,13 @@
     "url": "https://github.com/julofinance/julo-react-components/issues"
   },
   "homepage": "https://github.com/julofinance/julo-react-components#readme",
+  "devDependencies": {
+    "@emotion/react": "^11.10.6"
+  },
   "peerDependencies": {
-    "react": ">=18"
+    "@emotion/react": "^11.10.6",
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "clean-package": "../../../clean-package.config.json",
   "tsup": {
