@@ -14,12 +14,12 @@ function findPackageInfo(
 const excludeExample = './examples/**';
 
 function main() {
-  const packageName = process.env.PACKAGE_NAME || '@julo-ui/react';
-  const packageVersion = process.env.PACKAGE_VERSION || '0.0.1-alpha.1';
+  const packageName = process.env.PACKAGE_NAME;
+  const packageVersion = process.env.PACKAGE_VERSION;
 
-  // exit if package name is empty
-  if (!packageName) {
-    console.error('❗️- Package name not found');
+  // exit if package name or package version is empty
+  if (!packageName || !packageVersion) {
+    console.error('❗️- Package name & Package version is missing from env');
     process.exit(1);
   }
 
@@ -38,7 +38,7 @@ function main() {
 
   if (packageVersion !== packageInfo.version) {
     console.error(
-      `❗️- Version ${packageVersion} is not valid with "${packageName}" version which is ${packageInfo.version}`,
+      `❗️- Version ${packageVersion} is not match with "${packageName}" version which is ${packageInfo.version}`,
     );
     process.exit(1);
   }

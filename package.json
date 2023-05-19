@@ -20,7 +20,7 @@
     "version": "changeset version",
     "release:dev": "changeset publish --tag dev",
     "version:dev": "changeset verion --snapshot dev",
-    "check-release:manual": "tsx ./scripts/check-package"
+    "check-release:manual": "tsx ./scripts/check-release-action-input"
   },
   "repository": {
     "type": "git",

@@ -7,7 +7,7 @@ on:
         description: 'Package name (ex. @julo-ui/react)'
         required: true
       version:
-        description: 'Package version (ex. 1.0.0-beta.1, 1.0.0, 1.0.0-alpha.1)'
+        description: 'Package version (ex. 0.0.1-beta.1, 0.0.1, 0.0.1-alpha.1)'
         required: true
 
 concurrency:
@@ -28,6 +28,9 @@ jobs:
 
       - name: Check Inputted Package & Version
         run: pnpm check-release:manual
+        env:
+          PACKAGE_NAME: ${{ github.event.inputs.package }}
+          PACKAGE_VERSION: ${{ github.event.inputs.version }}
 
   release:
     name: Release
@@ -45,25 +48,30 @@ jobs:
       - name: Build
         run: pnpm build --filter="${{ github.event.inputs.package }}"
 
-      - name: Publish Stable
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          publish: pnpm publish --filter="${{ github.event.inputs.package }}"
+          registry-url: "https://registry.npmjs.org"
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish Stable
+        if: ${{ !contains(github.event.inputs.version, '-') }}
+        run: pnpm publish --filter="${{ github.event.inputs.package }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish Alpha
-        if: ${{ contains(github.event.inputs.version, '-beta') }}
-        with:
-          publish: pnpm publish --filter="${{ github.event.inputs.package }} --tag alpha --no-git-checks"
+        if: ${{ contains(github.event.inputs.version, '-alpha') }}
+        run: pnpm publish --filter="${{ github.event.inputs.package }}" --tag alpha --no-git-checks
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish Beta
         if: ${{ contains(github.event.inputs.version, '-beta') }}
-        with:
-          publish: pnpm publish --filter="${{ github.event.inputs.package }} --tag beta --no-git-checks"
+        run: pnpm publish --filter="${{ github.event.inputs.package }}" --tag beta --no-git-checks
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
