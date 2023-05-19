@@ -8,7 +8,7 @@ input:
 runs:
   using: composite
   steps:
-    - name: Install Dependencies
+    - name: Setup PNPM
       uses: pnpm/action-setup@v2.2.4
       with:
         version: 8

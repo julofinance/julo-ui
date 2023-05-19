@@ -6,7 +6,7 @@ module.exports = {
    * @description temporary add this config
    * @todo remove this config after finish migrate all component to packages
    */
-  modulePathIgnorePatterns: ['<rootDir>/src'],
+  modulePathIgnorePatterns: ['<rootDir>/src', '<rootDir>/examples'],
   transform: {
     '^.+\\.(ts|tsx|js|jsx)?$': [
       '@swc/jest',

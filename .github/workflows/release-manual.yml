@@ -1,0 +1,69 @@
+name: Release Manual
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'Package name (ex. @julo-ui/react)'
+        required: true
+      version:
+        description: 'Package version (ex. 1.0.0-beta.1, 1.0.0, 1.0.0-alpha.1)'
+        required: true
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  pre-release:
+    name: Pre-release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v3
+
+      - name: Install
+        uses: ./.github/composite-actions/install
+        with:
+          token: '${{ secrets.GH_TOKEN }}'
+
+      - name: Check Inputted Package & Version
+        run: pnpm check-release:manual
+
+  release:
+    name: Release
+    needs: pre-release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v3
+
+      - name: Install
+        uses: ./.github/composite-actions/install
+        with:
+          token: '${{ secrets.GH_TOKEN }}'
+
+      - name: Build
+        run: pnpm build --filter="${{ github.event.inputs.package }}"
+
+      - name: Publish Stable
+        with:
+          publish: pnpm publish --filter="${{ github.event.inputs.package }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish Alpha
+        if: ${{ contains(github.event.inputs.version, '-beta') }}
+        with:
+          publish: pnpm publish --filter="${{ github.event.inputs.package }} --tag alpha --no-git-checks"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish Beta
+        if: ${{ contains(github.event.inputs.version, '-beta') }}
+        with:
+          publish: pnpm publish --filter="${{ github.event.inputs.package }} --tag beta --no-git-checks"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

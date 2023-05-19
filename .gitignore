@@ -1,3 +1,7 @@
+*.log
+*.cache
+*.backup
+
 # module
 node_modules
 

@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/button",
-  "version": "1.0.0",
+  "version": "1.0.0-beta.1",
   "description": "A simple and accessible button component for Julo UI",
   "main": "src/index.ts",
   "files": ["dist"],
@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/julofinance/julo-react-components#readme",
   "dependencies": {
+    "@emotion/css": "^11.9.0",
     "@julo-ui/typography": "workspace:*"
   },
   "peerDependencies": {

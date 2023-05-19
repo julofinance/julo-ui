@@ -1,4 +1,4 @@
-import { ThemeProvider } from '../src';
+import { ThemeProvider } from '@julo-ui/react';
 
 export const parameters = {
   options: {

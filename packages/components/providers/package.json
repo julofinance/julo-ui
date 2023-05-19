@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/providers",
-  "version": "0.0.2",
+  "version": "0.0.1-beta.1",
   "description": "Providers for Julo UI and component agnostic JuloProvider",
   "main": "src/index.ts",
   "files": ["dist"],

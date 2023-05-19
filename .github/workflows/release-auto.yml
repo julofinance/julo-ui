@@ -1,0 +1,40 @@
+name: Release Auto
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - v2
+      - master
+    paths:
+      - '.changeset/**'
+      - 'tooling/**'
+      - 'packages/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v3
+
+      - name: Install
+        uses: ./.github/composite-actions/install
+        with:
+          token: '${{ secrets.GH_TOKEN }}'
+
+      - name: Build
+        run: pnpm build
+
+      - name: Publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: pnpm release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

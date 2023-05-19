@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
-    "build:fast": "turbo run build:fast",
-    "dev": "turbo run dev",
+    "build": "turbo run build --filter=!./examples/*",
+    "build:fast": "turbo run build:fast --filter=!./examples/*",
+    "dev": "turbo run dev --filter=!./examples/*",
     "ts-check": "tsc -p tsconfig.json --emitDeclarationOnly false --noEmit true",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
@@ -15,7 +15,12 @@
     "lint:fix": "prettier --write src --config ./.prettierrc",
     "prepublishOnly": "pnpm run build",
     "prepare": "husky install",
-    "create:pkg": "plop component"
+    "create:pkg": "plop component",
+    "release": "changeset publish",
+    "version": "changeset version",
+    "release:dev": "changeset publish --tag dev",
+    "version:dev": "changeset verion --snapshot dev",
+    "check-release:manual": "tsx ./scripts/check-package"
   },
   "repository": {
     "type": "git",
@@ -61,6 +66,8 @@
     "webpack": "^5.76.1"
   },
   "dependencies": {
+    "@changesets/cli": "^2.26.1",
+    "@julo-ui/react": "workspace:*",
     "@julo-ui/rtl-utils": "workspace:*",
     "@julofinance/color-token": "^1.0.3",
     "@julofinance/web-helpers": "1.0.3",
@@ -71,6 +78,7 @@
     "jest-watch-typeahead": "^2.2.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "tsx": "^3.12.7",
     "turbo": "^1.9.3"
   },
   "pnpm": {
