@@ -1,6 +1,7 @@
 import { cx } from '@emotion/css';
-import { forwardRef, useMemo } from 'react';
+import { useMemo } from 'react';
 
+import { forwardRef, julo } from '@julo-ui/system';
 import Typography from '@julo-ui/typography';
 
 import type { ButtonProps } from './types';
@@ -11,7 +12,7 @@ import {
   tertiaryButtonCx,
 } from './styles';
 
-const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
   const {
     children,
     className,
@@ -38,9 +39,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 
   return (
     <Typography type='body' size={size} {...typographyProps} bold asChild>
-      <button
+      <julo.button
         ref={ref}
-        className={cx(buttonCx, variantClass, className)}
+        className={cx('julo-button', buttonCx, variantClass, className)}
         data-button-size={size}
         data-button-variant={variant}
         data-button-variant-inverted={inverted}
@@ -48,7 +49,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
         {...resProps}
       >
         {children}
-      </button>
+      </julo.button>
     </Typography>
   );
 });

@@ -1,14 +1,7 @@
-import { DetailedHTMLProps } from 'react';
 import { TypographyProps } from '@julo-ui/typography';
+import { HTMLJuloProps } from '@julo-ui/system';
 
-export interface ButtonProps
-  extends Omit<
-    DetailedHTMLProps<
-      React.ButtonHTMLAttributes<HTMLButtonElement>,
-      HTMLButtonElement
-    >,
-    'ref'
-  > {
+export interface ButtonProps extends HTMLJuloProps<'button'> {
   block?: boolean;
   inverted?: boolean | false;
   /**
