@@ -1,3 +1,4 @@
+import { cx } from '@emotion/css';
 import {
   cloneElement,
   createElement,
@@ -7,12 +8,10 @@ import {
 } from 'react';
 
 import callAllFn from '@julofinance/web-helpers/dist/fn/callAllFn';
-
 import { useTheme } from '@julo-ui/provider';
-import { HeadingProps } from '../../types';
 
+import { HeadingProps } from '../../types';
 import { commonStyles } from '../../styles';
-import { cx } from '@emotion/css';
 import { omitHTMLProps, omitStyleProps } from '../../utils';
 import { headingTypographyCx } from './styles';
 
