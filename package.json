@@ -63,7 +63,8 @@
     "tslib": "^2.4.0",
     "tsup": "^6.5.0",
     "typescript": "^4.7.2",
-    "webpack": "^5.76.1"
+    "webpack": "^5.76.1",
+    "clean-package": "^2.2.0"
   },
   "dependencies": {
     "@changesets/cli": "^2.26.1",
@@ -73,7 +74,6 @@
     "@julofinance/web-helpers": "1.0.3",
     "@swc/core": "^1.3.57",
     "@swc/jest": "^0.2.26",
-    "clean-package": "^2.2.0",
     "eslint-config-prettier": "^8.5.0",
     "jest-watch-typeahead": "^2.2.2",
     "react": "^18.1.0",
