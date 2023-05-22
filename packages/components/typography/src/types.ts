@@ -1,4 +1,5 @@
-import { ReactElement, DetailedHTMLProps, HTMLAttributes } from 'react';
+import { As } from '@julo-ui/system';
+import { ReactNode, DetailedHTMLProps, HTMLAttributes } from 'react';
 
 export interface TypographyStyleProps {
   fontWeight?: number;
@@ -14,7 +15,7 @@ export interface BaseTypographyProps
       DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
       'translate' | 'ref' | 'color'
     > {
-  children: ReactElement | string;
+  children: ReactNode;
   className?: string;
   asChild?: boolean;
 }
@@ -28,7 +29,7 @@ export interface BodyProps extends BaseTypographyProps {
   /**
    * @default p
    */
-  as?: `${keyof HTMLElementTagNameMap}`;
+  as?: As;
 }
 
 export interface HeadingProps extends BaseTypographyProps {
@@ -49,7 +50,7 @@ export interface CaptionProps extends BaseTypographyProps {
   /**
    * @default span
    */
-  as?: `${keyof HTMLElementTagNameMap}`;
+  as?: As;
 }
 
 export type TypographyProps = HeadingProps | BodyProps | CaptionProps;

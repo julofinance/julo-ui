@@ -1,4 +1,6 @@
-import { forwardRef, memo } from 'react';
+import { memo } from 'react';
+
+import { forwardRef } from '@julo-ui/system';
 
 import Heading from './components/Heading';
 import Body from './components/Body';
@@ -6,7 +8,7 @@ import Caption from './components/Caption/Caption';
 
 import type { TypographyProps } from './types';
 
-const Typography = forwardRef<HTMLElement, TypographyProps>(
+const Typography = forwardRef<TypographyProps, 'div'>(
   (props: TypographyProps, ref) => {
     const { type } = props;
 

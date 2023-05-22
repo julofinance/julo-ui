@@ -1,69 +1,60 @@
 import { cx } from '@emotion/css';
-import {
-  isValidElement,
-  memo,
-  cloneElement,
-  createElement,
-  forwardRef,
-} from 'react';
+import { isValidElement, memo, cloneElement } from 'react';
 
 import callAllFn from '@julofinance/web-helpers/dist/fn/callAllFn';
+import { forwardRef, julo } from '@julo-ui/system';
 
 import type { CaptionProps } from '../../types';
 import { omitHTMLProps, omitStyleProps } from '../../utils';
 import { commonStyles } from '../../styles';
 import { captionTypographyCx } from './styles';
 
-const Caption = forwardRef<HTMLElement, Omit<CaptionProps, 'type'>>(
-  (props, ref) => {
-    const {
-      asChild,
-      children,
-      className,
-      onClick,
-      size = 'regular',
-      as = 'span',
-      ...resProps
-    } = props;
+const Caption = forwardRef<Omit<CaptionProps, 'type'>, 'span'>((props, ref) => {
+  const {
+    asChild,
+    children,
+    className,
+    onClick,
+    size = 'regular',
+    ...resProps
+  } = props;
 
-    const styleProps = omitHTMLProps(resProps);
-    const htmlProps = omitStyleProps(resProps);
+  const styleProps = omitHTMLProps(resProps);
+  const htmlProps = omitStyleProps(resProps);
 
-    if (asChild) {
-      if (!isValidElement<CaptionProps>(children))
-        throw new Error('Please render an element');
+  const captionClasses = cx(
+    'julo-caption-typography',
+    captionTypographyCx,
+    commonStyles(styleProps),
+    className,
+  );
 
-      const { props: childProps } = children;
+  if (asChild) {
+    if (!isValidElement<CaptionProps>(children))
+      throw new Error('Please render an element');
 
-      return cloneElement(children, {
-        ...htmlProps,
-        ...childProps,
-        className: cx(
-          'caption',
-          captionTypographyCx,
-          commonStyles(styleProps),
-          className,
-          childProps?.className,
-        ),
-        'data-typography-size': size,
-        onClick: callAllFn(onClick, childProps?.onClick),
-      } as CaptionProps);
-    }
+    const { props: childProps } = children;
 
-    return createElement(as, {
-      children,
-      className: cx(
-        'caption',
-        commonStyles(styleProps),
-        captionTypographyCx,
-        className,
-      ),
-      ref,
-      'data-typography-size': size,
-      onClick,
+    return cloneElement(children, {
       ...htmlProps,
-    });
-  },
-);
+      ...childProps,
+      className: cx(captionClasses, childProps?.className),
+      'data-typography-size': size,
+      onClick: callAllFn(onClick, childProps?.onClick),
+    } as CaptionProps);
+  }
+
+  return (
+    <julo.span
+      ref={ref}
+      className={captionClasses}
+      data-typography-size={size}
+      onClick={onClick}
+      {...htmlProps}
+    >
+      {children}
+    </julo.span>
+  );
+});
 
 export default memo(Caption);
