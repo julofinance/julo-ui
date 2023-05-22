@@ -3,13 +3,8 @@ Developer: <SLACK_FULL_NAME>
 
 ### What this task is about
 
-Short and simple explanation about what this task is about
-
-### Notable changes
-
 - [ ] Notable changes 1
-- [ ] Notable changes 2
-- [ ] Notable changes 3
+- [ ] update @julo-ui/react (important)
 
 <!-- Use this section, if it's a bug -->
 <!-- You can remove it, if you don't need this section -->
