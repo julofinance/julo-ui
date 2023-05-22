@@ -8,7 +8,7 @@ import {
 
 import callAllFn from '@julofinance/web-helpers/dist/fn/callAllFn';
 
-import { useTheme } from '@julo-ui/providers';
+import { useTheme } from '@julo-ui/provider';
 import { HeadingProps } from '../../types';
 
 import { commonStyles } from '../../styles';
