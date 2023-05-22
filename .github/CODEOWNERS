@@ -1,11 +1,11 @@
 ./github/**/** @fransiscus-hermanto kevin.giovanni@julofinance.com
 ./husky @fransiscus-hermanto
 
-packages/ @fransiscus-hermanto 
-
 packages/components/button @fransiscus-hermanto
 packages/components/typography @fransiscus-hermanto
 packages/components/react @fransiscus-hermanto
 packages/components/providers @fransiscus-hermanto
 
-packages/components/tooling @fransiscus-hermanto
+tooling/rtl-utils @fransiscus-hermanto
+
+plop/components @fransiscus-hermanto
