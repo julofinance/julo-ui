@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/react",
-  "version": "0.0.1-alpha.3",
+  "version": "0.0.1-alpha.4",
   "description": "React UI components built with React and Emotion",
   "keywords": ["react"],
   "main": "src/index.ts",
@@ -21,7 +21,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/julofinance/julo-react-components.git",
-    "directory": "components/react"
+    "directory": "packages/components/react"
   },
   "author": "Fransiscus Hermanto",
   "license": "ISC",
