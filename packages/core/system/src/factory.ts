@@ -2,7 +2,7 @@ import { HTMLJuloComponents, styled } from './system';
 import { As, DOMElements, JuloComponent } from './types';
 
 type JuloFactory = {
-  <T extends As, P extends object = NonNullable<unknown>>(
+  <T extends As, P extends object = NonNullable<object>>(
     component: T,
   ): JuloComponent<T, P>;
 };

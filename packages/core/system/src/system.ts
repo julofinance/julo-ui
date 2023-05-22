@@ -19,7 +19,7 @@ import createStyled from '@emotion/styled';
 const emotionStyled = ((createStyled as any).default ??
   createStyled) as typeof createStyled;
 
-export function styled<T extends As, P extends object = NonNullable<unknown>>(
+export function styled<T extends As, P extends object = NonNullable<object>>(
   component: T,
 ) {
   /**
@@ -44,7 +44,7 @@ export interface JuloReactElement<
   P,
   T extends
     | string
-    | JSXElementConstructor<unknown> = JSXElementConstructor<unknown>,
+    | JSXElementConstructor<object> = JSXElementConstructor<object>,
 > extends ReactElement<P & { ref: Ref<P> }, T & { id: string }> {
   ref: ForwardedRef<P> | null;
 }
@@ -52,5 +52,5 @@ export interface JuloReactElement<
 export type HTMLJuloProps<T extends As> = Omit<PropsOf<T>, 'ref'> & { as?: As };
 
 export type HTMLJuloComponents = {
-  [Tag in DOMElements]: JuloComponent<Tag, NonNullable<unknown>>;
+  [Tag in DOMElements]: JuloComponent<Tag, NonNullable<object>>;
 };
