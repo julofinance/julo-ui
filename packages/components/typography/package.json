@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/typography",
-  "version": "1.0.0-beta.4",
+  "version": "1.0.0-beta.5",
   "description": "A Component used to give other component Typography style",
   "main": "src/index.ts",
   "files": ["dist"],
@@ -34,7 +34,8 @@
   },
   "devDependencies": { "@julo-ui/system": "workspace:*" },
   "peerDependencies": {
-    "react": ">=18"
+    "react": ">=18",
+    "@julo-ui/system": "workspace:*"
   },
   "clean-package": "../../../clean-package.config.json",
   "tsup": {
