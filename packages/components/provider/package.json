@@ -1,6 +1,6 @@
 {
-  "name": "@julo-ui/providers",
-  "version": "0.0.1-beta.1",
+  "name": "@julo-ui/provider",
+  "version": "0.0.1-beta.2",
   "description": "Providers for Julo UI and component agnostic JuloProvider",
   "main": "src/index.ts",
   "files": ["dist"],
@@ -20,7 +20,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/julofinance/julo-react-components.git",
-    "directory": "packages/components/providers"
+    "directory": "packages/components/provider"
   },
   "author": "Fransiscus Hermanto",
   "license": "ISC",
