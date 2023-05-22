@@ -6,6 +6,12 @@ export default css`
     padding: 0;
   }
 
+  * {
+    transition-duration: 0.2s;
+    transition-property: background-color, border-color, color, fill, stroke,
+      opacity, box-shadow, transform;
+  }
+
   *,
   *::after,
   *::before {
@@ -26,6 +32,11 @@ export default css`
   figure,
   p,
   pre {
+    margin: 0;
+  }
+
+  &:where(button, input, optgroup, select, textarea) {
+    font-family: inherit;
     margin: 0;
   }
 `;
