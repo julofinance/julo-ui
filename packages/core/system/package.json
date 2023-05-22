@@ -1,0 +1,45 @@
+{
+  "name": "@julo-ui/system",
+  "version": "0.0.1-alpha.1",
+  "description": "Julo UI system primitives",
+  "keywords": ["system", "primitives", "julo", "design-systems", "ui"],
+  "main": "src/index.ts",
+  "files": ["dist"],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup --dts",
+    "build:fast": "tsup",
+    "clean": "rimraf dist .turbo",
+    "prebuild": "pnpm run clean",
+    "dev": "pnpm run build:fast",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julofinance/julo-react-components.git",
+    "directory": "packages/components/system"
+  },
+  "author": "Fransiscus Hermanto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julofinance/julo-react-components/issues"
+  },
+  "homepage": "https://github.com/julofinance/julo-react-components#readme",
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "clean-package": "../../../clean-package.config.json",
+  "tsup": {
+    "entry": ["src", "!src/**/*.md"],
+    "clean": true,
+    "target": "es2019",
+    "format": ["cjs", "esm"]
+  },
+  "devDependencies": {
+    "@emotion/styled": "^11.11.0"
+  }
+}
