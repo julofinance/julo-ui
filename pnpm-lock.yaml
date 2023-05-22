@@ -149,7 +149,7 @@ importers:
         version: 2.4.0
       tsup:
         specifier: ^6.5.0
-        version: 6.5.0(@swc/core@1.3.57)(postcss@7.0.39)(ts-node@10.8.1)(typescript@4.7.2)
+        version: 6.5.0(@swc/core@1.3.57)(postcss@8.4.23)(ts-node@10.8.1)(typescript@4.7.2)
       typescript:
         specifier: ^4.7.2
         version: 4.7.2
@@ -239,7 +239,7 @@ importers:
         specifier: '>=18'
         version: 18.2.0
 
-  packages/components/providers:
+  packages/components/provider:
     dependencies:
       react:
         specifier: '>=18'
@@ -257,9 +257,9 @@ importers:
       '@julo-ui/button':
         specifier: workspace:*
         version: link:../button
-      '@julo-ui/providers':
+      '@julo-ui/provider':
         specifier: workspace:*
-        version: link:../providers
+        version: link:../provider
       '@julo-ui/typography':
         specifier: workspace:*
         version: link:../typography
@@ -279,18 +279,18 @@ importers:
       '@emotion/css':
         specifier: ^11.9.0
         version: 11.9.0(@babel/core@7.21.8)
-      '@julo-ui/providers':
+      '@julo-ui/provider':
         specifier: workspace:*
-        version: link:../providers
+        version: link:../provider
       react:
         specifier: '>=18'
         version: 18.2.0
 
   tooling/rtl-utils:
     dependencies:
-      '@julo-ui/providers':
+      '@julo-ui/provider':
         specifier: workspace:*
-        version: link:../../packages/components/providers
+        version: link:../../packages/components/provider
       react:
         specifier: '>=18'
         version: 18.2.0
@@ -15714,7 +15714,7 @@ packages:
       postcss-value-parser: 4.2.0
     dev: false
 
-  /postcss-load-config@3.1.4(postcss@7.0.39)(ts-node@10.8.1):
+  /postcss-load-config@3.1.4(postcss@8.4.23)(ts-node@10.8.1):
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
     engines: {node: '>= 10'}
     peerDependencies:
@@ -15727,7 +15727,7 @@ packages:
         optional: true
     dependencies:
       lilconfig: 2.1.0
-      postcss: 7.0.39
+      postcss: 8.4.23
       ts-node: 10.8.1(@swc/core@1.3.57)(@types/node@16.18.28)(typescript@4.7.2)
       yaml: 1.10.2
     dev: true
@@ -18787,7 +18787,7 @@ packages:
   /tslib@2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
 
-  /tsup@6.5.0(@swc/core@1.3.57)(postcss@7.0.39)(ts-node@10.8.1)(typescript@4.7.2):
+  /tsup@6.5.0(@swc/core@1.3.57)(postcss@8.4.23)(ts-node@10.8.1)(typescript@4.7.2):
     resolution: {integrity: sha512-36u82r7rYqRHFkD15R20Cd4ercPkbYmuvRkz3Q1LCm5BsiFNUgpo36zbjVhCOgvjyxNBWNKHsaD5Rl8SykfzNA==}
     engines: {node: '>=14'}
     hasBin: true
@@ -18812,8 +18812,8 @@ packages:
       execa: 5.1.1
       globby: 11.1.0
       joycon: 3.1.1
-      postcss: 7.0.39
-      postcss-load-config: 3.1.4(postcss@7.0.39)(ts-node@10.8.1)
+      postcss: 8.4.23
+      postcss-load-config: 3.1.4(postcss@8.4.23)(ts-node@10.8.1)
       resolve-from: 5.0.0
       rollup: 3.21.5
       source-map: 0.8.0-beta.0

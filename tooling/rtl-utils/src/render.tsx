@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import * as rtl from '@testing-library/react';
 
 import runIfFn from '@julofinance/web-helpers/dist/fn/runIfFn';
-import { ThemeProvider } from '@julo-ui/providers';
+import { JuloProvider } from '@julo-ui/provider';
 
 import { RenderOptions } from './type';
 
@@ -11,9 +11,9 @@ export const render = (ui: ReactElement, options: RenderOptions = {}) => {
 
   const rendered = rtl.render(ui, {
     wrapper: ({ children }) => (
-      <ThemeProvider>
+      <JuloProvider>
         {runIfFn(extendWrapper, { children }) ?? children}
-      </ThemeProvider>
+      </JuloProvider>
     ),
     ...options,
   });

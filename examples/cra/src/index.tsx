@@ -1,18 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+import { JuloProvider } from '@julo-ui/react';
+
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ThemeProvider } from '@julo-ui/react';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 root.render(
   <React.StrictMode>
-    <ThemeProvider>
+    <JuloProvider>
       <App />
-    </ThemeProvider>
+    </JuloProvider>
   </React.StrictMode>,
 );
 

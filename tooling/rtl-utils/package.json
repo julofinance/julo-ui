@@ -23,7 +23,7 @@
     "url": "https://github.com/julofinance/julo-react-components/issues"
   },
   "dependencies": {
-    "@julo-ui/providers": "workspace:*"
+    "@julo-ui/provider": "workspace:*"
   },
   "homepage": "https://github.com/julofinance/julo-react-components#readme",
   "peerDependencies": {

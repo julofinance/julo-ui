@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+
+import { JuloProvider } from '@julo-ui/react';
+
 import App from './App.tsx';
 import './index.css';
-import { ThemeProvider } from '@julo-ui/react';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <ThemeProvider>
+    <JuloProvider>
       <App />
-    </ThemeProvider>
+    </JuloProvider>
   </React.StrictMode>,
 );

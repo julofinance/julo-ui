@@ -1,4 +1,4 @@
-import { ThemeProvider } from '@julo-ui/react';
+import { JuloProvider } from '@julo-ui/react';
 
 export const parameters = {
   options: {
@@ -11,8 +11,8 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <ThemeProvider>
+    <JuloProvider>
       <Story />
-    </ThemeProvider>
+    </JuloProvider>
   ),
 ];
