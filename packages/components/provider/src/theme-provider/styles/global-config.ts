@@ -38,5 +38,20 @@ export default css`
   &:where(button, input, optgroup, select, textarea) {
     font-family: inherit;
     margin: 0;
+
+    &:disabled,
+    &[aria-disabled='true'],
+    &[disabled],
+    &[data-disabled] {
+      cursor: not-allowed;
+    }
+  }
+
+  &:where(input, textarea) {
+    &:read-only,
+    &[aria-readonly='true'],
+    &[data-readonly] {
+      cursor: default;
+    }
   }
 `;

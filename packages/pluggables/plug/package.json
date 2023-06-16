@@ -1,0 +1,52 @@
+{
+  "name": "@julo-ui/plug",
+  "version": "0.0.1-alpha.1",
+  "description": "React UI pluggables component",
+  "keywords": ["plug"],
+  "main": "src/index.ts",
+  "files": ["dist"],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup --dts",
+    "build:fast": "tsup",
+    "clean": "rimraf dist .turbo",
+    "prebuild": "pnpm run clean",
+    "dev": "pnpm run build:fast",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julofinance/julo-react-components.git",
+    "directory": "packages/pluggables/plug"
+  },
+  "author": "Fransiscus Hermanto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julofinance/julo-react-components/issues"
+  },
+  "homepage": "https://github.com/julofinance/julo-react-components#readme",
+  "dependencies": {
+    "@julo-ui/text-field": "workspace:*"
+  },
+  "devDependencies": {
+    "@emotion/react": "^11.10.6",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.10.6",
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "clean-package": "../../../clean-package.config.json",
+  "tsup": {
+    "entry": ["src", "!src/**/*.md"],
+    "clean": true,
+    "target": "es2019",
+    "format": ["cjs", "esm"]
+  }
+}

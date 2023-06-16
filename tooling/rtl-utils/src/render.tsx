@@ -20,7 +20,7 @@ export const render = (ui: ReactElement, options: RenderOptions = {}) => {
 
   return {
     ...rendered,
-    rerender: (ui: ReactElement, options: RenderOptions) =>
+    rerender: (ui: ReactElement, options: RenderOptions = {}) =>
       render(ui, { container: rendered.container, ...options }),
   };
 };

@@ -1,15 +1,11 @@
-import { css, CSSInterpolation } from '@emotion/css';
-import type { TypographyStyleProps } from './types';
+import { SystemStyleObject } from '@julo-ui/system';
 
-// Props that doesn't have default value can be listed here
-const defaultProps = (props: Omit<TypographyStyleProps, 'bold'>) =>
-  props as CSSInterpolation;
-
-export const commonStyles = ({
+export const typographySx = ({
   fontWeight,
   bold,
-  ...resProps
-}: TypographyStyleProps) => css`
-  font-weight: ${fontWeight || (bold ? 700 : 400)};
-  ${defaultProps(resProps)}
-`;
+}: {
+  fontWeight?: string;
+  bold: boolean;
+}): SystemStyleObject => ({
+  fontWeight: String(fontWeight || (bold ? 700 : 400)),
+});

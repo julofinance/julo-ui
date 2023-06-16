@@ -1,13 +1,12 @@
-import { cx } from '@emotion/css';
 import { isValidElement, memo, cloneElement } from 'react';
 
 import callAllFn from '@julofinance/web-helpers/dist/fn/callAllFn';
-import { forwardRef, julo } from '@julo-ui/system';
+import { cx, forwardRef, julo } from '@julo-ui/system';
 
-import type { CaptionProps } from '../../types';
+import type { CaptionProps, TypographyWithAsChild } from '../../types';
 import { omitHTMLProps, omitStyleProps } from '../../utils';
-import { commonStyles } from '../../styles';
-import { captionTypographyCx } from './styles';
+import { captionSizesSx } from './styles';
+import { typographySx } from '../../styles';
 
 const Caption = forwardRef<Omit<CaptionProps, 'type'>, 'span'>((props, ref) => {
   const {
@@ -16,18 +15,13 @@ const Caption = forwardRef<Omit<CaptionProps, 'type'>, 'span'>((props, ref) => {
     className,
     onClick,
     size = 'regular',
+    bold = false,
+    sx,
     ...resProps
-  } = props;
+  } = props as CaptionProps & TypographyWithAsChild;
 
   const styleProps = omitHTMLProps(resProps);
   const htmlProps = omitStyleProps(resProps);
-
-  const captionClasses = cx(
-    'julo-caption-typography',
-    captionTypographyCx,
-    commonStyles(styleProps),
-    className,
-  );
 
   if (asChild) {
     if (!isValidElement<CaptionProps>(children))
@@ -38,18 +32,29 @@ const Caption = forwardRef<Omit<CaptionProps, 'type'>, 'span'>((props, ref) => {
     return cloneElement(children, {
       ...htmlProps,
       ...childProps,
-      className: cx(captionClasses, childProps?.className),
-      'data-typography-size': size,
+      className: cx(className, childProps?.className),
       onClick: callAllFn(onClick, childProps?.onClick),
+      sx: {
+        ...typographySx({ fontWeight: styleProps.fontWeight, bold }),
+        ...styleProps,
+        ...captionSizesSx[size],
+        ...sx,
+        ...childProps.sx,
+      },
     } as CaptionProps);
   }
 
   return (
     <julo.span
       ref={ref}
-      className={captionClasses}
-      data-typography-size={size}
+      className={className}
       onClick={onClick}
+      sx={{
+        ...typographySx({ fontWeight: styleProps.fontWeight, bold }),
+        ...styleProps,
+        ...captionSizesSx[size],
+        ...sx,
+      }}
       {...htmlProps}
     >
       {children}

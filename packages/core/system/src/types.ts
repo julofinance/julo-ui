@@ -1,17 +1,30 @@
-import {
-  ComponentProps,
-  ComponentPropsWithoutRef,
-  ElementType,
-  ReactNode,
-} from 'react';
+import { ComponentProps, ComponentPropsWithoutRef, ElementType } from 'react';
+import { SystemStyleObject } from './styled-system-types';
+import { Interpolation, SerializedStyles } from '@emotion/react';
+
+export interface JuloProps {
+  sx?: SystemStyleObject;
+  /**
+   * Only for internal usage
+   *
+   * @private
+   */
+  __css?:
+    | SerializedStyles
+    | undefined
+    | false
+    | Array<SerializedStyles | undefined | false>;
+  /**
+   * The emotion's css style object
+   */
+  css?: Interpolation<NonNullable<unknown>>;
+}
 
 export type DOMElements = keyof JSX.IntrinsicElements;
 
 export type As = ElementType;
 
-export type PropsOf<T extends As> = ComponentPropsWithoutRef<T>;
-
-export type MaybeRenderProp<P> = ReactNode | ((props: P) => ReactNode);
+export type PropsOf<T extends As> = ComponentPropsWithoutRef<T> & { as?: As };
 
 export type RightJoinProps<
   SourceProps extends object = NonNullable<object>,
@@ -52,4 +65,4 @@ export interface ComponentWithAs<
 export type JuloComponent<
   T extends As,
   P extends object = NonNullable<object>,
-> = ComponentWithAs<T, P>;
+> = ComponentWithAs<T, Assign<JuloProps, P>>;

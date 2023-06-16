@@ -1,4 +1,4 @@
-import { As } from '@julo-ui/system';
+import { As, JuloProps } from '@julo-ui/system';
 import { ReactNode, DetailedHTMLProps, HTMLAttributes } from 'react';
 
 export interface TypographyStyleProps {
@@ -6,26 +6,38 @@ export interface TypographyStyleProps {
   fontSize?: string;
   lineHeight?: string;
   color?: string;
-  bold?: boolean | false;
 }
+
+export type TypographySize = 'small' | 'regular';
 
 export interface BaseTypographyProps
   extends TypographyStyleProps,
     Omit<
       DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
       'translate' | 'ref' | 'color'
-    > {
-  children: ReactNode;
+    >,
+    JuloProps {
   className?: string;
-  asChild?: boolean;
+  bold?: boolean | false;
 }
+
+export interface TypographyWithAsChild extends BaseTypographyProps {
+  asChild: true;
+  children: ReactNode;
+}
+
+export interface TypographyWihoutAsChild extends BaseTypographyProps {
+  asChild?: false;
+}
+
+type RawBaseTypographyProps = TypographyWihoutAsChild | TypographyWithAsChild;
 
 export interface BodyProps extends BaseTypographyProps {
   type: 'body';
   /**
    * @default regular
    */
-  size?: 'small' | 'regular';
+  size?: TypographySize;
   /**
    * @default p
    */
@@ -46,11 +58,12 @@ export interface CaptionProps extends BaseTypographyProps {
   /**
    * @default regular
    */
-  size?: 'small' | 'regular';
+  size?: TypographySize;
   /**
    * @default span
    */
   as?: As;
 }
 
-export type TypographyProps = HeadingProps | BodyProps | CaptionProps;
+export type TypographyProps = (HeadingProps | BodyProps | CaptionProps) &
+  RawBaseTypographyProps;

@@ -1,10 +1,11 @@
-Task: <JIRA_URL>
+Task: https://juloprojects.atlassian.net/browse/[CARD-NUMBER]
 Developer: <SLACK_FULL_NAME>
 
 ### What this task is about
 
 - [ ] Notable changes 1
-- [ ] update @julo-ui/react (important)
+- [ ] update @julo-ui/(react / plug) version (important)
+- [ ] update @julo-ui/(react / plug) export (important)
 
 <!-- Use this section, if it's a bug -->
 <!-- You can remove it, if you don't need this section -->

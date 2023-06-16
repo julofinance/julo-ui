@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/system",
-  "version": "0.0.1-alpha.2",
+  "version": "0.0.1-alpha.3",
   "description": "Julo UI system primitives",
   "keywords": ["system", "primitives", "julo", "design-systems", "ui"],
   "main": "src/index.ts",
@@ -46,5 +46,8 @@
     "@emotion/styled": "^11.11.0",
     "react": ">=18",
     "react-dom": ">=18"
+  },
+  "dependencies": {
+    "csstype": "^3.1.2"
   }
 }

@@ -1,10 +1,12 @@
-import { css } from '@emotion/css';
+import { SystemStyleObject, TypographySize } from '@julo-ui/react';
 
-export const captionTypographyCx = css`
-  font-size: var(--fontSizes-captionRegular);
-  line-height: var(--lineHeights-captionRegular);
-  &[data-typography-size='small'] {
-    font-size: var(--fontSizes-captionSmall);
-    line-height: var(--lineHeights-captionSmall);
-  }
-`;
+export const captionSizesSx: Record<TypographySize, SystemStyleObject> = {
+  regular: {
+    fontSize: 'var(--fontSizes-captionRegular)',
+    lineHeight: 'var(--lineHeights-captionRegular)',
+  },
+  small: {
+    fontSize: 'var(--fontSizes-captionSmall)',
+    lineHeight: 'var(--lineHeights-captionSmall)',
+  },
+};

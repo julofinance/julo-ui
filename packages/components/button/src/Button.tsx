@@ -1,16 +1,8 @@
-import { cx } from '@emotion/css';
-import { useMemo } from 'react';
-
-import { forwardRef, julo } from '@julo-ui/system';
+import { forwardRef, julo, cx } from '@julo-ui/system';
 import Typography from '@julo-ui/typography';
 
 import type { ButtonProps } from './types';
-import {
-  buttonCx,
-  primaryButtonCx,
-  secondaryButtonCx,
-  tertiaryButtonCx,
-} from './styles';
+import { buttonCx, buttonVariant } from './styles';
 
 const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
   const {
@@ -20,33 +12,25 @@ const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
     size = 'regular',
     variant = 'primary',
     block,
-    typographyProps,
+    sx,
     ...resProps
   } = props;
 
-  const variantClass = useMemo(() => {
-    switch (variant) {
-      case 'secondary':
-        return secondaryButtonCx;
-
-      case 'tertiary':
-        return tertiaryButtonCx;
-
-      default:
-        return primaryButtonCx;
-    }
-  }, [variant]);
-
   return (
-    <Typography type='body' size={size} {...typographyProps} bold asChild>
+    <Typography type='body' size={size} bold asChild>
       <julo.button
         ref={ref}
-        className={cx('julo-button', buttonCx, variantClass, className)}
+        className={cx('julo-button', className)}
         data-button-size={size}
         data-button-variant={variant}
         data-button-variant-inverted={inverted}
         data-button-block={block}
+        sx={{
+          ...buttonVariant[variant],
+          ...sx,
+        }}
         {...resProps}
+        __css={buttonCx}
       >
         {children}
       </julo.button>

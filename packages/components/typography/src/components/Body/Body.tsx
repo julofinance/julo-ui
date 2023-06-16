@@ -1,13 +1,12 @@
 import { cloneElement, isValidElement, memo } from 'react';
-import { cx } from '@emotion/css';
 
 import callAllFn from '@julofinance/web-helpers/dist/fn/callAllFn';
-import { forwardRef, julo } from '@julo-ui/system';
+import { cx, forwardRef, julo } from '@julo-ui/system';
 
-import { BodyProps } from '../../types';
-import { commonStyles } from '../../styles';
+import { BodyProps, TypographyWithAsChild } from '../../types';
 import { omitHTMLProps, omitStyleProps } from '../../utils';
-import { bodyTypographyCx } from './styles';
+import { bodySizesSx } from './styles';
+import { typographySx } from '../../styles';
 
 const Body = forwardRef<Omit<BodyProps, 'type'>, 'p'>((props, ref) => {
   const {
@@ -16,18 +15,13 @@ const Body = forwardRef<Omit<BodyProps, 'type'>, 'p'>((props, ref) => {
     className,
     onClick,
     size = 'regular',
+    bold = false,
+    sx,
     ...resProps
-  } = props;
+  } = props as BodyProps & TypographyWithAsChild;
 
   const styleProps = omitHTMLProps(resProps);
   const htmlProps = omitStyleProps(resProps);
-
-  const bodyClasses = cx(
-    'julo-body-typography',
-    bodyTypographyCx,
-    commonStyles(styleProps),
-    className,
-  );
 
   if (asChild) {
     if (!isValidElement<BodyProps>(children))
@@ -37,18 +31,29 @@ const Body = forwardRef<Omit<BodyProps, 'type'>, 'p'>((props, ref) => {
     return cloneElement(children, {
       ...htmlProps,
       ...childProps,
-      'data-typography-size': size,
-      className: cx(bodyClasses, childProps?.className),
+      className: cx(className, childProps?.className),
       onClick: callAllFn(onClick, childProps?.onClick),
+      sx: {
+        ...bodySizesSx[size],
+        ...styleProps,
+        ...typographySx({ fontWeight: styleProps.fontWeight, bold }),
+        ...sx,
+        ...childProps.sx,
+      },
     } as BodyProps);
   }
 
   return (
     <julo.p
       ref={ref}
-      className={bodyClasses}
+      className={className}
       onClick={onClick}
-      data-typography-size={size}
+      sx={{
+        ...bodySizesSx[size],
+        ...styleProps,
+        ...typographySx({ fontWeight: styleProps.fontWeight, bold }),
+        ...sx,
+      }}
       {...htmlProps}
     >
       {children}

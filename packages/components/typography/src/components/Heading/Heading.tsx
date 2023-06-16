@@ -1,18 +1,24 @@
-import { cx } from '@emotion/css';
-import { cloneElement, createElement, isValidElement, memo } from 'react';
+import { cloneElement, isValidElement, memo } from 'react';
 
 import callAllFn from '@julofinance/web-helpers/dist/fn/callAllFn';
-import { forwardRef } from '@julo-ui/system';
+import { cx, forwardRef, julo } from '@julo-ui/system';
 import { useTheme } from '@julo-ui/provider';
 
-import { HeadingProps } from '../../types';
-import { commonStyles } from '../../styles';
+import { HeadingProps, TypographyWithAsChild } from '../../types';
+import { typographySx } from '../../styles';
 import { omitHTMLProps, omitStyleProps } from '../../utils';
-import { headingTypographyCx } from './styles';
 
 const Heading = forwardRef<Omit<HeadingProps, 'type'>, 'h1'>((props, ref) => {
-  const { asChild, headingType, children, className, onClick, ...resProps } =
-    props;
+  const {
+    asChild,
+    headingType,
+    children,
+    className,
+    onClick,
+    bold = false,
+    sx,
+    ...resProps
+  } = props as HeadingProps & TypographyWithAsChild;
 
   const styleProps = omitHTMLProps(resProps);
   const htmlProps = omitStyleProps(resProps);
@@ -31,30 +37,31 @@ const Heading = forwardRef<Omit<HeadingProps, 'type'>, 'h1'>((props, ref) => {
     return cloneElement(children, {
       ...htmlProps,
       ...childProps,
-      className: cx(
-        'julo-heading-typography',
-        headingTypographyCx(fontSize, lineHeight),
-        commonStyles(styleProps),
-        className,
-        childProps?.className,
-      ),
-      'data-heading-type': headingType,
+      className: cx(className, childProps?.className),
       onClick: callAllFn(onClick, childProps?.onClick),
+      sx: {
+        fontSize,
+        lineHeight,
+        ...styleProps,
+        ...typographySx({ fontWeight: styleProps.fontWeight, bold }),
+        ...sx,
+        ...childProps?.sx,
+      },
     } as HeadingProps);
   }
 
-  return createElement(`h${headingType}`, {
-    ref,
-    children,
-    className: cx(
-      'julo-heading-typography',
-      commonStyles(styleProps),
-      className,
-    ),
-    onClick,
-    'data-heading-type': headingType,
-    ...htmlProps,
-  });
+  const Head = julo[`h${headingType}`];
+
+  return (
+    <Head
+      ref={ref}
+      className={className}
+      onClick={onClick}
+      data-heading-type={headingType}
+    >
+      {children}
+    </Head>
+  );
 });
 
 export default memo(Heading);

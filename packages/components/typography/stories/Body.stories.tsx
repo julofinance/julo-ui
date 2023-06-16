@@ -1,7 +1,8 @@
-import { Story, Meta } from '@storybook/react';
+import { Meta } from '@storybook/react';
+import { julo } from '@julo-ui/system';
 
 import Body from '../src/components/Body';
-import Typography, { BodyProps } from '../src';
+import Typography from '../src';
 
 export default {
   title: 'Components/Typography',
@@ -22,26 +23,16 @@ export default {
 
 const text = 'Hello World!';
 
-const Template: Story<Omit<BodyProps, 'type'>> = (args) => (
-  <Typography type='body' {...args} />
+export const BodyRegular = () => <Typography type='body'>{text}</Typography>;
+
+export const BodySmall = () => (
+  <Typography type='body' size='small'>
+    {text}
+  </Typography>
 );
 
-export const BodyRegular = Template.bind({});
-BodyRegular.args = {
-  children: text,
-  size: 'regular',
-  bold: false,
-};
-
-export const BodySmall = Template.bind({});
-BodySmall.args = {
-  children: text,
-  size: 'small',
-  bold: false,
-};
-
-export const BodyAsChild = Template.bind({});
-BodyAsChild.args = {
-  children: <p>{text}</p>,
-  asChild: true,
-};
+export const BodyAsChild = () => (
+  <Typography type='body' asChild bold>
+    {<julo.h1>{text}</julo.h1>}
+  </Typography>
+);

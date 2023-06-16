@@ -1,11 +1,12 @@
-import { css } from '@emotion/css';
+import { SystemStyleObject, TypographySize } from '@julo-ui/react';
 
-export const bodyTypographyCx = css`
-  font-size: var(--fontSizes-bodyRegular);
-  line-height: var(--lineHeights-bodyRegular);
-
-  &[data-typography-size='small'] {
-    font-size: var(--fontSizes-bodySmall);
-    line-height: var(--lineHeights-bodySmall);
-  }
-`;
+export const bodySizesSx: Record<TypographySize, SystemStyleObject> = {
+  regular: {
+    fontSize: 'var(--fontSizes-bodyRegular)',
+    lineHeight: 'var(--lineHeights-bodyRegular)',
+  },
+  small: {
+    fontSize: 'var(--fontSizes-bodySmall)',
+    lineHeight: 'var(--lineHeights-bodySmall)',
+  },
+};

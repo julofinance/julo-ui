@@ -12,7 +12,7 @@ function getStories({ pkg, dir = 'components' } = {}) {
 }
 
 module.exports = {
-  stories: [...getStories()],
+  stories: [...getStories(), ...getStories({ dir: 'pluggables' })],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',

@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/typography",
-  "version": "1.0.0-beta.5",
+  "version": "1.0.0",
   "description": "A Component used to give other component Typography style",
   "main": "src/index.ts",
   "files": ["dist"],
@@ -30,10 +30,11 @@
   "homepage": "https://github.com/julofinance/julo-react-components#readme",
   "dependencies": {
     "@julo-ui/provider": "workspace:*",
-    "@emotion/css": "^11.9.0"
+    "@emotion/react": "^11.10.6"
   },
   "devDependencies": { "@julo-ui/system": "workspace:*" },
   "peerDependencies": {
+    "@emotion/react": "^11.10.6",
     "react": ">=18",
     "@julo-ui/system": "workspace:*"
   },

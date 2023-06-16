@@ -1,0 +1,12 @@
+import { forwardRef, julo } from '@julo-ui/system';
+
+import { {{camelCase componentName}}Cx } from './styles';
+import type { {{pascalCase componentName}}Props } from './types';
+
+const {{pascalCase componentName}} = forwardRef<{{pascalCase componentName}}Props, 'div'>((props, ref) => {
+    return <julo.div ref={ref} __css={ {{camelCase componentName}}Cx }>Hello World</julo.div>;
+});
+
+{{pascalCase componentName}}.displayName = "{{pascalCase componentName}}";
+
+export default {{pascalCase componentName}};

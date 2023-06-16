@@ -78,6 +78,8 @@ TertiaryInverted.args = {
   children: 'Button Text',
 };
 
+export const ButtonSmall = () => <Button size='small'>Button Text</Button>;
+
 export const Icon = Template.bind({});
 Icon.args = {
   variant: 'primary',

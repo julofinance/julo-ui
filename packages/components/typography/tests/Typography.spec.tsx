@@ -61,7 +61,6 @@ describe('Typography', () => {
     expect(typography).not.toBeInTheDocument();
     expect(paragraph).toBeInTheDocument();
     expect(paragraph).toHaveTextContent('Hello World');
-    expect(paragraph?.getAttribute('data-heading-type')).toContain('1');
   });
 
   test('renders Typography type caption asChild', async () => {
@@ -77,7 +76,6 @@ describe('Typography', () => {
     expect(typography).not.toBeInTheDocument();
     expect(paragraph).toBeInTheDocument();
     expect(paragraph).toHaveTextContent('Hello World');
-    expect(paragraph?.className).toContain('caption');
   });
 
   test('renders Typography type body with as', async () => {

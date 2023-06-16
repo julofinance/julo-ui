@@ -1,6 +1,6 @@
-import { TypographyProps } from '@julo-ui/typography';
 import { HTMLJuloProps } from '@julo-ui/system';
 
+export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
 export interface ButtonProps extends HTMLJuloProps<'button'> {
   block?: boolean;
   inverted?: boolean | false;
@@ -11,9 +11,5 @@ export interface ButtonProps extends HTMLJuloProps<'button'> {
   /**
    * @default primary
    */
-  variant?: 'primary' | 'secondary' | 'tertiary';
-  typographyProps?: Omit<
-    Extract<TypographyProps, { type: 'body' }>,
-    'type' | 'asChild' | 'as' | 'children'
-  >;
+  variant?: ButtonVariant;
 }

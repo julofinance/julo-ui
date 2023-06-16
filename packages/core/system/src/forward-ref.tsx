@@ -1,5 +1,5 @@
 import { ForwardRefRenderFunction, forwardRef as reactForwardRef } from 'react';
-import { As, ComponentWithAs, PropsOf, RightJoinProps } from './types';
+import { As, ComponentWithAs } from './types';
 
 function forwardRef<Props extends object, Component extends As>(
   component: ForwardRefRenderFunction<
@@ -10,7 +10,7 @@ function forwardRef<Props extends object, Component extends As>(
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     any,
-    RightJoinProps<PropsOf<Component>, Props>
+    Props
   >,
 ) {
   return reactForwardRef(component) as unknown as ComponentWithAs<

@@ -1,0 +1,52 @@
+{
+  "name": "@julo-ui/badge",
+  "version": "0.0.1",
+  "description": "A React component to display notification badge",
+  "keywords": ["badge"],
+  "main": "src/index.ts",
+  "files": ["dist"],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup --dts",
+    "build:fast": "tsup",
+    "clean": "rimraf dist .turbo",
+    "prebuild": "pnpm run clean",
+    "dev": "pnpm run build:fast",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julofinance/julo-react-components.git",
+    "directory": "packages/components/badge"
+  },
+  "author": "Fransiscus Hermanto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julofinance/julo-react-components/issues"
+  },
+  "homepage": "https://github.com/julofinance/julo-react-components#readme",
+  "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@julo-ui/typography": "workspace:*"
+  },
+  "devDependencies": {
+    "@emotion/css": "^11.9.0",
+    "@julo-ui/system": "workspace:*"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.10.6",
+    "@julo-ui/system": "workspace:*",
+    "react": ">=18"
+  },
+  "clean-package": "../../../clean-package.config.json",
+  "tsup": {
+    "entry": ["src", "!src/**/*.md"],
+    "clean": true,
+    "target": "es2019",
+    "format": ["cjs", "esm"]
+  }
+}
