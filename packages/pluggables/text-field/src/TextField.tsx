@@ -44,6 +44,7 @@ const TextField = forwardRef<TextFieldProps, 'div'>((props, ref) => {
     onChange,
     onBlur,
     onFocus,
+    inputRef,
     ...resProps
   } = props;
 
@@ -63,6 +64,7 @@ const TextField = forwardRef<TextFieldProps, 'div'>((props, ref) => {
         )}
         {multiline ? (
           <TextArea
+            ref={inputRef}
             name={name}
             rows={rows}
             maxLength={maxTextLength}
@@ -82,6 +84,7 @@ const TextField = forwardRef<TextFieldProps, 'div'>((props, ref) => {
           />
         ) : (
           <Input
+            ref={inputRef}
             name={name}
             maxLength={maxTextLength}
             {...(inputProps as InputProps)}

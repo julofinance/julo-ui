@@ -42,6 +42,7 @@ export type TextFieldProps = SinglelineTextFieldProps | MultilineTextFieldProps;
 
 interface MultilineTextFieldProps extends BaseTextFieldProps {
   multiline: true;
+  inputRef?: React.Ref<HTMLTextAreaElement>;
   inputProps?: Omit<TextAreaProps, 'isResizeable'>;
   onFocus?: TextAreaProps['onFocus'];
   onChange?: TextAreaProps['onChange'];
@@ -50,6 +51,7 @@ interface MultilineTextFieldProps extends BaseTextFieldProps {
 
 interface SinglelineTextFieldProps extends BaseTextFieldProps {
   multiline?: false;
+  inputRef?: React.Ref<HTMLInputElement>;
   inputProps?: InputProps;
   onFocus?: InputProps['onFocus'];
   onChange?: InputProps['onChange'];
