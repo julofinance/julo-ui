@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/progress",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Component to visualize progress of a process",
   "keywords": ["progress"],
   "main": "src/index.ts",

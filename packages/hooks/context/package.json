@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/context",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Custom context hooks extended from React",
   "keywords": ["context"],
   "main": "src/index.ts",
