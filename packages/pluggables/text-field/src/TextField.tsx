@@ -45,6 +45,7 @@ const TextField = forwardRef<TextFieldProps, 'div'>((props, ref) => {
     onBlur,
     onFocus,
     inputRef,
+    type,
     ...resProps
   } = props;
 
@@ -86,6 +87,7 @@ const TextField = forwardRef<TextFieldProps, 'div'>((props, ref) => {
           <Input
             ref={inputRef}
             name={name}
+            type={type}
             maxLength={maxTextLength}
             {...(inputProps as InputProps)}
             onChange={callAllFn(

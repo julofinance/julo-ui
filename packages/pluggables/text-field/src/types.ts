@@ -36,6 +36,12 @@ export interface BaseTextFieldProps
    * @default 0
    */
   currentTextLength?: number;
+  /**
+   * type for input
+   *
+   * useless if using multiline
+   */
+  type?: React.HTMLInputTypeAttribute;
 }
 
 export type TextFieldProps = SinglelineTextFieldProps | MultilineTextFieldProps;
