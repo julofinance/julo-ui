@@ -2,7 +2,7 @@ import { forwardRef, julo, cx } from '@julo-ui/system';
 import Typography from '@julo-ui/typography';
 
 import type { ButtonProps } from './types';
-import { buttonCx, buttonVariant } from './styles';
+import { buttonCx, buttonSize, buttonVariant } from './styles';
 
 const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
   const {
@@ -27,6 +27,7 @@ const Button = forwardRef<ButtonProps, 'button'>((props, ref) => {
         data-button-block={block}
         sx={{
           ...buttonVariant[variant],
+          ...buttonSize[size],
           ...sx,
         }}
         {...resProps}

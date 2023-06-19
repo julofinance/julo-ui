@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 
 import { SystemStyleObject } from '@julo-ui/system';
 
-import { ButtonVariant } from './types';
+import { ButtonSize, ButtonVariant } from './types';
 
 export const buttonCx = css`
   cursor: pointer;
@@ -10,13 +10,7 @@ export const buttonCx = css`
   border: 0;
   border-radius: 0.5rem;
 
-  padding: 0.75rem 1rem;
-
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-
-  &[data-button-size='small'] {
-    padding: 0.5rem 1rem;
-  }
 
   &:disabled {
     cursor: not-allowed;
@@ -26,6 +20,13 @@ export const buttonCx = css`
     width: 100%;
   }
 `;
+
+export const buttonSize: Record<ButtonSize, SystemStyleObject> = {
+  regular: { padding: '0.75rem 1rem' },
+  small: {
+    padding: '0.5rem 1rem',
+  },
+};
 
 export const buttonVariant: Record<ButtonVariant, SystemStyleObject> = {
   primary: {

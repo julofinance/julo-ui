@@ -1,5 +1,6 @@
 import { HTMLJuloProps } from '@julo-ui/system';
 
+export type ButtonSize = 'regular' | 'small';
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
 export interface ButtonProps extends HTMLJuloProps<'button'> {
   block?: boolean;
@@ -7,7 +8,7 @@ export interface ButtonProps extends HTMLJuloProps<'button'> {
   /**
    * @default regular
    */
-  size?: 'regular' | 'small';
+  size?: ButtonSize;
   /**
    * @default primary
    */
