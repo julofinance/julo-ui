@@ -42,6 +42,7 @@ export interface BaseTextFieldProps
    * useless if using multiline
    */
   type?: React.HTMLInputTypeAttribute;
+  placeholder?: string;
 }
 
 export type TextFieldProps = SinglelineTextFieldProps | MultilineTextFieldProps;

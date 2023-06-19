@@ -46,6 +46,7 @@ const TextField = forwardRef<TextFieldProps, 'div'>((props, ref) => {
     onFocus,
     inputRef,
     type,
+    placeholder,
     ...resProps
   } = props;
 
@@ -69,6 +70,7 @@ const TextField = forwardRef<TextFieldProps, 'div'>((props, ref) => {
             name={name}
             rows={rows}
             maxLength={maxTextLength}
+            placeholder={placeholder}
             {...(inputProps as TextAreaProps)}
             onChange={callAllFn(
               onChange as TextAreaProps['onChange'],
@@ -89,6 +91,7 @@ const TextField = forwardRef<TextFieldProps, 'div'>((props, ref) => {
             name={name}
             type={type}
             maxLength={maxTextLength}
+            placeholder={placeholder}
             {...(inputProps as InputProps)}
             onChange={callAllFn(
               onChange as InputProps['onChange'],
