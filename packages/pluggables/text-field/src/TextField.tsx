@@ -39,8 +39,8 @@ const TextField = forwardRef<TextFieldProps, 'div'>((props, ref) => {
     isLoading,
     hideLoadingIndicator,
     showCounter,
-    currentTextLength = 0,
-    maxTextLength = 0,
+    currentTextLength,
+    maxTextLength,
     onChange,
     onBlur,
     onFocus,
@@ -125,8 +125,8 @@ const TextField = forwardRef<TextFieldProps, 'div'>((props, ref) => {
       </InputGroup>
       <FormInfoGroup
         showCounter={showCounter}
-        currentTextLength={currentTextLength}
-        maxTextLength={maxTextLength}
+        currentTextLength={currentTextLength ?? 0}
+        maxTextLength={maxTextLength ?? 0}
       >
         {helperText && <FormHelperText>{helperText}</FormHelperText>}
         {errorMessage && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
