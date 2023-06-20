@@ -54,6 +54,7 @@ interface MultilineTextFieldProps extends BaseTextFieldProps {
   onFocus?: TextAreaProps['onFocus'];
   onChange?: TextAreaProps['onChange'];
   onBlur?: TextAreaProps['onBlur'];
+  value?: TextAreaProps['value'];
 }
 
 interface SinglelineTextFieldProps extends BaseTextFieldProps {
@@ -63,4 +64,5 @@ interface SinglelineTextFieldProps extends BaseTextFieldProps {
   onFocus?: InputProps['onFocus'];
   onChange?: InputProps['onChange'];
   onBlur?: InputProps['onBlur'];
+  value?: InputProps['value'];
 }
