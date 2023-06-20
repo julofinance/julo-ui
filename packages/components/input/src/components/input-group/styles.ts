@@ -74,7 +74,9 @@ export const inputElementSx = ({
 }): SystemStyleObject => ({
   flex: 1,
   order: 2,
-  ...(isOnlyElement && { border: 'none' }),
+  ...(isOnlyElement && {
+    border: 'none',
+  }),
   ...(!isOnlyElement && {
     ...(leftAddon && {
       borderTopLeftRadius: '0',
@@ -90,5 +92,13 @@ export const inputElementSx = ({
     ...(rightElement && {
       paddingRight: '3rem',
     }),
+  }),
+  ...((leftElement || leftAddon) && {
+    borderTopLeftRadius: '0',
+    borderBottomLeftRadius: '0',
+  }),
+  ...((rightAddon || rightElement) && {
+    borderTopRightRadius: '0',
+    borderBottomRightRadius: '0',
   }),
 });
