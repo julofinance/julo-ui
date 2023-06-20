@@ -123,14 +123,16 @@ const TextField = forwardRef<TextFieldProps, 'div'>((props, ref) => {
           <InputRightAddon {...rightAddonProps}>{rightAddon}</InputRightAddon>
         )}
       </InputGroup>
-      <FormInfoGroup
-        showCounter={showCounter}
-        currentTextLength={currentTextLength ?? 0}
-        maxTextLength={maxTextLength ?? 0}
-      >
-        {helperText && <FormHelperText>{helperText}</FormHelperText>}
-        {errorMessage && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
-      </FormInfoGroup>
+      {(showCounter || helperText || errorMessage) && (
+        <FormInfoGroup
+          showCounter={showCounter}
+          currentTextLength={currentTextLength ?? 0}
+          maxTextLength={maxTextLength ?? 0}
+        >
+          {helperText && <FormHelperText>{helperText}</FormHelperText>}
+          {errorMessage && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
+        </FormInfoGroup>
+      )}
     </FormControl>
   );
 });
