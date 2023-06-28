@@ -30,7 +30,9 @@ export interface TypographyWihoutAsChild extends BaseTypographyProps {
   asChild?: false;
 }
 
-type RawBaseTypographyProps = TypographyWihoutAsChild | TypographyWithAsChild;
+export type RawBaseTypographyProps =
+  | TypographyWihoutAsChild
+  | TypographyWithAsChild;
 
 export interface BodyProps extends BaseTypographyProps {
   type: 'body';

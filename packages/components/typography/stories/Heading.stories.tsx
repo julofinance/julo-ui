@@ -1,7 +1,8 @@
+import { julo } from '@julo-ui/system';
 import { Meta, Story } from '@storybook/react';
 
 import Heading from '../src/components/Heading';
-import Typography, { HeadingProps } from '../src';
+import Typography, { HeadingProps, RawBaseTypographyProps } from '../src';
 
 const meta: Meta<typeof Heading> = {
   title: 'Components/Typography',
@@ -69,10 +70,10 @@ HeadingSmall.args = {
 export const HeadingAsChild = Template.bind({});
 HeadingAsChild.args = {
   children: (
-    <div>
-      <span>{text}</span>
-    </div>
+    <julo.div>
+      <julo.span>{text}</julo.span>
+    </julo.div>
   ),
   headingType: 1,
   asChild: true,
-};
+} as HeadingProps & RawBaseTypographyProps;

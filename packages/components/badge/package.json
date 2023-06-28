@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/badge",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A React component to display notification badge",
   "keywords": ["badge"],
   "main": "src/index.ts",

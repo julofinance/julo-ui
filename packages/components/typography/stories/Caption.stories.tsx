@@ -1,7 +1,8 @@
 import { Story, Meta } from '@storybook/react';
+import { julo } from '@julo-ui/system';
 
 import Caption from '../src/components/Caption';
-import Typography, { CaptionProps } from '../src';
+import Typography, { CaptionProps, RawBaseTypographyProps } from '../src';
 
 export default {
   title: 'Components/Typography',
@@ -41,6 +42,6 @@ CaptionSmall.args = {
 
 export const CaptionAsChild = Template.bind({});
 CaptionAsChild.args = {
-  children: <strong>{text}</strong>,
+  children: <julo.strong>{text}</julo.strong>,
   asChild: true,
-};
+} as CaptionProps & RawBaseTypographyProps;

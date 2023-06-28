@@ -25,14 +25,14 @@ const Heading = forwardRef<Omit<HeadingProps, 'type'>, 'h1'>((props, ref) => {
 
   const theme = useTheme();
 
+  const fontSize = theme.fontSizes[`h${headingType}`];
+  const lineHeight = theme.lineHeights[`h${headingType}`];
+
   if (asChild) {
     if (!isValidElement<HeadingProps>(children))
       throw new Error('Please render an element');
 
     const { props: childProps } = children;
-
-    const fontSize = theme.fontSizes[`h${headingType}`];
-    const lineHeight = theme.lineHeights[`h${headingType}`];
 
     return cloneElement(children, {
       ...htmlProps,
@@ -58,6 +58,14 @@ const Heading = forwardRef<Omit<HeadingProps, 'type'>, 'h1'>((props, ref) => {
       className={className}
       onClick={onClick}
       data-heading-type={headingType}
+      sx={{
+        fontSize,
+        lineHeight,
+        ...styleProps,
+        ...typographySx({ fontWeight: styleProps.fontWeight, bold }),
+        ...sx,
+      }}
+      {...htmlProps}
     >
       {children}
     </Head>
