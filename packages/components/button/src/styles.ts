@@ -57,7 +57,7 @@ export const buttonVariant: Record<ButtonVariant, SystemStyleObject> = {
     color: 'var(--colors-primary-30)',
     backgroundColor: 'var(--colors-neutrals-10)',
     border: '1px solid var(--colors-primary-30)',
-    '&.hover': {
+    '&:hover': {
       color: 'var(--colors-primary-40)',
       backgroundColor: 'var(--colors-primary-10)',
       borderColor: 'var(--colors-primary-30);',
