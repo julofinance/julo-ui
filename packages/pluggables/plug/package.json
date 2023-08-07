@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/plug",
-  "version": "0.0.1-alpha.11",
+  "version": "0.0.1-alpha.12",
   "description": "React UI pluggables component",
   "keywords": ["plug"],
   "main": "src/index.ts",
@@ -20,15 +20,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/julofinance/julo-react-components.git",
+    "url": "git+https://github.com/julofinance/julo-ui.git",
     "directory": "packages/pluggables/plug"
   },
   "author": "Fransiscus Hermanto",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/julofinance/julo-react-components/issues"
+    "url": "https://github.com/julofinance/julo-ui/issues"
   },
-  "homepage": "https://github.com/julofinance/julo-react-components#readme",
+  "homepage": "https://github.com/julofinance/julo-ui#readme",
   "dependencies": {
     "@julo-ui/text-field": "workspace:*"
   },

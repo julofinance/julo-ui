@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/rtl-utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "main": "src/index.ts",
   "description": "Testing utilities for Julo UI's components",
@@ -14,20 +14,20 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/julofinance/julo-react-components.git",
+    "url": "git+https://github.com/julofinance/julo-ui.git",
     "directory": "tooling/rtl-utils"
   },
   "author": "Fransiscus Hermanto",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/julofinance/julo-react-components/issues"
+    "url": "https://github.com/julofinance/julo-ui/issues"
   },
   "dependencies": {
     "@julo-ui/provider": "workspace:*",
     "@types/jest-axe": "^3.5.5",
     "jest-axe": "^7.0.1"
   },
-  "homepage": "https://github.com/julofinance/julo-react-components#readme",
+  "homepage": "https://github.com/julofinance/julo-ui#readme",
   "peerDependencies": {
     "react": ">=18"
   }

@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/typography",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A Component used to give other component Typography style",
   "main": "src/index.ts",
   "files": ["dist"],
@@ -19,15 +19,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/julofinance/julo-react-components.git",
+    "url": "git+https://github.com/julofinance/julo-ui.git",
     "directory": "packages/components/typography"
   },
   "author": "Fransiscus Hermanto",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/julofinance/julo-react-components/issues"
+    "url": "https://github.com/julofinance/julo-ui/issues"
   },
-  "homepage": "https://github.com/julofinance/julo-react-components#readme",
+  "homepage": "https://github.com/julofinance/julo-ui#readme",
   "dependencies": {
     "@julo-ui/provider": "workspace:*",
     "@emotion/react": "^11.10.6"

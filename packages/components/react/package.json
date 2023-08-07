@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/react",
-  "version": "0.0.1-alpha.15",
+  "version": "0.0.1-alpha.16",
   "description": "React UI components built with React and Emotion",
   "keywords": ["react"],
   "main": "src/index.ts",
@@ -20,15 +20,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/julofinance/julo-react-components.git",
+    "url": "git+https://github.com/julofinance/julo-ui.git",
     "directory": "packages/components/react"
   },
   "author": "Fransiscus Hermanto",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/julofinance/julo-react-components/issues"
+    "url": "https://github.com/julofinance/julo-ui/issues"
   },
-  "homepage": "https://github.com/julofinance/julo-react-components#readme",
+  "homepage": "https://github.com/julofinance/julo-ui#readme",
   "dependencies": {
     "@julo-ui/badge": "workspace:*",
     "@julo-ui/button": "workspace:*",
