@@ -3,7 +3,6 @@ name: Quality
 on:
   pull_request:
     branches:
-      - v2
       - master
 
 jobs:
