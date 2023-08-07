@@ -1,33 +1,34 @@
-Task: https://juloprojects.atlassian.net/browse/[CARD-NUMBER]
-Developer: <SLACK_FULL_NAME>
+<!---
+Thanks for creating a Pull Request 💖!
 
-### What this task is about
+Please read the following before submitting:
+- PRs that adds new external dependencies might take a while to review.
+- Keep your PR as small as possible.
+- Limit your PR to one type (docs, feature, refactoring, ci, or bugfix)
+-->
+
+Closes # <!-- Github issue # here -->
+
+## 📝 Description
+
+> Add a brief description
+
+## ✅ Impotant things to be checked
 
 - [ ] Notable changes 1
 - [ ] update @julo-ui/(react / plug) version (important)
 - [ ] update @julo-ui/(react / plug) export (important)
 
-<!-- Use this section, if it's a bug -->
-<!-- You can remove it, if you don't need this section -->
+## ⛳️ Current behavior (updates)
 
-### Steps to reproduce
+> Please describe the current behavior that you are modifying
 
-- [ ] Step 1
-- [ ] Step 2
-- [ ] Step 3
+## 🚀 New behavior
 
-<!-- Use this section, if it's a bug and you need to tell the xpectation behaviour -->
-<!-- You can remove it, if you don't need this section -->
+> Please describe the behavior or changes this PR adds
 
-## Expectations
+## 💣 Is this a breaking change (Yes/No):
 
-- <PLACEHOLDER>
+<!-- If Yes, please describe the impact and migration path for existing Julo UI users. -->
 
-<!-- Use this section if it's necessary -->
-<!-- You can remove it, if you don't need this section -->
-
-### Screenshots
-
-- **Before**
-
-- **After**
+## 📝 Additional Information
