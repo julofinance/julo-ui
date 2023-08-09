@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const componentGenerator = require('./plop/generator/component');
 const pluggableGenerator = require('./plop/generator/pluggable');
+const utilitiesGenerator = require('./plop/generator/utilities');
 
 const capitalize = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
@@ -22,4 +23,5 @@ module.exports = function main(plop) {
 
   componentGenerator(plop);
   pluggableGenerator(plop);
+  utilitiesGenerator(plop);
 };
