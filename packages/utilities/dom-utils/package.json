@@ -1,7 +1,7 @@
 {
-  "name": "@julo-ui/shared-utils",
-  "version": "0.0.1-alpha.2",
-  "description": "Shared Utilities across Julo UI package ",
+  "name": "@julo-ui/dom-utils",
+  "version": "0.0.1",
+  "description": "Dom Utilities across Julo UI package",
   "keywords": ["shared-utils"],
   "main": "src/index.ts",
   "files": ["dist"],
@@ -21,12 +21,15 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/julofinance/julo-ui.git",
-    "directory": "packages/utilities/shared-utils"
+    "directory": "packages/utilities/dom-utils"
   },
   "author": "Fransiscus Hermanto",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/julofinance/julo-ui/issues"
+  },
+  "dependencies": {
+    "@julo-ui/function-utils": "workspace:*"
   },
   "homepage": "https://github.com/julofinance/julo-ui#readme",
   "clean-package": "../../../clean-package.config.json",
