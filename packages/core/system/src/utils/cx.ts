@@ -52,5 +52,5 @@ export function cx(...classNames: Array<ClassNamesArg>) {
     }
   }
 
-  return result.join(' ');
+  return result.filter(Boolean).join(' ');
 }

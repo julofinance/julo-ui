@@ -1,12 +1,11 @@
 import { useCallback, useId, useState } from 'react';
 
-import { dataAttr } from '@julo-ui/shared-utils';
+import { dataAttr, mergeRefs } from '@julo-ui/dom-utils';
 import { PropGetter } from '@julo-ui/system';
 import { createContext } from '@julo-ui/context';
 import Badge from '@julo-ui/badge';
 
 import { FormControlOptions } from './types';
-import mergeRefs from '@julofinance/web-helpers/dist/fn/mergeRefs';
 
 type FormControlProviderProps = Omit<
   ReturnType<typeof useFormControlProvider>,

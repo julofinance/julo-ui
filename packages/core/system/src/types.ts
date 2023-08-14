@@ -20,6 +20,8 @@ export interface JuloProps {
   css?: Interpolation<NonNullable<unknown>>;
 }
 
+export type Dict<T = unknown> = Record<string, T>;
+
 export type DOMElements = keyof JSX.IntrinsicElements;
 
 export type As = ElementType;

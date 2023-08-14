@@ -17,12 +17,6 @@ importers:
       '@julo-ui/rtl-utils':
         specifier: workspace:*
         version: link:tooling/rtl-utils
-      '@julofinance/color-token':
-        specifier: ^1.0.3
-        version: 1.0.3
-      '@julofinance/web-helpers':
-        specifier: 1.0.3
-        version: 1.0.3
       '@swc/core':
         specifier: ^1.3.57
         version: 1.3.57
@@ -57,12 +51,6 @@ importers:
       '@component-controls/storybook-custom-docs':
         specifier: ^3.14.6
         version: 3.14.6(react-dom@18.2.0)(react@18.2.0)
-      '@julofinance/eslint-config':
-        specifier: 0.0.8
-        version: 0.0.8(eslint-config-prettier@8.5.0)(eslint-plugin-import@2.27.5)(eslint-plugin-jest@27.2.1)(eslint-plugin-unused-imports@2.0.0)(eslint@8.17.0)(prettier@2.6.2)(react@18.2.0)(typescript@4.7.2)
-      '@julofinance/tsconfig':
-        specifier: 0.0.5
-        version: 0.0.5
       '@storybook/addon-essentials':
         specifier: ^6.5.5
         version: 6.5.5(@babel/core@7.21.8)(@storybook/builder-webpack5@6.5.5)(eslint@8.17.0)(react-dom@18.2.0)(react@18.2.0)(typescript@4.7.2)(webpack@5.76.1)
@@ -134,7 +122,7 @@ importers:
         version: 2.6.2
       tsup:
         specifier: ^6.5.0
-        version: 6.5.0(@swc/core@1.3.57)(postcss@7.0.39)(ts-node@10.8.1)(typescript@4.7.2)
+        version: 6.5.0(@swc/core@1.3.57)(postcss@8.4.23)(ts-node@10.8.1)(typescript@4.7.2)
       typescript:
         specifier: ^4.7.2
         version: 4.7.2
@@ -261,9 +249,12 @@ importers:
       '@julo-ui/context':
         specifier: workspace:*
         version: link:../../hooks/context
-      '@julo-ui/shared-utils':
+      '@julo-ui/dom-utils':
         specifier: workspace:*
-        version: link:../../utilities/shared-utils
+        version: link:../../utilities/dom-utils
+      '@julo-ui/function-utils':
+        specifier: workspace:*
+        version: link:../../utilities/function-utils
       '@julo-ui/typography':
         specifier: workspace:*
         version: link:../typography
@@ -280,6 +271,9 @@ importers:
       '@emotion/react':
         specifier: ^11.10.6
         version: 11.10.6(@types/react@18.0.9)(react@18.2.0)
+      '@julo-ui/dom-utils':
+        specifier: workspace:*
+        version: link:../../utilities/dom-utils
       '@julo-ui/form-control':
         specifier: workspace:^
         version: link:../form-control
@@ -309,6 +303,12 @@ importers:
 
   packages/components/provider:
     dependencies:
+      '@julo-ui/context':
+        specifier: workspace:*
+        version: link:../../hooks/context
+      '@julo-ui/function-utils':
+        specifier: workspace:*
+        version: link:../../utilities/function-utils
       react:
         specifier: '>=18'
         version: 18.2.0
@@ -384,6 +384,9 @@ importers:
       '@emotion/react':
         specifier: ^11.10.6
         version: 11.10.6(@types/react@18.0.9)(react@18.2.0)
+      '@julo-ui/function-utils':
+        specifier: workspace:*
+        version: link:../../utilities/function-utils
       '@julo-ui/provider':
         specifier: workspace:*
         version: link:../provider
@@ -448,6 +451,9 @@ importers:
       '@julo-ui/form-control':
         specifier: workspace:*
         version: link:../../components/form-control
+      '@julo-ui/function-utils':
+        specifier: workspace:*
+        version: link:../../utilities/function-utils
       '@julo-ui/input':
         specifier: workspace:*
         version: link:../../components/input
@@ -465,10 +471,21 @@ importers:
         specifier: workspace:*
         version: link:../../core/system
 
-  packages/utilities/shared-utils: {}
+  packages/utilities/dom-utils:
+    dependencies:
+      '@julo-ui/function-utils':
+        specifier: workspace:*
+        version: link:../function-utils
+
+  packages/utilities/function-utils: {}
+
+  packages/utilities/object-utils: {}
 
   tooling/rtl-utils:
     dependencies:
+      '@julo-ui/function-utils':
+        specifier: workspace:*
+        version: link:../../packages/utilities/function-utils
       '@julo-ui/provider':
         specifier: workspace:*
         version: link:../../packages/components/provider
@@ -3496,61 +3513,6 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@julofinance/color-token@1.0.3:
-    resolution: {integrity: sha512-nldnyXQj0Eh4wbBr4w9JA+o1870wkbO56D2cT53EsZOVpAo4DRam6SXGXLO6quyzJpRF5QVy67U0RXhc0aqi6A==, tarball: https://npm.pkg.github.com/download/@julofinance/color-token/1.0.3/3bb8ca367ec98401d7eb90d36641da260d507a80}
-    dev: false
-
-  /@julofinance/eslint-config@0.0.8(eslint-config-prettier@8.5.0)(eslint-plugin-import@2.27.5)(eslint-plugin-jest@27.2.1)(eslint-plugin-unused-imports@2.0.0)(eslint@8.17.0)(prettier@2.6.2)(react@18.2.0)(typescript@4.7.2):
-    resolution: {integrity: sha512-fU9X+TnfpqBCb0FMRh2XbKlv+TaTjVWl/tyXLEmDLTHLOm8tlwfJM4CAtjOVrXoPjb5f/KeRs4cblsaUsolYGA==, tarball: https://npm.pkg.github.com/download/@julofinance/eslint-config/0.0.8/c3da9636fa40a66f8245b77bbb105ead00112a9e}
-    peerDependencies:
-      '@typescript-eslint/eslint-plugin': '>= 5.27.0'
-      '@typescript-eslint/parser': '>= 5.27.0'
-      eslint: '>= 7.0.0'
-      eslint-config-prettier: '>= 7.2.0'
-      eslint-plugin-import: '>= 2.26.0'
-      eslint-plugin-jest: '>= 23.13.2'
-      eslint-plugin-jsx-a11y: '>= 6.5.1'
-      eslint-plugin-react: '>= 6.10.3'
-      eslint-plugin-react-hooks: '>= 4.5.0'
-      eslint-plugin-unused-imports: ^2.0.0
-      prettier: '>= 2.0.0'
-      react: '>= 17.0.0'
-      typescript: '>= 4.7.2'
-    peerDependenciesMeta:
-      '@typescript-eslint/eslint-plugin':
-        optional: true
-      '@typescript-eslint/parser':
-        optional: true
-      eslint-plugin-jsx-a11y:
-        optional: true
-      eslint-plugin-react:
-        optional: true
-      eslint-plugin-react-hooks:
-        optional: true
-      typescript:
-        optional: true
-    dependencies:
-      eslint: 8.17.0
-      eslint-config-prettier: 8.5.0(eslint@8.17.0)
-      eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.57.1)(eslint@8.17.0)
-      eslint-plugin-jest: 27.2.1(eslint@8.17.0)(jest@28.1.0)(typescript@4.7.2)
-      eslint-plugin-unused-imports: 2.0.0(eslint@8.17.0)
-      prettier: 2.6.2
-      react: 18.2.0
-      typescript: 4.7.2
-    dev: true
-
-  /@julofinance/tsconfig@0.0.5:
-    resolution: {integrity: sha512-zcAqSJxA9Kffjbd//Q63TxmUyoa3QVTd3Nf/zAfuOTQIC2YlXInHBE9TdDfPpSFuIDH3hU1yaVn90BJD0dVnfQ==, tarball: https://npm.pkg.github.com/download/@julofinance/tsconfig/0.0.5/0381a3ae853ac1e0160041ed5b8784f9b9c321d3}
-    dev: true
-
-  /@julofinance/web-helpers@1.0.3:
-    resolution: {integrity: sha512-3g2rjm/yn76uy0Ucxqll3XXwDCIIedsuy3/YyCHPueEqED9z8wBcQsQ7oSOG17brYznvPBa6BuXVw2kX83Amsw==, tarball: https://npm.pkg.github.com/download/@julofinance/web-helpers/1.0.3/3c26d542cae9fc58383a52c836712e4ec1003301}
-    dependencies:
-      '@types/react': 18.2.6
-      dayjs: 1.11.7
-    dev: false
-
   /@leichtgewicht/ip-codec@2.0.4:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
 
@@ -5837,6 +5799,7 @@ packages:
 
   /@types/json5@0.0.29:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
+    dev: false
 
   /@types/liftoff@4.0.0:
     resolution: {integrity: sha512-Ny/PJkO6nxWAQnaet8q/oWz15lrfwvdvBpuY4treB0CSsBO1CG0fVuNLngR3m3bepQLd+E4c3Y3DlC2okpUvPw==}
@@ -6160,6 +6123,7 @@ packages:
       typescript: 4.9.5
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /@typescript-eslint/parser@5.57.1(eslint@8.17.0)(typescript@5.0.2):
     resolution: {integrity: sha512-hlA0BLeVSA/wBPKdPGxoVr9Pp6GutGoY380FEhbVi0Ph4WNe8kLvqIRx76RSQt1lynZKfrXKs0/XeEk4zZycuA==}
@@ -6262,6 +6226,7 @@ packages:
       typescript: 4.9.5
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /@typescript-eslint/typescript-estree@5.57.1(typescript@5.0.2):
     resolution: {integrity: sha512-A2MZqD8gNT0qHKbk2wRspg7cHbCDCk2tcqt6ScCFLr5Ru8cn+TCfM786DjPhqwseiS+PrYwcXht5ztpEQ6TFTw==}
@@ -9031,10 +8996,6 @@ packages:
       whatwg-url: 11.0.0
     dev: true
 
-  /dayjs@1.11.7:
-    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==}
-    dev: false
-
   /debug@2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==}
     peerDependencies:
@@ -9330,6 +9291,7 @@ packages:
     engines: {node: '>=0.10.0'}
     dependencies:
       esutils: 2.0.3
+    dev: false
 
   /doctrine@3.0.0:
     resolution: {integrity: sha512-yS+Q5i3hBf7GBkd4KG8a7eBNNWNGLTaEwwYWUijIYM7zrlYDM0BFXHjjPWlWZ1Rg7UaddZeIDmi9jF3HmqiQ2w==}
@@ -9958,6 +9920,7 @@ packages:
       resolve: 1.22.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /eslint-module-utils@2.8.0(@typescript-eslint/parser@5.57.1)(eslint-import-resolver-node@0.3.7)(eslint@8.17.0):
     resolution: {integrity: sha512-aWajIYfsqCKRDgUfjEXNN/JlrzauMuSEy5sbd7WXbtW3EH6A6MpwEh42c7qD+MqQo9QMJ6fWLAeIJynx0g6OAw==}
@@ -9986,6 +9949,7 @@ packages:
       eslint-import-resolver-node: 0.3.7
     transitivePeerDependencies:
       - supports-color
+    dev: false
 
   /eslint-plugin-flowtype@8.0.3(@babel/plugin-syntax-flow@7.21.4)(@babel/plugin-transform-react-jsx@7.21.5)(eslint@8.17.0):
     resolution: {integrity: sha512-dX8l6qUL6O+fYPtpNRideCFSpmWOUVx5QcaGLVqe/vlDiBSe4vYljDWDETwnyFzpl7By/WVIu6rcrniCgH9BqQ==}
@@ -10033,6 +9997,7 @@ packages:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
       - supports-color
+    dev: false
 
   /eslint-plugin-jest@25.7.0(@typescript-eslint/eslint-plugin@5.57.1)(eslint@8.17.0)(jest@27.5.1)(typescript@4.9.5):
     resolution: {integrity: sha512-PWLUEXeeF7C9QGKqvdSbzLOiLTx+bno7/HC9eefePfEb257QFHg7ye3dh80AZVkaa/RQsBB1Q/ORQvg2X7F0NQ==}
@@ -10055,27 +10020,6 @@ packages:
       - supports-color
       - typescript
     dev: false
-
-  /eslint-plugin-jest@27.2.1(eslint@8.17.0)(jest@28.1.0)(typescript@4.7.2):
-    resolution: {integrity: sha512-l067Uxx7ZT8cO9NJuf+eJHvt6bqJyz2Z29wykyEdz/OtmcELQl2MQGQLX8J94O1cSJWAwUSEvCjwjA7KEK3Hmg==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    peerDependencies:
-      '@typescript-eslint/eslint-plugin': ^5.0.0
-      eslint: ^7.0.0 || ^8.0.0
-      jest: '*'
-    peerDependenciesMeta:
-      '@typescript-eslint/eslint-plugin':
-        optional: true
-      jest:
-        optional: true
-    dependencies:
-      '@typescript-eslint/utils': 5.59.5(eslint@8.17.0)(typescript@4.7.2)
-      eslint: 8.17.0
-      jest: 28.1.0(@types/node@16.18.28)(ts-node@10.8.1)
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
-    dev: true
 
   /eslint-plugin-jsx-a11y@6.7.1(eslint@8.17.0):
     resolution: {integrity: sha512-63Bog4iIethyo8smBklORknVjB0T2dwB8Mr/hIC+fBS0uyHdYYpzM/Ed+YC8VxTjlXHEWFOdmgwcDn1U2L9VCA==}
@@ -15773,7 +15717,7 @@ packages:
       postcss-value-parser: 4.2.0
     dev: false
 
-  /postcss-load-config@3.1.4(postcss@7.0.39)(ts-node@10.8.1):
+  /postcss-load-config@3.1.4(postcss@8.4.23)(ts-node@10.8.1):
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
     engines: {node: '>= 10'}
     peerDependencies:
@@ -15786,7 +15730,7 @@ packages:
         optional: true
     dependencies:
       lilconfig: 2.1.0
-      postcss: 7.0.39
+      postcss: 8.4.23
       ts-node: 10.8.1(@swc/core@1.3.57)(@types/node@16.18.28)(typescript@4.7.2)
       yaml: 1.10.2
     dev: true
@@ -18205,6 +18149,7 @@ packages:
   /strip-bom@3.0.0:
     resolution: {integrity: sha512-vavAMRXOgBVNF6nyEEmL3DBK19iRpDcoIwW+swQ+CbGiu7lju6t+JklA1MHweoWtadgt4ISVUsXLyDq34ddcwA==}
     engines: {node: '>=4'}
+    dev: false
 
   /strip-bom@4.0.0:
     resolution: {integrity: sha512-3xurFv5tEgii33Zi8Jtp55wEIILR9eh34FAW00PZf+JnSsTmV/ioewSgQl97JHvgjoRGwPShsWm+IdrxB35d0w==}
@@ -18856,6 +18801,7 @@ packages:
       json5: 1.0.2
       minimist: 1.2.8
       strip-bom: 3.0.0
+    dev: false
 
   /tslib@1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}
@@ -18863,7 +18809,7 @@ packages:
   /tslib@2.4.0:
     resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
 
-  /tsup@6.5.0(@swc/core@1.3.57)(postcss@7.0.39)(ts-node@10.8.1)(typescript@4.7.2):
+  /tsup@6.5.0(@swc/core@1.3.57)(postcss@8.4.23)(ts-node@10.8.1)(typescript@4.7.2):
     resolution: {integrity: sha512-36u82r7rYqRHFkD15R20Cd4ercPkbYmuvRkz3Q1LCm5BsiFNUgpo36zbjVhCOgvjyxNBWNKHsaD5Rl8SykfzNA==}
     engines: {node: '>=14'}
     hasBin: true
@@ -18888,8 +18834,8 @@ packages:
       execa: 5.1.1
       globby: 11.1.0
       joycon: 3.1.1
-      postcss: 7.0.39
-      postcss-load-config: 3.1.4(postcss@7.0.39)(ts-node@10.8.1)
+      postcss: 8.4.23
+      postcss-load-config: 3.1.4(postcss@8.4.23)(ts-node@10.8.1)
       resolve-from: 5.0.0
       rollup: 3.21.5
       source-map: 0.8.0-beta.0
@@ -18919,6 +18865,7 @@ packages:
     dependencies:
       tslib: 1.14.1
       typescript: 4.9.5
+    dev: false
 
   /tsutils@3.21.0(typescript@5.0.2):
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}

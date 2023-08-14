@@ -1,7 +1,7 @@
-import isFn from '@julofinance/web-helpers/dist/fn/isFn';
+import { isFn } from '@julo-ui/function-utils';
 
-import { DEFAULT_THEME } from './constants';
-import { Colors, DefaultTheme, Theme } from './types';
+import { DEFAULT_THEME } from './foundations';
+import { Colors, Theme } from './types';
 
 export function generateColorsCssVar(colors: Colors) {
   const keys = Object.keys(colors);
@@ -38,7 +38,7 @@ interface CallBackThemeReturn {
   lineHeights?: Theme['lineHeights'];
 }
 
-type CallbackTheme = (defaultTheme: DefaultTheme) => CallBackThemeReturn;
+type CallbackTheme = (defaultTheme: Theme) => CallBackThemeReturn;
 
 export const extendsTheme = (theme: Theme | CallbackTheme): Theme => {
   if (isFn(theme)) theme = theme(DEFAULT_THEME) as unknown as Theme;

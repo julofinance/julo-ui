@@ -1,10 +1,29 @@
 {
   "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "emitDeclarationOnly": true,
     "downlevelIteration": true,
     "declaration": true,
     "strictFunctionTypes": false
   },
-  "extends": "@julofinance/tsconfig/index.json",
-  "include": ["packages", "tooling", "scripts", "@types"],
-  "exclude": ["**/node_modules", "packages/**/dist"]
+  "include": ["packages", "tooling", "scripts", "@types", ".eslintrc.js"],
+  "exclude": [
+    "**/node_modules",
+    "packages/**/dist",
+    "node_modules",
+    "**/__mocks__/**",
+    "dist"
+  ]
 }

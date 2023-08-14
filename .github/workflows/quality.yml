@@ -15,8 +15,6 @@ jobs:
 
       - name: Install
         uses: ./.github/composite-actions/install
-        with: 
-          token: "${{ secrets.GH_TOKEN }}"
 
       - name: Build Packages
         run: pnpm build
@@ -30,8 +28,6 @@ jobs:
       
       - name: Install
         uses: ./.github/composite-actions/install
-        with: 
-          token: "${{ secrets.GH_TOKEN }}"
 
       - name: Run Tests
         run: pnpm test
@@ -45,13 +41,10 @@ jobs:
       
       - name: Install
         uses: ./.github/composite-actions/install
-        with: 
-          token: "${{ secrets.GH_TOKEN }}"
 
       - name: Run Eslint (on changed files only)
         uses: tj-actions/eslint-changed-files@v13
         with:
           ignore_path: ".eslintignore"
-          token: "${{ secrets.GH_TOKEN }}"
-          config_path: ".eslintrc"
+          config_path: ".eslintrc.js"
           all_files: "true"

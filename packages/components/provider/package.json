@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/provider",
-  "version": "0.0.1-alpha.5",
+  "version": "0.0.1-alpha.6",
   "description": "Providers for Julo UI and component agnostic JuloProvider",
   "main": "src/index.ts",
   "files": ["dist"],
@@ -28,6 +28,10 @@
     "url": "https://github.com/julofinance/julo-ui/issues"
   },
   "homepage": "https://github.com/julofinance/julo-ui#readme",
+  "dependencies": {
+    "@julo-ui/context": "workspace:*",
+    "@julo-ui/function-utils": "workspace:*"
+  },
   "devDependencies": {
     "@emotion/react": "^11.10.6"
   },

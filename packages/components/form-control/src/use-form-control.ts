@@ -1,8 +1,8 @@
-import callAllFn from '@julofinance/web-helpers/dist/fn/callAllFn';
+import { ariaAttr } from '@julo-ui/dom-utils';
+import { callAllFn } from '@julo-ui/function-utils';
 
 import { useFormControlContext } from './FormControlProvider';
 import { FormControlOptions } from './types';
-import { ariaAttr } from '@julo-ui/shared-utils';
 
 export interface UseFormControlProps<T extends HTMLElement>
   extends FormControlOptions {

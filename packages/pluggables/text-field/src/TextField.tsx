@@ -1,4 +1,4 @@
-import callAllFn from '@julofinance/web-helpers/dist/fn/callAllFn';
+import { callAllFn } from '@julo-ui/function-utils';
 import { CircularProgress } from '@julo-ui/progress';
 import { forwardRef } from '@julo-ui/system';
 import FormControl, {
