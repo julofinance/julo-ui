@@ -1,6 +1,7 @@
 *.log
 *.cache
 *.backup
+.eslintcache
 
 # module
 node_modules
