@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/input",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A React Component for Input Text Field",
   "keywords": ["input"],
   "main": "src/index.ts",
@@ -32,7 +32,8 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@julo-ui/form-control": "workspace:^",
-    "@julo-ui/typography": "workspace:*"
+    "@julo-ui/typography": "workspace:*",
+    "@julo-ui/dom-utils": "workspace:*"
   },
   "devDependencies": {
     "@julo-ui/system": "workspace:*"

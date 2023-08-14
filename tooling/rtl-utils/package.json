@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/rtl-utils",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "main": "src/index.ts",
   "description": "Testing utilities for Julo UI's components",
@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@julo-ui/provider": "workspace:*",
+    "@julo-ui/function-utils": "workspace:*",
     "@types/jest-axe": "^3.5.5",
     "jest-axe": "^7.0.1"
   },

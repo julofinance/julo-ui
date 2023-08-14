@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/form-control",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "React component to provide validation states for form fields",
   "keywords": ["form-control"],
   "main": "src/index.ts",
@@ -32,7 +32,8 @@
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@julo-ui/context": "workspace:*",
-    "@julo-ui/shared-utils": "workspace:*",
+    "@julo-ui/dom-utils": "workspace:*",
+    "@julo-ui/function-utils": "workspace:*",
     "@julo-ui/badge": "workspace:*",
     "@julo-ui/typography": "workspace:*"
   },

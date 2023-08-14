@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import * as rtl from '@testing-library/react';
 
-import runIfFn from '@julofinance/web-helpers/dist/fn/runIfFn';
+import { runIfFn } from '@julo-ui/function-utils';
 import { JuloProvider } from '@julo-ui/provider';
 
 import { RenderOptions } from './type';

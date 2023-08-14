@@ -65,7 +65,7 @@ function useListenInput({ groupRef, inputRef }: UseListenInputOptions) {
     () => {
       observer.disconnect();
     };
-  }, [inputRef]);
+  }, [groupRef, inputRef]);
 }
 
 export default useListenInput;

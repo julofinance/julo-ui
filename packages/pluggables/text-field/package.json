@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/text-field",
-  "version": "0.0.5-alpha.9",
+  "version": "0.0.5-alpha.10",
   "description": "A complete form control that contains input, label, helper text, error message.",
   "keywords": ["text-field"],
   "main": "src/index.ts",
@@ -31,6 +31,7 @@
   "homepage": "https://github.com/julofinance/julo-ui#readme",
   "dependencies": {
     "@emotion/react": "^11.10.6",
+    "@julo-ui/function-utils": "workspace:*",
     "@julo-ui/form-control": "workspace:*",
     "@julo-ui/input": "workspace:*",
     "@julo-ui/textarea": "workspace:*",

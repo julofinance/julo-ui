@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 
+import { mergeRefs } from '@julo-ui/dom-utils';
 import { cx, forwardRef, julo } from '@julo-ui/system';
-import mergeRefs from '@julofinance/web-helpers/dist/fn/mergeRefs';
 
 import useListenInput from './usecase/use-listen-input';
 import useHandleChildren from './usecase/use-handle-children';

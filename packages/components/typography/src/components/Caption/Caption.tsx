@@ -1,6 +1,6 @@
 import { isValidElement, memo, cloneElement } from 'react';
 
-import callAllFn from '@julofinance/web-helpers/dist/fn/callAllFn';
+import { callAllFn } from '@julo-ui/function-utils';
 import { cx, forwardRef, julo } from '@julo-ui/system';
 
 import type { CaptionProps, TypographyWithAsChild } from '../../types';

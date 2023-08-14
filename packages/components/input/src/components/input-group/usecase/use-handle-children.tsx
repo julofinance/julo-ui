@@ -6,8 +6,8 @@ import {
   isValidElement,
 } from 'react';
 
+import { mergeRefs } from '@julo-ui/dom-utils';
 import { JuloHTMLElement, JuloReactElement } from '@julo-ui/system';
-import mergeRefs from '@julofinance/web-helpers/dist/fn/mergeRefs';
 
 import {
   inputElementSx,

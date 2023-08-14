@@ -23,8 +23,6 @@ jobs:
 
       - name: Install
         uses: ./.github/composite-actions/install
-        with:
-          token: '${{ secrets.GH_TOKEN }}'
 
       - name: Check Inputted Package & Version
         run: pnpm check-release:manual
@@ -42,8 +40,6 @@ jobs:
 
       - name: Install
         uses: ./.github/composite-actions/install
-        with:
-          token: '${{ secrets.GH_TOKEN }}'
 
       - name: Build
         run: pnpm build --filter="${{ github.event.inputs.package }}"
@@ -51,7 +47,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          registry-url: "https://registry.npmjs.org"
+          registry-url: 'https://registry.npmjs.org'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 

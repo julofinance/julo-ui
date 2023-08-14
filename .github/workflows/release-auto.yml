@@ -23,8 +23,6 @@ jobs:
 
       - name: Install
         uses: ./.github/composite-actions/install
-        with:
-          token: '${{ secrets.GH_TOKEN }}'
 
       - name: Build
         run: pnpm build
