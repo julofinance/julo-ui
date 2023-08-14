@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v3
-      
+
       - name: Install
         uses: ./.github/composite-actions/install
 
@@ -38,13 +38,14 @@ jobs:
     steps:
       - name: Checkout Branch
         uses: actions/checkout@v3
-      
+
       - name: Install
         uses: ./.github/composite-actions/install
 
       - name: Run Eslint (on changed files only)
         uses: tj-actions/eslint-changed-files@v13
         with:
-          ignore_path: ".eslintignore"
-          config_path: ".eslintrc.js"
-          all_files: "true"
+          ignore_path: '.eslintignore'
+          config_path: '.eslintrc.js'
+          token: '${{ secrets.GH_TOKEN }}'
+          all_files: 'true'
