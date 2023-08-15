@@ -1,0 +1,48 @@
+{
+  "name": "@julo-ui/radio",
+  "version": "0.0.1",
+  "description": "A React Component for Radio used in forms",
+  "keywords": ["radio"],
+  "main": "src/index.ts",
+  "files": ["dist"],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup --dts",
+    "build:fast": "tsup",
+    "clean": "rimraf dist .turbo",
+    "prebuild": "pnpm run clean",
+    "dev": "pnpm run build:fast",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julofinance/julo-ui.git",
+    "directory": "packages/components/radio"
+  },
+  "author": "Fransiscus Hermanto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julofinance/julo-ui/issues"
+  },
+  "homepage": "https://github.com/julofinance/julo-ui#readme",
+  "dependencies": {
+    "@emotion/react": "^11.10.6"
+  },
+  "devDependencies": { "@julo-ui/system": "workspace:*" },
+  "peerDependencies": {
+    "@emotion/react": "^11.10.6",
+    "react": ">=18",
+    "@julo-ui/system": "workspace:*"
+  },
+  "clean-package": "../../../clean-package.config.json",
+  "tsup": {
+    "entry": ["src", "!src/**/*.md"],
+    "clean": true,
+    "target": "es2019",
+    "format": ["cjs", "esm"]
+  }
+}
