@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/system",
-  "version": "0.0.1-alpha.6",
+  "version": "0.0.1-alpha.7",
   "description": "Julo UI system primitives",
   "keywords": ["system", "primitives", "julo", "design-systems", "ui"],
   "main": "src/index.ts",

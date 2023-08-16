@@ -20,7 +20,8 @@ export interface JuloProps {
   css?: Interpolation<NonNullable<unknown>>;
 }
 
-export type Dict<T = unknown> = Record<string, T>;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Dict<T = any> = Record<string, T>;
 
 export type DOMElements = keyof JSX.IntrinsicElements;
 
