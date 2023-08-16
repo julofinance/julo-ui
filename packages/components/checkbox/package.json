@@ -30,13 +30,24 @@
   },
   "homepage": "https://github.com/julofinance/julo-ui#readme",
   "dependencies": {
-    "@emotion/react": "^11.10.6"
+    "@emotion/react": "^11.10.6",
+    "@julo-ui/context": "workspace:*",
+    "@julo-ui/form-control": "workspace:*",
+    "@julo-ui/use-callback-ref": "workspace:*",
+    "@julo-ui/use-safe-layout-effect": "workspace:*",
+    "@julo-ui/use-controllable-state": "workspace:*",
+    "@julo-ui/function-utils": "workspace:*",
+    "@julo-ui/dom-utils": "workspace:*",
+    "@julo-ui/object-utils": "workspace:*",
+    "@zag-js/focus-visible": "^0.13.0"
   },
-  "devDependencies": { "@julo-ui/system": "workspace:*" },
+  "devDependencies": {
+    "@julo-ui/system": "workspace:*"
+  },
   "peerDependencies": {
     "@emotion/react": "^11.10.6",
-    "react": ">=18",
-    "@julo-ui/system": "workspace:*"
+    "@julo-ui/system": "workspace:*",
+    "react": ">=18"
   },
   "clean-package": "../../../clean-package.config.json",
   "tsup": {

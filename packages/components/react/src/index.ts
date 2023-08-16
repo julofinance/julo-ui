@@ -6,3 +6,4 @@ export * from '@julo-ui/provider';
 export * from '@julo-ui/system';
 export * from '@julo-ui/typography';
 export * from '@julo-ui/textarea';
+export * from '@julo-ui/checkbox';
