@@ -291,6 +291,22 @@ importers:
         specifier: workspace:*
         version: link:../../core/system
 
+  packages/components/card:
+    dependencies:
+      '@emotion/react':
+        specifier: ^11.10.6
+        version: 11.10.6(@types/react@18.0.9)(react@18.2.0)
+      react:
+        specifier: '>=18'
+        version: 18.2.0
+    devDependencies:
+      '@emotion/css':
+        specifier: ^11.9.0
+        version: 11.9.0(@babel/core@7.21.8)
+      '@julo-ui/system':
+        specifier: workspace:*
+        version: link:../../core/system
+
   packages/components/form-control:
     dependencies:
       '@emotion/react':
