@@ -360,6 +360,46 @@ importers:
         specifier: ^11.10.6
         version: 11.10.6(@types/react@18.0.9)(react@18.2.0)
 
+  packages/components/radio:
+    dependencies:
+      '@emotion/react':
+        specifier: ^11.10.6
+        version: 11.10.6(@types/react@18.0.9)(react@18.2.0)
+      '@julo-ui/context':
+        specifier: workspace:*
+        version: link:../../hooks/context
+      '@julo-ui/dom-utils':
+        specifier: workspace:*
+        version: link:../../utilities/dom-utils
+      '@julo-ui/form-control':
+        specifier: workspace:*
+        version: link:../form-control
+      '@julo-ui/function-utils':
+        specifier: workspace:*
+        version: link:../../utilities/function-utils
+      '@julo-ui/object-utils':
+        specifier: workspace:*
+        version: link:../../utilities/object-utils
+      '@julo-ui/use-callback-ref':
+        specifier: workspace:*
+        version: link:../../hooks/use-callback-ref
+      '@julo-ui/use-controllable-state':
+        specifier: workspace:*
+        version: link:../../hooks/use-controllable-state
+      '@julo-ui/use-safe-layout-effect':
+        specifier: workspace:*
+        version: link:../../hooks/use-safe-layout-effect
+      '@zag-js/focus-visible':
+        specifier: ^0.13.0
+        version: 0.13.0
+      react:
+        specifier: '>=18'
+        version: 18.2.0
+    devDependencies:
+      '@julo-ui/system':
+        specifier: workspace:*
+        version: link:../../core/system
+
   packages/components/react:
     dependencies:
       '@julo-ui/badge':
