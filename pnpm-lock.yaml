@@ -552,6 +552,9 @@ importers:
       '@julo-ui/function-utils':
         specifier: workspace:*
         version: link:../function-utils
+      '@julo-ui/object-utils':
+        specifier: workspace:*
+        version: link:../object-utils
 
   packages/utilities/function-utils: {}
 
