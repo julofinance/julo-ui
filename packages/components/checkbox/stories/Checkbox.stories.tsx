@@ -3,6 +3,7 @@ import { Story, Meta } from '@storybook/react';
 
 import Checkbox, {
   CheckboxGroup,
+  CheckboxGroupProps,
   CheckboxProps,
   useCheckboxGroup,
 } from '../src';
@@ -21,6 +22,14 @@ export default {
 } as Meta<typeof Checkbox>;
 
 const Template: Story<CheckboxProps> = (args) => <Checkbox {...args} />;
+
+const TemplateWithCheckboxGroup: Story<CheckboxGroupProps> = (args) => (
+  <CheckboxGroup {...args}>
+    <Checkbox value='one'>One</Checkbox>
+    <Checkbox value='two'>Two</Checkbox>
+    <Checkbox value='three'>Three</Checkbox>
+  </CheckboxGroup>
+);
 
 export const CheckboxDefault = Template.bind({});
 CheckboxDefault.args = {
@@ -72,6 +81,19 @@ export const CheckboxWithCheckboxGroup = () => {
       <Checkbox value='three'>Three</Checkbox>
     </CheckboxGroup>
   );
+};
+
+export const CheckboxWithCheckboxGroupOrientationAndGap =
+  TemplateWithCheckboxGroup.bind({});
+CheckboxWithCheckboxGroupOrientationAndGap.argTypes = {
+  orientation: {
+    control: 'select',
+    options: ['horizontal', 'vertical'],
+  },
+};
+CheckboxWithCheckboxGroupOrientationAndGap.args = {
+  orientation: 'horizontal',
+  gap: '1.25rem',
 };
 
 export const CheckboxWithControlledCheckboxGroup = () => {
