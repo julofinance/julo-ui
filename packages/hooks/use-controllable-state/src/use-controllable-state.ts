@@ -27,7 +27,7 @@ export function useControllableState<T>(props: UseControllableStateProps<T>) {
       const setter = next as (prevState?: T) => T;
       const nextValue = typeof next === 'function' ? setter(value) : next;
 
-      if (!shouldUpdateProp(value, nextValue)) {
+      if (!shouldUpdateProp(value as T, nextValue)) {
         return;
       }
 
@@ -40,5 +40,8 @@ export function useControllableState<T>(props: UseControllableStateProps<T>) {
     [isControlled, onChangeProp, value, shouldUpdateProp],
   );
 
-  return [value, setValue] as [T, React.Dispatch<React.SetStateAction<T>>];
+  return [value, setValue] as [
+    typeof value,
+    React.Dispatch<React.SetStateAction<typeof value>>,
+  ];
 }
