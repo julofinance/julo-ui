@@ -6,3 +6,4 @@ export * from './components/form-helper';
 export * from './components/form-info-group';
 export * from './use-form-control';
 export * from './types';
+export * from './FormControlProvider';
