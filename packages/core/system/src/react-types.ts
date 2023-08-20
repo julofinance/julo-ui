@@ -5,6 +5,11 @@
  */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+export type EventOrValue =
+  | React.ChangeEvent<HTMLInputElement>
+  | string
+  | number;
+
 export interface DOMElement extends Element, HTMLOrSVGElement {}
 
 type DataAttributes = {
