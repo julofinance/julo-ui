@@ -36,5 +36,10 @@ export function createContext<T>(options: CreateContextOptions<T> = {}) {
     return context;
   }
 
+  if (!strict)
+    return [Context.Provider, useContext, Context] as CreateContextReturn<
+      T | undefined
+    >;
+
   return [Context.Provider, useContext, Context] as CreateContextReturn<T>;
 }

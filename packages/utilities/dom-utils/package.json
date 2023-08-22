@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/dom-utils",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Dom Utilities across Julo UI package",
   "keywords": ["shared-utils"],
   "main": "src/index.ts",
@@ -29,6 +29,7 @@
     "url": "https://github.com/julofinance/julo-ui/issues"
   },
   "dependencies": {
+    "@julo-ui/object-utils": "workspace:*",
     "@julo-ui/function-utils": "workspace:*"
   },
   "homepage": "https://github.com/julofinance/julo-ui#readme",
