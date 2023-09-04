@@ -18,7 +18,14 @@
     "declaration": true,
     "strictFunctionTypes": false
   },
-  "include": ["packages", "tooling", "scripts", "@types", ".eslintrc.js"],
+  "include": [
+    "packages",
+    "tooling",
+    "scripts",
+    "@types",
+    ".eslintrc.js",
+    "jest.config.js"
+  ],
   "exclude": [
     "**/node_modules",
     "packages/**/dist",
