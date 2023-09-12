@@ -7,3 +7,5 @@ export * from '@julo-ui/system';
 export * from '@julo-ui/typography';
 export * from '@julo-ui/textarea';
 export * from '@julo-ui/checkbox';
+export * from '@julo-ui/progress';
+export * from '@julo-ui/radio';
