@@ -20,7 +20,7 @@
     "version": "changeset version",
     "release:dev": "changeset publish --tag dev",
     "version:dev": "changeset verion --snapshot dev",
-    "check-release:manual": "tsx ./scripts/check-release-action-input"
+    "check-release:manual": "tsx ./scripts/check-release-manual-action"
   },
   "repository": {
     "type": "git",
@@ -44,6 +44,8 @@
     "@types/jest": "^27.5.1",
     "@types/react": "^18.0.9",
     "@types/testing-library__jest-dom": "^5.14.5",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
     "clean-package": "^2.2.0",
     "eslint": "^8.17.0",
     "eslint-plugin-prettier": "^4.0.0",
