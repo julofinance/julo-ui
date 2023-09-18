@@ -4,7 +4,7 @@ import { cardCx, cardVariant } from './styles';
 import type { CardProps } from './types';
 
 const Card = forwardRef<CardProps, 'div'>((props, ref) => {
-  const { variant = 'filled', className, sx, ...resProps } = props;
+  const { children, className, variant = 'default', sx, ...resProps } = props;
 
   return (
     <julo.div
@@ -18,7 +18,7 @@ const Card = forwardRef<CardProps, 'div'>((props, ref) => {
       {...resProps}
       __css={cardCx}
     >
-      Hello World
+      {children}
     </julo.div>
   );
 });
