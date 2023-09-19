@@ -24,40 +24,34 @@ export default {
 
 const Card: Story<CardProps> = (args) => <DefaultCard {...args} />;
 
-export const CardDefault = Card.bind({});
-CardDefault.args = {
-  variant: 'default',
-  children: (
-    <>
+export const CardDefault = () => {
+  return (
+    <Card>
       <CardHeader>Header</CardHeader>
       <CardBody>Body</CardBody>
       <CardFooter>Footer</CardFooter>
-    </>
-  ),
+    </Card>
+  );
 };
 
-export const CardBorder = Card.bind({});
-CardBorder.args = {
-  variant: 'border',
-  children: (
-    <>
+export const CardBorder = () => {
+  return (
+    <Card variant='border'>
       <CardHeader>Header</CardHeader>
       <CardBody>Body</CardBody>
       <CardFooter>Footer</CardFooter>
-    </>
-  ),
+    </Card>
+  );
 };
 
-export const CardFilled = Card.bind({});
-CardFilled.args = {
-  variant: 'filled',
-  children: (
-    <>
+export const CardFilled = () => {
+  return (
+    <Card variant='filled'>
       <CardHeader>Header</CardHeader>
       <CardBody>Body</CardBody>
       <CardFooter>Footer</CardFooter>
-    </>
-  ),
+    </Card>
+  );
 };
 
 const style = {
@@ -72,14 +66,9 @@ const style = {
   `,
 };
 
-export const CardCustom = Card.bind({});
-CardCustom.args = {
-  variant: 'default',
-  sx: {
-    width: '328px',
-  },
-  children: (
-    <>
+export const CardCustom = () => {
+  return (
+    <Card variant='default' sx={{ width: '328px' }}>
       <CardHeader>
         <julo.img src={'https://i.ibb.co/tQrr8YT/Juara.png'} width='100%' />
         <julo.div css={style.title}>
@@ -118,6 +107,6 @@ CardCustom.args = {
           Action 1
         </Button>
       </CardFooter>
-    </>
-  ),
+    </Card>
+  );
 };
