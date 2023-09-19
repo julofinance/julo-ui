@@ -9,11 +9,11 @@ export const cardCx = css`
 
   width: 100%;
 
-  > :nth-child(odd) {
+  > :nth-of-type(odd) {
     padding-top: 12px;
     padding-bottom: 12px;
   }
-  > :nth-last-child(1):nth-child(even) {
+  > :nth-last-child(1):nth-of-type(even) {
     padding-top: 0;
     padding-bottom: 12px;
   }
