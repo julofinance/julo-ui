@@ -6,6 +6,7 @@ packages/components/typography @fransiscus-hermanto
 packages/components/react @fransiscus-hermanto
 packages/components/providers @fransiscus-hermanto
 packages/components/input @fransiscus-hermanto
+packages/components/tooltip @argajulo
 
 tooling/rtl-utils @fransiscus-hermanto
 
