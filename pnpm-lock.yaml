@@ -260,9 +260,6 @@ importers:
         specifier: '>=18'
         version: 18.2.0
     devDependencies:
-      '@emotion/css':
-        specifier: ^11.9.0
-        version: 11.9.0(@babel/core@7.22.15)
       '@julo-ui/system':
         specifier: workspace:*
         version: link:../../core/system

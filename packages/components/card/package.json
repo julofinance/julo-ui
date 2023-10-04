@@ -33,7 +33,6 @@
     "@emotion/react": "^11.10.6"
   },
   "devDependencies": {
-    "@emotion/css": "^11.9.0",
     "@julo-ui/system": "workspace:*"
   },
   "peerDependencies": {

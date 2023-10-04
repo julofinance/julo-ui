@@ -25,9 +25,9 @@ describe('Card', () => {
     const card = screen.getByTestId('card');
 
     expect(card).toHaveStyle({
-      backgroundColor: '--colors-neutrals-10',
+      backgroundColor: 'var(--colors-neutrals-10)',
       borderColor: '',
-      boxShadow: '0px 1px 16px 0px rgba(0, 0, 0, 0.12)',
+      boxShadow: 'var(--shadows-md)',
     });
 
     screen.getByText('card default');
@@ -96,75 +96,10 @@ describe('Card', () => {
     screen.getByText('card footer');
   });
 
-  test('should render Card with Header, Body and Footer correctly', () => {
-    render(
-      <Card>
-        <CardHeader>card header</CardHeader>
-        <CardBody data-testid='card-body'>card body</CardBody>
-        <CardFooter>card footer</CardFooter>
-      </Card>,
-    );
-
-    const cardBody = screen.getByTestId('card-body');
-
-    expect(cardBody).not.toHaveStyle({
-      paddingTop: '12px',
-      paddingBottom: '12px',
-    });
-
-    screen.getByText('card header');
-    screen.getByText('card body');
-    screen.getByText('card footer');
-  });
-
-  test('should render Card default with Header, Body and Footer and another children in odd order correctly', () => {
+  test('should render Card default with Header, Body and Footer and another children correctly', () => {
     render(
       <Card data-testid='card'>
-        <CardHeader>card header</CardHeader>
-        <CardBody data-testid='card-body'>card body</CardBody>
-        <div data-testid='another-child'>another children</div>
-        <CardFooter data-testid='card-footer'>card footer</CardFooter>
-      </Card>,
-    );
-
-    const card = screen.getByTestId('card');
-    const cardBody = screen.getByTestId('card-body');
-    const cardFooter = screen.getByTestId('card-footer');
-    const anotherChild = screen.getByTestId('another-child');
-
-    expect(card).toHaveStyle({
-      backgroundColor: '--colors-neutrals-10',
-      borderColor: '',
-      boxShadow: '0px 1px 16px 0px rgba(0, 0, 0, 0.12)',
-    });
-
-    expect(cardBody).not.toHaveStyle({
-      paddingTop: '12px',
-      paddingBottom: '12px',
-    });
-
-    // expect even children with last order have padding-top 0px and padding-bottom 12px
-    expect(cardFooter).toHaveStyle({
-      paddingTop: '0px',
-      paddingBottom: '12px',
-    });
-
-    // expect odd children have padding top and bottom
-    expect(anotherChild).toHaveStyle({
-      paddingTop: '12px',
-      paddingBottom: '12px',
-    });
-
-    screen.getByText('another children');
-    screen.getByText('card header');
-    screen.getByText('card body');
-    screen.getByText('card footer');
-  });
-
-  test('should render Card default with Header, Body and Footer and another children in even order correctly', () => {
-    render(
-      <Card data-testid='card'>
-        <CardHeader>card header</CardHeader>
+        <CardHeader data-testid='card-header'>card header</CardHeader>
         <div data-testid='another-child'>another children</div>
         <CardBody data-testid='card-body'>card body</CardBody>
         <CardFooter data-testid='card-footer'>card footer</CardFooter>
@@ -172,31 +107,33 @@ describe('Card', () => {
     );
 
     const card = screen.getByTestId('card');
+    const cardHeader = screen.getByTestId('card-header');
     const cardBody = screen.getByTestId('card-body');
     const cardFooter = screen.getByTestId('card-footer');
     const anotherChild = screen.getByTestId('another-child');
 
     expect(card).toHaveStyle({
-      backgroundColor: '--colors-neutrals-10',
+      backgroundColor: 'var(--colors-neutrals-10)',
       borderColor: '',
-      boxShadow: '0px 1px 16px 0px rgba(0, 0, 0, 0.12)',
+      boxShadow: 'var(--shadows-md)',
+      paddingTop: '0.75rem',
+      paddingBottom: '0.75rem',
+    });
+
+    expect(cardHeader).not.toHaveStyle({
+      marginTop: '0.75rem',
     });
 
     expect(cardBody).toHaveStyle({
-      paddingTop: '12px',
-      paddingBottom: '12px',
+      marginTop: '0.75rem',
     });
 
-    // expect even children with last order have padding-top 0px and padding-bottom 12px
     expect(cardFooter).toHaveStyle({
-      paddingTop: '0px',
-      paddingBottom: '12px',
+      marginTop: '0.75rem',
     });
 
-    // expect odd children have padding top and bottom
-    expect(anotherChild).not.toHaveStyle({
-      paddingTop: '12px',
-      paddingBottom: '12px',
+    expect(anotherChild).toHaveStyle({
+      marginTop: '0.75rem',
     });
 
     screen.getByText('another children');

@@ -58,11 +58,20 @@ const style = {
   title: css`
     display: flex;
     align-items: center;
-    gap: 8px;
+
+    p {
+      margin-left: 0.5rem;
+    }
   `,
   footer: css`
     align-items: center;
-    gap: 12px;
+
+    > :first-of-type {
+      margin-right: 0.375rem;
+    }
+    > :last-of-type {
+      margin-left: 0.375rem;
+    }
   `,
 };
 
