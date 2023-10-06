@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/use-safe-layout-effect",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React hook for safe usage of useLayoutEffect",
   "keywords": ["use-safe-layout-effect"],
   "main": "src/index.ts",

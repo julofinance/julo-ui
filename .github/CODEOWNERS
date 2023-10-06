@@ -2,6 +2,7 @@
 ./husky @fransiscus-hermanto
 
 packages/components/button @fransiscus-hermanto
+packages/components/card @albertusip
 packages/components/typography @fransiscus-hermanto
 packages/components/react @fransiscus-hermanto
 packages/components/providers @fransiscus-hermanto

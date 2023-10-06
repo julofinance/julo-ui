@@ -251,6 +251,19 @@ importers:
         specifier: workspace:*
         version: link:../../core/system
 
+  packages/components/card:
+    dependencies:
+      '@emotion/react':
+        specifier: ^11.10.6
+        version: 11.10.6(@types/react@18.2.6)(react@18.2.0)
+      react:
+        specifier: '>=18'
+        version: 18.2.0
+    devDependencies:
+      '@julo-ui/system':
+        specifier: workspace:*
+        version: link:../../core/system
+
   packages/components/checkbox:
     dependencies:
       '@emotion/react':
@@ -421,6 +434,9 @@ importers:
       '@julo-ui/button':
         specifier: workspace:*
         version: link:../button
+      '@julo-ui/card':
+        specifier: workspace:*
+        version: link:../card
       '@julo-ui/checkbox':
         specifier: workspace:*
         version: link:../checkbox

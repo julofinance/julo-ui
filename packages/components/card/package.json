@@ -1,8 +1,8 @@
 {
-  "name": "@julo-ui/form-control",
-  "version": "0.0.9",
-  "description": "React component to provide validation states for form fields",
-  "keywords": ["form-control"],
+  "name": "@julo-ui/card",
+  "version": "0.0.1",
+  "description": "A React component to group and display content in a clear and concise format",
+  "keywords": ["card"],
   "main": "src/index.ts",
   "files": ["dist"],
   "sideEffects": false,
@@ -21,7 +21,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/julofinance/julo-ui.git",
-    "directory": "packages/components/form-control"
+    "directory": "packages/components/card"
   },
   "author": "Fransiscus Hermanto",
   "license": "ISC",
@@ -30,20 +30,15 @@
   },
   "homepage": "https://github.com/julofinance/julo-ui#readme",
   "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@julo-ui/context": "workspace:*",
-    "@julo-ui/dom-utils": "workspace:*",
-    "@julo-ui/function-utils": "workspace:*",
-    "@julo-ui/badge": "workspace:*",
-    "@julo-ui/typography": "workspace:*"
+    "@emotion/react": "^11.10.6"
   },
   "devDependencies": {
     "@julo-ui/system": "workspace:*"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.6",
-    "@julo-ui/system": "workspace:*",
-    "react": ">=18"
+    "react": ">=18",
+    "@julo-ui/system": "workspace:*"
   },
   "clean-package": "../../../clean-package.config.json",
   "tsup": {
