@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/typography",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "A Component used to give other component Typography style",
   "main": "src/index.ts",
   "files": ["dist"],

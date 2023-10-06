@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/use-callback-ref",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React useRef hook for callback",
   "keywords": ["use-callback-ref"],
   "main": "src/index.ts",
