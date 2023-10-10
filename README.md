@@ -20,11 +20,11 @@
 
 ## Introduction
 
-JULO UI is a ...
+JULO UI is a React UI components library.
 
-- **Value 1**. Some descriptions
-- **Value 2**. Some descriptions
-- **Value 3**. Some descriptions
+- **Low Level Components**. It consists of the most commonly used components and easily customized, like making adding HTML tags.
+- **Accessible**. All components built to follow WAI-ARIA standards.
+- **Developer Friendly**. Comes with styling with a simple 3-step code integration.
 
 JULO Web Frontend team has built this library to **make our UI design development and maintenance easier**.
 JULO has long created its own design system created by the Product Design team. The design is meant to be applied
