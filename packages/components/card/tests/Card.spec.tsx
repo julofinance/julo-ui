@@ -1,4 +1,4 @@
-import { render, screen, testA11y } from '@julo-ui/rtl-utils';
+import { render, renderer, screen, testA11y } from '@julo-ui/rtl-utils';
 
 import Card, { CardHeader, CardBody, CardFooter } from '../src';
 
@@ -16,54 +16,47 @@ describe('Card', () => {
   });
 
   test('should render Card with variant default correctly', () => {
-    render(
-      <Card data-testid='card' variant='default'>
-        card default
-      </Card>,
+    const card = renderer
+      .create(
+        <Card data-testid='card' variant='default'>
+          card default
+        </Card>,
+      )
+      .toJSON();
+
+    expect(card).toHaveStyleRule(
+      'background-color',
+      'var(--colors-neutrals-10)',
     );
-
-    const card = screen.getByTestId('card');
-
-    expect(card).toHaveStyle({
-      backgroundColor: 'var(--colors-neutrals-10)',
-      borderColor: '',
-      boxShadow: 'var(--shadows-md)',
-    });
-
-    screen.getByText('card default');
+    expect(card).toHaveStyleRule('box-shadow', 'var(--shadows-md)');
   });
 
   test('should render Card with variant border correctly', () => {
-    render(
-      <Card data-testid='card' variant='border'>
-        card body
-      </Card>,
+    const card = renderer
+      .create(
+        <Card data-testid='card' variant='border'>
+          card body
+        </Card>,
+      )
+      .toJSON();
+
+    expect(card).toHaveStyleRule('background', 'var(--colors-neutrals-10)');
+    expect(card).toHaveStyleRule(
+      'border',
+      '1px solid var(--colors-neutrals-30)',
     );
-
-    const card = screen.getByTestId('card');
-
-    expect(card).toHaveStyle({
-      background: 'var(--colors-neutrals-10)',
-      border: '1px solid var(--colors-neutrals-30)',
-    });
-
-    screen.getByText('card body');
   });
 
   test('should render Card with variant filled correctly', () => {
-    render(
-      <Card data-testid='card' variant='filled'>
-        card filled
-      </Card>,
-    );
+    const card = renderer
+      .create(
+        <Card data-testid='card' variant='filled'>
+          card filled
+        </Card>,
+      )
+      .toJSON();
 
-    const card = screen.getByTestId('card');
-
-    expect(card).toHaveStyle({
-      background: 'var(--colors-neutrals-20)',
-    });
-
-    screen.getByText('card filled');
+    expect(card).toHaveStyleRule('background', 'var(--colors-neutrals-20)');
   });
 
   test('should render Card with Header correctly', () => {
@@ -97,48 +90,26 @@ describe('Card', () => {
   });
 
   test('should render Card default with Header, Body and Footer and another children correctly', () => {
-    render(
-      <Card data-testid='card'>
-        <CardHeader data-testid='card-header'>card header</CardHeader>
-        <div data-testid='another-child'>another children</div>
-        <CardBody data-testid='card-body'>card body</CardBody>
-        <CardFooter data-testid='card-footer'>card footer</CardFooter>
-      </Card>,
+    const card = renderer
+      .create(
+        <Card>
+          <CardHeader>card header</CardHeader>
+          <div>another children</div>
+          <CardBody>card body</CardBody>
+          <CardFooter>card footer</CardFooter>
+        </Card>,
+      )
+      .toJSON();
+
+    expect(card).toHaveStyleRule(
+      'background-color',
+      'var(--colors-neutrals-10)',
     );
-
-    const card = screen.getByTestId('card');
-    const cardHeader = screen.getByTestId('card-header');
-    const cardBody = screen.getByTestId('card-body');
-    const cardFooter = screen.getByTestId('card-footer');
-    const anotherChild = screen.getByTestId('another-child');
-
-    expect(card).toHaveStyle({
-      backgroundColor: 'var(--colors-neutrals-10)',
-      borderColor: '',
-      boxShadow: 'var(--shadows-md)',
-      paddingTop: '0.75rem',
-      paddingBottom: '0.75rem',
+    expect(card).toHaveStyleRule('box-shadow', 'var(--shadows-md)');
+    expect(card).toHaveStyleRule('padding-top', '0.75rem');
+    expect(card).toHaveStyleRule('padding-bottom', '0.75rem');
+    expect(card).toHaveStyleRule('margin-top', '0.75rem', {
+      target: ':not(:first-of-type)',
     });
-
-    expect(cardHeader).not.toHaveStyle({
-      marginTop: '0.75rem',
-    });
-
-    expect(cardBody).toHaveStyle({
-      marginTop: '0.75rem',
-    });
-
-    expect(cardFooter).toHaveStyle({
-      marginTop: '0.75rem',
-    });
-
-    expect(anotherChild).toHaveStyle({
-      marginTop: '0.75rem',
-    });
-
-    screen.getByText('another children');
-    screen.getByText('card header');
-    screen.getByText('card body');
-    screen.getByText('card footer');
   });
 });

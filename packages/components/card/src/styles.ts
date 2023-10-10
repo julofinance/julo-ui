@@ -24,7 +24,7 @@ export const cardVariant: Record<CardVariant, SystemStyleObject> = {
   },
   border: {
     background: 'var(--colors-neutrals-10)',
-    border: 'var(--shadows-md)',
+    border: '1px solid var(--colors-neutrals-30)',
   },
   filled: {
     background: 'var(--colors-neutrals-20)',
