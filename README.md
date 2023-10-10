@@ -92,7 +92,10 @@ function Example() {
 
 ## Contribute
 
-TBD
+1. Please fork this project first
+2. Create a branch to push your changes
+3. Open PR and put the title [component-name]-v[component-version]
+4. Your PR will be reviewed by our team
 
 ## License
 
