@@ -1,0 +1,10 @@
+import { render, screen } from '@julo-ui/rtl-utils';
+
+import {{pascalCase pluggableName}} from '../src';
+
+describe('{{pascalCase pluggableName}}', () => {
+  test('should render {{pascalCase pluggableName}}', () => {
+    render(<{{pascalCase pluggableName}} />);
+    screen.getByText('Hello World');
+  });
+});

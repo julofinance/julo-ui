@@ -1,0 +1,51 @@
+name: Quality
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v3
+
+      - name: Install
+        uses: ./.github/composite-actions/install
+
+      - name: Build Packages
+        run: pnpm build
+
+  tests:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v3
+
+      - name: Install
+        uses: ./.github/composite-actions/install
+
+      - name: Run Tests
+        run: pnpm test
+
+  eslint:
+    name: ESlint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v3
+
+      - name: Install
+        uses: ./.github/composite-actions/install
+
+      - name: Run Eslint (on changed files only)
+        uses: tj-actions/eslint-changed-files@v13
+        with:
+          ignore_path: '.eslintignore'
+          config_path: '.eslintrc.js'
+          token: '${{ secrets.GH_TOKEN }}'
+          all_files: 'true'

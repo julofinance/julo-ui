@@ -1,0 +1,17 @@
+*.log
+*.cache
+*.backup
+.eslintcache
+
+# module
+node_modules
+
+# storybook
+.storybooks
+storybook-static
+
+# auto generated file
+.DS_Store
+dist
+coverage
+.turbo

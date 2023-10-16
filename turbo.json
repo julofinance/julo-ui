@@ -1,0 +1,25 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "outputs": ["dist/**"],
+      "dependsOn": ["^build"]
+    },
+    "build:fast": {
+      "outputs": ["dist/**"],
+      "dependsOn": ["^build:fast"]
+    },
+    "storybook": {
+      "outputs": ["storybook-static/**"],
+      "dependsOn": ["^build:fast"]
+    },
+    "ts-check": {
+      "cache": false,
+      "dependsOn": ["^ts-check"]
+    },
+    "dev": {
+      "cache": false
+    }
+  },
+  "globalDependencies": ["tsconfig.json"]
+}

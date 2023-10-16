@@ -1,0 +1,39 @@
+{
+  "name": "@julo-ui/function-utils",
+  "version": "0.0.2",
+  "description": "Function Utilities across Julo UI package",
+  "keywords": ["function-utils"],
+  "main": "src/index.ts",
+  "files": ["dist"],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup --dts",
+    "build:fast": "tsup",
+    "clean": "rimraf dist .turbo",
+    "prebuild": "pnpm run clean",
+    "dev": "pnpm run build:fast",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julofinance/julo-ui.git",
+    "directory": "packages/utilities/function-utils"
+  },
+  "author": "Fransiscus Hermanto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julofinance/julo-ui/issues"
+  },
+  "homepage": "https://github.com/julofinance/julo-ui#readme",
+  "clean-package": "../../../clean-package.config.json",
+  "tsup": {
+    "entry": ["src", "!src/**/*.md"],
+    "clean": true,
+    "target": "es2019",
+    "format": ["cjs", "esm"]
+  }
+}

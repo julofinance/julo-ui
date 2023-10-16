@@ -1,0 +1,22 @@
+import { Story, Meta } from '@storybook/react';
+
+import {{pascalCase pluggableName}}, { {{pascalCase pluggableName}}Props } from '../src';
+
+export default {
+  title: 'Pluggables/{{pascalCase pluggableName}}',
+  component: {{pascalCase pluggableName}},
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "`import { {{pascalCase pluggableName}} } from '@julo-ui/{{pluggableName}}';`",
+      },
+    },
+  },
+} as Meta<typeof {{pascalCase pluggableName}}>;
+
+const Template: Story<{{pascalCase pluggableName}}Props > = (args) => (
+  <{{pascalCase pluggableName}} {...args} />
+);
+
+export const {{pascalCase pluggableName}}Test = Template.bind({});

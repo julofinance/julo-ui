@@ -1,0 +1,89 @@
+{
+  "name": "julo-ui",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "turbo run build --filter=!./examples/*",
+    "build:fast": "turbo run build:fast --filter=!./examples/*",
+    "dev": "turbo run dev --filter=!./examples/*",
+    "ts-check": "tsc -p tsconfig.json --emitDeclarationOnly false --noEmit true",
+    "test": "jest",
+    "storybook": "pnpm build:fast && start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "lint-staged": "lint-staged",
+    "lint": "eslint packages/**/**/src --ext .ts,.tsx --config .eslintrc.js --cache",
+    "lint:fix": "prettier --write src --config ./.prettierrc",
+    "prepublishOnly": "pnpm run build",
+    "prepare": "husky install",
+    "create:pkg": "plop",
+    "release": "changeset publish",
+    "version": "changeset version",
+    "release:dev": "changeset publish --tag dev",
+    "version:dev": "changeset verion --snapshot dev",
+    "check-release:manual": "tsx ./scripts/check-release-manual-action"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julofinance/julo-ui.git"
+  },
+  "author": "Fransiscus Hermanto",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.3",
+    "@commitlint/config-conventional": "^17.6.3",
+    "@component-controls/storybook-custom-docs": "^3.14.6",
+    "@julo-ui/rtl-utils": "workspace:*",
+    "@storybook/addon-essentials": "^6.5.5",
+    "@storybook/addon-interactions": "^6.5.5",
+    "@storybook/addon-links": "^6.5.5",
+    "@storybook/builder-webpack5": "^6.5.5",
+    "@storybook/manager-webpack5": "^6.5.5",
+    "@storybook/react": "^6.5.5",
+    "@storybook/testing-library": "0.1.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^14.0.0",
+    "@types/jest": "^27.5.1",
+    "@types/react": "^18.0.9",
+    "@types/testing-library__jest-dom": "^5.14.5",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "clean-package": "^2.2.0",
+    "eslint": "^8.17.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-testing-library": "^5.10.3",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "husky": "^8.0.0",
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0",
+    "lint-staged": "^13.2.2",
+    "plop": "^3.1.2",
+    "prettier": "2.6.2",
+    "react-docgen-typescript-plugin": "^1.0.5",
+    "tsup": "^6.5.0",
+    "typescript": "^5.2.2",
+    "webpack": "^5.76.1"
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.26.1",
+    "@julo-ui/react": "workspace:*",
+    "@swc/core": "^1.3.57",
+    "@swc/jest": "^0.2.26",
+    "eslint-config-prettier": "^8.5.0",
+    "jest-watch-typeahead": "^2.2.2",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "tsx": "^3.12.7",
+    "turbo": "^1.9.3"
+  },
+  "pnpm": {
+    "overrides": {
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0"
+    }
+  },
+  "engines": {
+    "node": ">=16.x",
+    "pnpm": ">=8.4.0 <8.7.0"
+  },
+  "packageManager": "pnpm@8.6.12"
+}

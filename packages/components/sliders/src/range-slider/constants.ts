@@ -1,0 +1,1 @@
+export const RANGE_SLIDER_DEFAULT_VALUE = [25, 75];
