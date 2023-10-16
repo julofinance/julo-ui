@@ -30,7 +30,15 @@
   },
   "homepage": "https://github.com/julofinance/julo-ui#readme",
   "dependencies": {
-    "@emotion/react": "^11.10.6"
+    "@emotion/react": "^11.10.6",
+    "@julo-ui/use-watch-element-size": "workspace:*",
+    "@julo-ui/number-utils": "workspace:*",
+    "@julo-ui/function-utils": "workspace:*",
+    "@julo-ui/dom-utils": "workspace:*",
+    "@julo-ui/use-callback-ref": "workspace:*",
+    "@julo-ui/use-controllable-state": "workspace:*",
+    "@chakra-ui/react-use-pan-event": "2.1.0",
+    "@julo-ui/context": "workspace:*"
   },
   "devDependencies": { "@julo-ui/system": "workspace:*" },
   "peerDependencies": {

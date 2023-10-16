@@ -1,13 +1,41 @@
-import { forwardRef, julo } from '@julo-ui/system';
+import { cx, forwardRef, julo } from '@julo-ui/system';
 
-import { sliderCx } from './styles';
 import type { SliderProps } from './types';
+import { useSlider } from './use-slider';
+import { sliderCx } from './styles';
+import { SliderProvider } from './SliderProvider';
+import { rootSliderCx } from '../styles';
 
 const Slider = forwardRef<SliderProps, 'div'>((props, ref) => {
+  const {
+    children,
+    className,
+    orientation = 'horizontal',
+    inputRef,
+    inputProps,
+    ...resProps
+  } = props;
+
+  const { getInputProps, getRootProps, ...sliderContext } = useSlider({
+    direction: 'ltr',
+    orientation,
+    ...resProps,
+  });
+
   return (
-    <julo.div ref={ref} __css={sliderCx}>
-      Hello World
-    </julo.div>
+    <SliderProvider value={sliderContext}>
+      <julo.div
+        className={cx('julo-slider', className)}
+        {...getRootProps({}, ref)}
+        __css={[rootSliderCx, sliderCx]}
+      >
+        {children}
+        <julo.input
+          className='julo-slider__input'
+          {...getInputProps(inputProps, inputRef)}
+        />
+      </julo.div>
+    </SliderProvider>
   );
 });
 
