@@ -12,6 +12,9 @@
     "testing library",
     "react testing library"
   ],
+  "exports": {
+    "./mocks": "./src/mocks.ts"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/julofinance/julo-ui.git",
@@ -24,14 +27,14 @@
   },
   "dependencies": {
     "@chakra-ui/utils": "2.0.14",
+    "@emotion/jest": "^11.11.0",
     "@julo-ui/function-utils": "workspace:*",
     "@julo-ui/provider": "workspace:*",
     "@testing-library/user-event": "14.5.1",
     "@types/jest-axe": "^3.5.5",
     "@types/react-test-renderer": "^18.0.3",
     "jest-axe": "^7.0.1",
-    "react-test-renderer": "^18.2.0",
-    "@emotion/jest": "^11.11.0"
+    "react-test-renderer": "^18.2.0"
   },
   "homepage": "https://github.com/julofinance/julo-ui#readme",
   "peerDependencies": {
