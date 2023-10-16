@@ -6,6 +6,7 @@ import type {
   InputRightAddonProps,
   InputRightElementProps,
 } from '@julo-ui/input';
+import type { DOMAttributes } from '@julo-ui/system';
 import type { TextAreaProps } from '@julo-ui/textarea';
 
 export interface BaseTextFieldProps
@@ -50,7 +51,8 @@ export type TextFieldProps = SinglelineTextFieldProps | MultilineTextFieldProps;
 interface MultilineTextFieldProps extends BaseTextFieldProps {
   multiline: true;
   inputRef?: React.Ref<HTMLTextAreaElement>;
-  inputProps?: Omit<TextAreaProps, 'isResizeable'>;
+  inputProps?: DOMAttributes<HTMLTextAreaElement> &
+    Omit<TextAreaProps, 'isResizeable'>;
   onFocus?: TextAreaProps['onFocus'];
   onChange?: TextAreaProps['onChange'];
   onBlur?: TextAreaProps['onBlur'];
@@ -60,7 +62,7 @@ interface MultilineTextFieldProps extends BaseTextFieldProps {
 interface SinglelineTextFieldProps extends BaseTextFieldProps {
   multiline?: false;
   inputRef?: React.Ref<HTMLInputElement>;
-  inputProps?: InputProps;
+  inputProps?: DOMAttributes<HTMLInputElement> & InputProps;
   onFocus?: InputProps['onFocus'];
   onChange?: InputProps['onChange'];
   onBlur?: InputProps['onBlur'];

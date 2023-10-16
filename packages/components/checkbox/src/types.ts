@@ -1,4 +1,9 @@
-import { HTMLJuloProps, PropsOf, SystemStyleObject } from '@julo-ui/react';
+import type {
+  DOMAttributes,
+  HTMLJuloProps,
+  PropsOf,
+  SystemStyleObject,
+} from '@julo-ui/system';
 
 type BaseInputProps = Pick<
   PropsOf<'input'>,
@@ -35,7 +40,7 @@ export interface CheckboxProps
   /**
    * Additional props to be forwarded to the `input` element
    */
-  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+  inputProps?: DOMAttributes<HTMLInputElement>;
   inputRef?: React.RefObject<HTMLInputElement>;
 }
 

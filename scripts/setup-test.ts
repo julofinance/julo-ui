@@ -1,7 +1,2 @@
 import '@testing-library/jest-dom';
-
-global.ResizeObserver = jest.fn().mockImplementation(() => ({
-  observe: jest.fn(),
-  unobserve: jest.fn(),
-  disconnect: jest.fn(),
-}));
+import '@julo-ui/rtl-utils/mocks';

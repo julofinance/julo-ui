@@ -1,6 +1,9 @@
-import { AriaAttributes } from 'react';
-
-import { HTMLJuloProps, PropsOf, SystemStyleObject } from '@julo-ui/system';
+import type {
+  DOMAttributes,
+  HTMLJuloProps,
+  PropsOf,
+  SystemStyleObject,
+} from '@julo-ui/system';
 
 type BaseInputProps = Pick<
   PropsOf<'input'>,
@@ -22,7 +25,7 @@ export interface RadioProps
   /**
    * Additional props to be forwarded to the `input` element
    */
-  inputProps?: React.InputHTMLAttributes<HTMLInputElement>;
+  inputProps?: DOMAttributes<HTMLInputElement>;
   inputRef?: React.RefObject<HTMLInputElement>;
 }
 
@@ -122,7 +125,7 @@ export interface UseRadioProps {
    * Refers to the `id` of the element that labels the radio element.
    */
   'aria-labelledby'?: string;
-  'aria-invalid'?: AriaAttributes['aria-invalid'];
+  'aria-invalid'?: React.AriaAttributes['aria-invalid'];
   'aria-describedby'?: string;
   /**
    * The tab-index property of the underlying input element.
