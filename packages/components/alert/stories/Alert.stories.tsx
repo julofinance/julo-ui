@@ -14,6 +14,7 @@ import DefaultAlert, {
 export default {
   title: 'Components/Alert',
   component: DefaultAlert,
+
   parameters: {
     docs: {
       description: {
