@@ -78,6 +78,8 @@ export const checkboxCx = css`
   .julo-checkbox__control {
     width: var(--checkbox-size);
     height: var(--checkbox-size);
+    min-width: var(--checkbox-size);
+    min-height: var(--checkbox-size);
     border-radius: 0.25rem;
     border: 0.125rem solid var(--colors-neutrals-50);
 
