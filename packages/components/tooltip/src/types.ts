@@ -1,4 +1,4 @@
-import type { ElementType, ReactNode, CSSProperties } from 'react';
+import type { ElementType, ReactNode, CSSProperties, RefObject } from 'react';
 import type { Middleware } from '@floating-ui/dom';
 
 export type PlacesType =
@@ -53,7 +53,7 @@ interface TooltipCommonProps {
   position?: IPosition;
   setIsOpen?: (value: boolean) => void;
   isOpen?: boolean;
-  as: WrapperType;
+  as?: WrapperType;
 }
 
 export interface TooltipProps extends TooltipCommonProps {
@@ -78,3 +78,15 @@ export type DataAttribute =
   | 'as'
   | 'position-strategy'
   | 'hidden';
+
+export interface UseToolipPositionProps {
+  place?: PlacesType;
+  offset?: number;
+  tooltipRef: RefObject<HTMLDivElement>;
+  arrowRef: RefObject<null>;
+  positionStrategy?: PositionStrategy;
+  position?: IPosition;
+  middlewares?: Middlewares;
+  activeAnchor: HTMLElement | null;
+  isMounted: boolean;
+}

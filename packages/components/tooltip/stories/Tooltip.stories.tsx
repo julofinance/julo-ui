@@ -1,6 +1,7 @@
 import { Story, Meta } from '@storybook/react';
 import { Tooltip, TooltipControllerProps } from '../src';
 import { Button, Typography } from '@julo-ui/react';
+import docs from './Tooltip.md';
 
 export default {
   title: 'Components/Tooltip',
@@ -8,7 +9,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "`import { Tooltip } from '@julo-ui/tooltip';`",
+        component: docs,
       },
     },
   },
@@ -54,6 +55,49 @@ const ChildrenTemplate: Story<TooltipControllerProps> = (args) => (
   </>
 );
 
+const ClickableTemplate: Story<TooltipControllerProps> = (args) => (
+  <>
+    <Button id='anchor-element-id'>Button</Button>
+    <Tooltip clickable {...args} anchorSelect='#anchor-element-id'>
+      <Typography bold type='body'>
+        Titles
+      </Typography>
+      <Typography type='body' size='small'>
+        Please enter description for the tooltip.
+      </Typography>
+      <Typography type='body' size='small'>
+        The maximum length is 3 lines.
+      </Typography>
+      <Typography type='body' size='small'>
+        Arrow can be adjusted position
+      </Typography>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginTop: '10px',
+        }}
+      >
+        <Typography color='#616161' type='body' size='small'>
+          1/2
+        </Typography>
+        <div style={{ display: 'flex' }}>
+          <Button
+            style={{ marginRight: '5px' }}
+            variant='tertiary'
+            inverted
+            size='small'
+          >
+            Lewati
+          </Button>
+          <Button size='small'>Lanjut</Button>
+        </div>
+      </div>
+    </Tooltip>
+  </>
+);
+
 export const TooltipBasic = Basic.bind({});
 TooltipBasic.argTypes = {
   place: {
@@ -89,3 +133,4 @@ TooltipBasic.argTypes = {
 
 export const AnchorSelect = AnchorSelectTemplate.bind({});
 export const Children = ChildrenTemplate.bind({});
+export const Clickable = ClickableTemplate.bind({});

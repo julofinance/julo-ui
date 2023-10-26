@@ -190,6 +190,6 @@ const TooltipController = forwardRef<TooltipControllerProps, 'div'>(
   },
 );
 
-Tooltip.displayName = 'Tooltip';
+TooltipController.displayName = 'Tooltip';
 
 export default TooltipController;

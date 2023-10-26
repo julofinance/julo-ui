@@ -9,12 +9,13 @@ import { autoUpdate } from '@floating-ui/dom';
 
 import { cx, forwardRef, julo } from '@julo-ui/system';
 
-import useIsomorphicLayoutEffect from '../utils/use-isomorphic-layout-effect';
-import { computeTooltipPosition } from '../utils/compute-positions';
+import { useSafeLayoutEffect } from '@julo-ui/use-safe-layout-effect';
+import useDelayedMounting from '@julo-ui/use-delay-mounting';
+import useTooltipPosition from './use-tooltip-position';
 import debounce from '../utils/debounce';
 
 import { arrowCx, tooltipCx } from './styles';
-import type { IPosition, PlacesType, TooltipProps } from './types';
+import type { TooltipProps } from './types';
 
 const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
   const {
@@ -39,20 +40,34 @@ const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
     hidden,
   } = props;
 
+  const {
+    state: mountState,
+    show: showElement,
+    hide: hideElement,
+  } = useDelayedMounting();
+
   const tooltipRef = useRef<HTMLDivElement>(null);
   const tooltipArrowRef = useRef(null);
   const tooltipHideDelayTimerRef = useRef<NodeJS.Timeout | null>(null);
-  const [show, setShow] = useState(false);
-  const [actualPlacement, setActualPlacement] = useState(place);
-  const [inlineStyles, setInlineStyles] = useState({});
-  const [inlineArrowStyles, setInlineArrowStyles] = useState({});
+  const [showTooltip, setShowTooltip] = useState(false);
   const [rendered, setRendered] = useState(false);
 
   const hoveringTooltip = useRef(false);
   const [anchorsBySelect, setAnchorsBySelect] = useState<HTMLElement[]>([]);
   const mounted = useRef(false);
 
-  const shouldOpenOnClick = openOnClick;
+  const { actualPlacement, arrowStyles, tooltipStyles, updateTooltipPosition } =
+    useTooltipPosition({
+      activeAnchor,
+      arrowRef: tooltipArrowRef,
+      tooltipRef,
+      isMounted: mounted.current,
+      middlewares,
+      offset,
+      place,
+      position,
+      positionStrategy,
+    });
 
   useImperativeHandle(
     ref,
@@ -67,7 +82,7 @@ const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
    * but should be used carefully because of caveats
    * https://beta.reactjs.org/reference/react/useLayoutEffect#caveats
    */
-  useIsomorphicLayoutEffect(() => {
+  useSafeLayoutEffect(() => {
     mounted.current = true;
     return () => {
       mounted.current = false;
@@ -75,10 +90,10 @@ const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
   }, []);
 
   useEffect(() => {
-    if (!show) {
+    if (!showTooltip) {
       /**
        * this fixes weird behavior when switching between two anchor elements very quickly
-       * remove the timeout and switch quickly between two adjancent anchor elements to see it
+       * remove the timeout and switch quickly between two anchor elements to see it
        *
        * in practice, this means the tooltip is not immediately removed from the DOM on hide
        */
@@ -90,7 +105,15 @@ const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
         clearTimeout(timeout);
       };
     }
-  }, [show]);
+  }, [showTooltip]);
+
+  const handleShowElement = useCallback(
+    (value: boolean) => {
+      if (value) showElement();
+      else hideElement();
+    },
+    [hideElement, showElement],
+  );
 
   const handleShow = (value: boolean) => {
     if (!mounted.current) {
@@ -109,7 +132,8 @@ const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
       }
       setIsOpen?.(value);
       if (isOpen === undefined) {
-        setShow(value);
+        setShowTooltip(value);
+        handleShowElement(value);
       }
     }, 10);
   };
@@ -126,12 +150,14 @@ const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
       setRendered(true);
     }
     const timeout = setTimeout(() => {
-      setShow(isOpen);
+      setShowTooltip(isOpen);
+      handleShowElement(isOpen);
     }, 10);
     return () => {
       clearTimeout(timeout);
     };
-  }, [isOpen, setShow]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen, setShowTooltip]);
 
   const handleShowTooltip = (event?: Event) => {
     if (!event) {
@@ -190,171 +216,118 @@ const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
     handleShow(false);
   };
 
-  const overrideTooltipPosition = ({ x, y }: IPosition) => {
-    // https://floating-ui.com/docs/virtual-elements
-    const virtualElement = {
-      getBoundingClientRect: () => {
-        return {
-          x,
-          y,
-          width: 0,
-          height: 0,
-          top: y,
-          left: x,
-          right: x,
-          bottom: y,
-        };
-      },
-    } as Element;
-    computeTooltipPosition({
-      place,
-      offset,
-      elementReference: virtualElement,
-      tooltipReference: tooltipRef.current,
-      tooltipArrowReference: tooltipArrowRef.current,
-      strategy: positionStrategy,
-      middlewares,
-    }).then((computedStylesData) => {
-      if (Object.keys(computedStylesData.tooltipStyles).length) {
-        setInlineStyles(computedStylesData.tooltipStyles);
-      }
-      if (Object.keys(computedStylesData.tooltipArrowStyles).length) {
-        setInlineArrowStyles(computedStylesData.tooltipArrowStyles);
-      }
-      setActualPlacement(computedStylesData.place as PlacesType);
-    });
-  };
-
   // debounce handler to prevent call twice when
   // mouse enter and focus events being triggered toggether
   const debouncedHandleShowTooltip = debounce(handleShowTooltip, 50, true);
   const debouncedHandleHideTooltip = debounce(handleHideTooltip, 50, true);
-  const updateTooltipPosition = useCallback(() => {
-    if (position) {
-      // if `position` is set, override regular positioning
-      overrideTooltipPosition(position);
-      return;
-    }
-
-    computeTooltipPosition({
-      place,
-      offset,
-      elementReference: activeAnchor,
-      tooltipReference: tooltipRef.current,
-      tooltipArrowReference: tooltipArrowRef.current,
-      strategy: positionStrategy,
-      middlewares,
-    }).then((computedStylesData) => {
-      if (!mounted.current) {
-        // invalidate computed positions after remount
-        return;
-      }
-      if (Object.keys(computedStylesData.tooltipStyles).length) {
-        setInlineStyles(computedStylesData.tooltipStyles);
-      }
-      if (Object.keys(computedStylesData.tooltipArrowStyles).length) {
-        setInlineArrowStyles(computedStylesData.tooltipArrowStyles);
-      }
-      setActualPlacement(computedStylesData.place as PlacesType);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeAnchor, place, offset, positionStrategy, position, middlewares]);
 
   useEffect(() => {
-    const elementRefs = new Set();
-    const tooltipCurrent = tooltipRef.current;
+    if (mountState === 'mounted' || mountState === 'unmounted') {
+      const elementRefs = new Set();
+      const tooltipCurrent = tooltipRef.current;
 
-    anchorsBySelect.forEach((anchor) => {
-      elementRefs.add({ current: anchor });
-    });
-
-    let updateTooltipCleanup: null | (() => void) = null;
-    if (activeAnchor && tooltipCurrent) {
-      updateTooltipCleanup = autoUpdate(
-        activeAnchor as HTMLElement,
-        tooltipCurrent as HTMLElement,
-        updateTooltipPosition,
-        {
-          ancestorResize: true,
-          elementResize: true,
-          layoutShift: true,
-        },
-      );
-    }
-
-    const enabledEvents: {
-      event: string;
-      listener: (event?: Event) => void;
-    }[] = [];
-
-    if (shouldOpenOnClick) {
-      window.addEventListener('click', handleClickOutsideAnchors);
-      enabledEvents.push({
-        event: 'click',
-        listener: handleClickTooltipAnchor,
+      anchorsBySelect.forEach((anchor) => {
+        elementRefs.add({ current: anchor });
       });
-    } else {
-      enabledEvents.push(
-        { event: 'mouseenter', listener: debouncedHandleShowTooltip },
-        { event: 'mouseleave', listener: debouncedHandleHideTooltip },
-        { event: 'focus', listener: debouncedHandleShowTooltip },
-        { event: 'blur', listener: debouncedHandleHideTooltip },
-      );
-    }
 
-    const handleMouseEnterTooltip = () => {
-      hoveringTooltip.current = true;
-    };
-    const handleMouseLeaveTooltip = () => {
-      hoveringTooltip.current = false;
-      handleHideTooltip();
-    };
-
-    if (clickable && !shouldOpenOnClick) {
-      tooltipCurrent?.addEventListener('mouseenter', handleMouseEnterTooltip);
-      tooltipCurrent?.addEventListener('mouseleave', handleMouseLeaveTooltip);
-    }
-
-    enabledEvents.forEach(({ event, listener }) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      elementRefs.forEach((reference: any) => {
-        reference.current?.addEventListener(event, listener);
-      });
-    });
-
-    return () => {
-      updateTooltipCleanup?.();
-
-      if (shouldOpenOnClick) {
-        window.removeEventListener('click', handleClickOutsideAnchors);
-      }
-      if (clickable && !shouldOpenOnClick) {
-        tooltipCurrent?.removeEventListener(
-          'mouseenter',
-          handleMouseEnterTooltip,
-        );
-        tooltipCurrent?.removeEventListener(
-          'mouseleave',
-          handleMouseLeaveTooltip,
+      let updateTooltipCleanup: null | (() => void) = null;
+      if (activeAnchor && tooltipCurrent) {
+        updateTooltipCleanup = autoUpdate(
+          activeAnchor as HTMLElement,
+          tooltipCurrent as HTMLElement,
+          updateTooltipPosition,
+          {
+            ancestorResize: true,
+            elementResize: true,
+            layoutShift: true,
+          },
         );
       }
+
+      const enabledEvents: {
+        event: string;
+        listener: (event?: Event) => void;
+      }[] = [];
+
+      if (openOnClick) {
+        window.addEventListener('click', handleClickOutsideAnchors);
+        enabledEvents.push({
+          event: 'click',
+          listener: handleClickTooltipAnchor,
+        });
+      } else {
+        enabledEvents.push(
+          { event: 'mouseenter', listener: debouncedHandleShowTooltip },
+          { event: 'mouseleave', listener: debouncedHandleHideTooltip },
+          { event: 'focus', listener: debouncedHandleShowTooltip },
+          { event: 'blur', listener: debouncedHandleHideTooltip },
+        );
+      }
+
+      const handleMouseEnterTooltip = () => {
+        hoveringTooltip.current = true;
+      };
+
+      const handleMouseLeaveTooltip = () => {
+        hoveringTooltip.current = false;
+        handleHideTooltip();
+      };
+
+      if (clickable && !openOnClick) {
+        tooltipCurrent?.addEventListener('mouseenter', handleMouseEnterTooltip);
+        tooltipCurrent?.addEventListener('mouseleave', handleMouseLeaveTooltip);
+      }
+
       enabledEvents.forEach(({ event, listener }) => {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         elementRefs.forEach((reference: any) => {
-          reference.current?.removeEventListener(event, listener);
+          reference.current?.addEventListener(event, listener);
         });
       });
-    };
+
+      return () => {
+        updateTooltipCleanup?.();
+
+        if (openOnClick) {
+          window.removeEventListener('click', handleClickOutsideAnchors);
+        }
+        if (clickable && !openOnClick) {
+          tooltipCurrent?.removeEventListener(
+            'mouseenter',
+            handleMouseEnterTooltip,
+          );
+          tooltipCurrent?.removeEventListener(
+            'mouseleave',
+            handleMouseLeaveTooltip,
+          );
+        }
+        enabledEvents.forEach(({ event, listener }) => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          elementRefs.forEach((reference: any) => {
+            reference.current?.removeEventListener(event, listener);
+          });
+        });
+      };
+    }
+
     /**
      * rendered is also a dependency to ensure anchor observers are re-registered
      * since `tooltipRef` becomes stale after removing/adding the tooltip to the DOM
      */
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeAnchor, updateTooltipPosition, rendered, anchorsBySelect]);
+  }, [
+    activeAnchor,
+    updateTooltipPosition,
+    rendered,
+    anchorsBySelect,
+    mountState,
+  ]);
 
   useEffect(() => {
-    updateTooltipPosition();
-  }, [updateTooltipPosition]);
+    if (activeAnchor && tooltipRef.current) {
+      updateTooltipPosition();
+    }
+  }, [updateTooltipPosition, activeAnchor]);
 
   useEffect(() => {
     const anchors = [...anchorsBySelect];
@@ -386,10 +359,9 @@ const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
     }
   }, [id, anchorSelect]);
 
-  const canShow =
-    !hidden && !!content && show && Object.keys(inlineStyles).length > 0;
+  const canShow = !hidden && !!content && showTooltip;
 
-  return (
+  return canShow ? (
     <julo.div
       id={id}
       ref={tooltipRef}
@@ -400,9 +372,9 @@ const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
         className,
       )}
       style={style}
-      sx={inlineStyles}
+      sx={tooltipStyles}
       __css={tooltipCx({
-        show: canShow,
+        show: mountState === 'mounted',
         clickable,
         fixed: positionStrategy === 'fixed',
       })}
@@ -410,12 +382,12 @@ const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
       {content}
       <julo.div
         className={cx('julo-tooltip-arrow', classNameArrow)}
-        sx={inlineArrowStyles}
+        sx={arrowStyles}
         __css={arrowCx(!noArrow)}
         ref={tooltipArrowRef}
       />
     </julo.div>
-  );
+  ) : null;
 });
 
 export default Tooltip;

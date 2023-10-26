@@ -489,6 +489,12 @@ importers:
       '@floating-ui/dom':
         specifier: ^1.5.3
         version: 1.5.3
+      '@julo-ui/use-delay-mounting':
+        specifier: workspace:*
+        version: link:../../hooks/use-delay-mounting
+      '@julo-ui/use-safe-layout-effect':
+        specifier: workspace:*
+        version: link:../../hooks/use-safe-layout-effect
       react:
         specifier: '>=18'
         version: 18.2.0
@@ -560,6 +566,16 @@ importers:
       '@julo-ui/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
+      react:
+        specifier: '>=18'
+        version: 18.2.0
+    devDependencies:
+      '@julo-ui/system':
+        specifier: workspace:*
+        version: link:../../core/system
+
+  packages/hooks/use-delay-mounting:
+    dependencies:
       react:
         specifier: '>=18'
         version: 18.2.0
