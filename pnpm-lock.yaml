@@ -605,6 +605,28 @@ importers:
         specifier: workspace:*
         version: link:../../core/system
 
+  packages/components/tooltip:
+    dependencies:
+      '@emotion/react':
+        specifier: ^11.10.6
+        version: 11.10.6(@types/react@18.2.6)(react@18.2.0)
+      '@floating-ui/dom':
+        specifier: ^1.5.3
+        version: 1.5.3
+      '@julo-ui/use-delay-mounting':
+        specifier: workspace:*
+        version: link:../../hooks/use-delay-mounting
+      '@julo-ui/use-safe-layout-effect':
+        specifier: workspace:*
+        version: link:../../hooks/use-safe-layout-effect
+      react:
+        specifier: '>=18'
+        version: 18.2.0
+    devDependencies:
+      '@julo-ui/system':
+        specifier: workspace:*
+        version: link:../../core/system
+
   packages/components/typography:
     dependencies:
       '@emotion/react':
@@ -668,6 +690,16 @@ importers:
       '@julo-ui/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
+      react:
+        specifier: '>=18'
+        version: 18.2.0
+    devDependencies:
+      '@julo-ui/system':
+        specifier: workspace:*
+        version: link:../../core/system
+
+  packages/hooks/use-delay-mounting:
+    dependencies:
       react:
         specifier: '>=18'
         version: 18.2.0
@@ -3699,6 +3731,23 @@ packages:
   /@eslint/js@8.48.0:
     resolution: {integrity: sha512-ZSjtmelB7IJfWD2Fvb7+Z+ChTIKWq6kjda95fLcQKNS5aheVHn4IkfgRQE3sIIzTcSLwLcLZUD9UBt+V7+h+Pw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+
+  /@floating-ui/core@1.5.0:
+    resolution: {integrity: sha512-kK1h4m36DQ0UHGj5Ah4db7R0rHemTqqO0QLvUqi1/mUUp3LuAWbWxdxSIf/XsnH9VS6rRVPLJCncjRzUvyCLXg==}
+    dependencies:
+      '@floating-ui/utils': 0.1.6
+    dev: false
+
+  /@floating-ui/dom@1.5.3:
+    resolution: {integrity: sha512-ClAbQnEqJAKCJOEbbLo5IUlZHkNszqhuxS4fHAVxRPXPya6Ysf2G8KypnYcOTpx6I8xcgF9bbHb6g/2KpbV8qA==}
+    dependencies:
+      '@floating-ui/core': 1.5.0
+      '@floating-ui/utils': 0.1.6
+    dev: false
+
+  /@floating-ui/utils@0.1.6:
+    resolution: {integrity: sha512-OfX7E2oUDYxtBvsuS4e/jSn4Q9Qb6DzgeYtsAdkPZ47znpoNsMgZw0+tVijiv3uGNR6dgNlty6r9rzIzHjtd/A==}
+    dev: false
 
   /@gar/promisify@1.1.3:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
