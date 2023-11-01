@@ -73,6 +73,7 @@ export const checkboxCx = css`
     overflow: hidden;
     white-space: nowrap;
     position: absolute;
+    display: none;
   }
 
   .julo-checkbox__control {
