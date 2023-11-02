@@ -1,4 +1,4 @@
-import type { FormControlProps } from '@julo-ui/form-control';
+import type { FormControlProps, FormLabelProps } from '@julo-ui/form-control';
 import type {
   InputLeftAddonProps,
   InputLeftElementProps,
@@ -10,7 +10,8 @@ import type { DOMAttributes } from '@julo-ui/system';
 import type { TextAreaProps } from '@julo-ui/textarea';
 
 export interface BaseTextFieldProps
-  extends Omit<FormControlProps, 'onChange' | 'onFocus' | 'onBlur'> {
+  extends Omit<FormControlProps, 'onChange' | 'onFocus' | 'onBlur'>,
+    Pick<FormLabelProps, 'requiredIndicator' | 'optionalIndicator'> {
   name?: string;
   label?: string;
   errorMessage?: string;

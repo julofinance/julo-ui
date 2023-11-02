@@ -48,6 +48,8 @@ const TextField = forwardRef<TextFieldProps, 'div'>((props, ref) => {
     type,
     placeholder,
     value,
+    optionalIndicator,
+    requiredIndicator,
     ...resProps
   } = props;
 
@@ -55,7 +57,14 @@ const TextField = forwardRef<TextFieldProps, 'div'>((props, ref) => {
 
   return (
     <FormControl ref={ref} isLoading={isLoading} {...resProps}>
-      {label && <FormLabel>{label}</FormLabel>}
+      {label && (
+        <FormLabel
+          optionalIndicator={optionalIndicator}
+          requiredIndicator={requiredIndicator}
+        >
+          {label}
+        </FormLabel>
+      )}
       <InputGroup>
         {leftAddon && (
           <InputLeftAddon {...leftAddonProps}>{leftAddon}</InputLeftAddon>
