@@ -1,13 +1,49 @@
-./github/**/** @fransiscus-hermanto kevin.giovanni@julofinance.com
-./husky @fransiscus-hermanto
+# .github
+/.github/ @fransiscus-hermanto @fransiscushermanto
 
-packages/components/button @fransiscus-hermanto
-packages/components/card @albertusip
-packages/components/typography @fransiscus-hermanto
-packages/components/react @fransiscus-hermanto
-packages/components/providers @fransiscus-hermanto
-packages/components/input @fransiscus-hermanto
+# .husky
+/.husky/ @fransiscus-hermanto @fransiscushermanto
 
-tooling/rtl-utils @fransiscus-hermanto
+# .storybook
+/.storybook/ @fransiscus-hermanto @fransiscushermanto
 
-plop/components @fransiscus-hermanto
+# packages
+/packages/components/button @fransiscus-hermanto @fransiscushermanto
+/packages/components/card @albertusip
+/packages/components/checkbox @fransiscus-hermanto @fransiscushermanto
+/packages/components/form-control @fransiscus-hermanto @fransiscushermanto
+/packages/components/input @fransiscus-hermanto @fransiscushermanto
+/packages/components/progress @fransiscus-hermanto @fransiscushermanto
+/packages/components/provider @fransiscus-hermanto @fransiscushermanto
+/packages/components/radio @fransiscus-hermanto @fransiscushermanto
+/packages/components/react @fransiscus-hermanto @fransiscushermanto
+/packages/components/sliders @fransiscus-hermanto @fransiscushermanto
+/packages/components/textarea @fransiscus-hermanto @fransiscushermanto
+/packages/components/typography @fransiscus-hermanto @fransiscushermanto
+
+/packages/core/system @fransiscus-hermanto @fransiscushermanto
+
+/packages/hooks/context @fransiscus-hermanto @fransiscushermanto
+/packages/hooks/use-callback-ref @fransiscus-hermanto @fransiscushermanto
+/packages/hooks/use-controllable-state @fransiscus-hermanto @fransiscushermanto
+/packages/hooks/use-safe-layout-effect @fransiscus-hermanto @fransiscushermanto
+/packages/hooks/use-watch-element-size @fransiscus-hermanto @fransiscushermanto
+
+/packages/pluggables/plug @fransiscus-hermanto @fransiscushermanto
+/packages/pluggables/text-field @fransiscus-hermanto @fransiscushermanto
+
+/packages/utilities/dom-utils @fransiscus-hermanto @fransiscushermanto
+/packages/utilities/function-utils @fransiscus-hermanto @fransiscushermanto
+/packages/utilities/number-utils @fransiscus-hermanto @fransiscushermanto
+/packages/utilities/object-utils @fransiscus-hermanto @fransiscushermanto
+
+# plop
+/plop/generator/ @fransiscus-hermanto @fransiscushermanto
+/plop/templates/ @fransiscus-hermanto @fransiscushermanto
+
+# scripts
+/scripts/ @fransiscus-hermanto @fransiscushermanto
+
+# tooling
+/tooling/rtl-utils @fransiscus-hermanto @fransiscushermanto
+
