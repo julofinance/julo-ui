@@ -30,9 +30,13 @@
   },
   "homepage": "https://github.com/julofinance/julo-ui#readme",
   "dependencies": {
-    "@emotion/react": "^11.10.6"
+    "@emotion/react": "^11.10.6",
+    "@julo-ui/checkbox": "workspace:*"
   },
-  "devDependencies": { "@julo-ui/system": "workspace:*" },
+  "devDependencies": {
+    "@julo-ui/system": "workspace:*",
+    "@julo-ui/form-control": "workspace:*"
+  },
   "peerDependencies": {
     "@emotion/react": "^11.10.6",
     "react": ">=18",

@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/react",
-  "version": "0.0.1-alpha.28",
+  "version": "0.0.1-alpha.29",
   "description": "React UI components built with React and Emotion",
   "keywords": ["react"],
   "main": "src/index.ts",
@@ -39,6 +39,7 @@
     "@julo-ui/progress": "workspace:*",
     "@julo-ui/provider": "workspace:*",
     "@julo-ui/radio": "workspace:*",
+    "@julo-ui/switch": "workspace:*",
     "@julo-ui/system": "workspace:*",
     "@julo-ui/textarea": "workspace:*",
     "@julo-ui/typography": "workspace:*",
