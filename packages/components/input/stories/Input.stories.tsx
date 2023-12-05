@@ -3,6 +3,13 @@ import { Meta } from '@storybook/react';
 import { css } from '@emotion/react';
 
 import { julo } from '@julo-ui/system';
+import { Button } from '@julo-ui/button';
+import {
+  FormControl,
+  FormErrorMessage,
+  FormHelperText,
+  FormLabel,
+} from '@julo-ui/form-control';
 
 import Input, {
   InputGroup,
@@ -11,7 +18,6 @@ import Input, {
   InputRightAddon,
   InputRightElement,
 } from '../src';
-import { Button } from '@julo-ui/react';
 
 export default {
   title: 'Components/Forms/Input',
@@ -37,6 +43,19 @@ export const InputDisabled = () => (
 );
 
 export const InputWithNativeSize = () => <Input htmlSize={10} />;
+
+export const InputGroupWithFormControl = () => (
+  <FormControl>
+    <FormLabel>Email</FormLabel>
+    <InputGroup>
+      <InputLeftElement>✉️</InputLeftElement>
+      <Input placeholder='your-email@example.com' />
+      <InputRightAddon>✅</InputRightAddon>
+    </InputGroup>
+    <FormHelperText>Helper Text</FormHelperText>
+    <FormErrorMessage>Your Email is invalid</FormErrorMessage>
+  </FormControl>
+);
 
 export const InputWithElement = () => (
   <InputGroup>

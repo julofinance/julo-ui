@@ -93,12 +93,4 @@ export const inputElementSx = ({
       paddingRight: '3rem',
     }),
   }),
-  ...((leftElement || leftAddon) && {
-    borderTopLeftRadius: '0',
-    borderBottomLeftRadius: '0',
-  }),
-  ...((rightAddon || rightElement) && {
-    borderTopRightRadius: '0',
-    borderBottomRightRadius: '0',
-  }),
 });
