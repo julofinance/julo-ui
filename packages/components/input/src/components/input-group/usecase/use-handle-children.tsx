@@ -64,7 +64,8 @@ function useHandleChildren({ children, inputRef }: UseHandleChildrenOptions) {
   );
 
   const clones = validChildren.map((child) => {
-    if (child.type.id === 'input') {
+    if (child.type.id === 'input' || child.type.id === 'textarea') {
+      const isTextArea = child.type.id === 'textarea';
       return cloneElement(child, {
         ...(!isAddonExist && {
           ref: mergeRefs<HTMLElement>(inputRef, child.ref),
@@ -76,22 +77,7 @@ function useHandleChildren({ children, inputRef }: UseHandleChildrenOptions) {
           rightElement,
           isOnlyElement: !isAddonExist,
         }),
-      });
-    }
-
-    if (child.type.id === 'textarea') {
-      return cloneElement(child, {
-        ...(!isAddonExist && {
-          ref: mergeRefs<HTMLElement>(inputRef, child.ref),
-        }),
-        sx: inputElementSx({
-          leftAddon,
-          rightAddon,
-          leftElement,
-          rightElement,
-          isOnlyElement: !isAddonExist,
-        }),
-        isResizeable: false,
+        ...(isTextArea && { isResizeable: false }),
       });
     }
 
