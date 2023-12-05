@@ -4,7 +4,7 @@ import {
   ThemeContext as EmotionThemeContext,
 } from '@emotion/react';
 
-import { Dict } from '@julo-ui/react';
+import { Dict } from '@julo-ui/system';
 
 import { DEFAULT_THEME } from './foundations';
 import type { ThemeProviderProps, UseThemeReturn, Theme } from './types';

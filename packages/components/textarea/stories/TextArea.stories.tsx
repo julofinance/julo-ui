@@ -8,6 +8,12 @@ import {
   InputRightAddon,
   InputRightElement,
 } from '@julo-ui/input';
+import {
+  FormControl,
+  FormErrorMessage,
+  FormHelperText,
+  FormLabel,
+} from '@julo-ui/form-control';
 
 export default {
   title: 'Components/Forms/TextArea',
@@ -49,4 +55,13 @@ export const TextAreaWithInputAddon = () => (
     <TextArea placeholder='Here is some sample placeholder' />
     <InputRightAddon>.com</InputRightAddon>
   </InputGroup>
+);
+
+export const TextAreaWithFormControl = () => (
+  <FormControl>
+    <FormLabel>First Name</FormLabel>
+    <TextArea />
+    <FormHelperText>Helper Text</FormHelperText>
+    <FormErrorMessage>Your First Name is invalid</FormErrorMessage>
+  </FormControl>
 );

@@ -1,14 +1,16 @@
 import { Story, Meta } from '@storybook/react';
 import { css } from '@emotion/react';
 
+import { julo } from '@julo-ui/system';
+import { Button } from '@julo-ui/button';
+import { Typography } from '@julo-ui/typography';
+
 import DefaultCard, {
   CardBody,
   CardFooter,
   CardHeader,
   CardProps,
 } from '../src';
-import { julo } from '@julo-ui/system';
-import { Button, Typography } from '@julo-ui/react';
 
 export default {
   title: 'Components/Card',

@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/provider",
-  "version": "0.0.1-alpha.7",
+  "version": "0.0.1-alpha.8",
   "description": "Providers for Julo UI and component agnostic JuloProvider",
   "main": "src/index.ts",
   "files": ["dist"],
@@ -33,6 +33,7 @@
     "@julo-ui/function-utils": "workspace:*"
   },
   "devDependencies": {
+    "@julo-ui/system": "workspace:*",
     "@emotion/react": "^11.10.6"
   },
   "peerDependencies": {

@@ -1,12 +1,27 @@
 import { fireEvent, render, screen, testA11y } from '@julo-ui/rtl-utils';
 
+import { PropsOf, forwardRef, julo } from '@julo-ui/system';
+
 import FormControl, {
   FormControlOptions,
   FormErrorMessage,
   FormHelperText,
   FormLabel,
+  useFormControl,
 } from '../src';
-import { Input } from '@julo-ui/react';
+
+type InputProps = Omit<
+  PropsOf<typeof julo.input>,
+  'disabled' | 'required' | 'readOnly'
+> &
+  FormControlOptions;
+
+const Input: React.FC<InputProps> = forwardRef<InputProps, 'input'>(
+  (props, ref) => {
+    const inputProps = useFormControl<HTMLInputElement>(props);
+    return <julo.input ref={ref} {...inputProps} />;
+  },
+);
 
 function RenderFormControl(props: FormControlOptions = {}) {
   return (

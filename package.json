@@ -65,7 +65,6 @@
   },
   "dependencies": {
     "@changesets/cli": "^2.26.1",
-    "@julo-ui/react": "workspace:*",
     "@swc/core": "^1.3.57",
     "@swc/jest": "^0.2.26",
     "eslint-config-prettier": "^8.5.0",

@@ -1,4 +1,4 @@
-import { JuloProvider } from '@julo-ui/react';
+import { JuloProvider } from '../packages/components/react';
 
 export const parameters = {
   options: {

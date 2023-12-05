@@ -1,13 +1,7 @@
 import { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 
-import {
-  Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightAddon,
-  TextArea,
-} from '@julo-ui/react';
+import { julo } from '@julo-ui/system';
 
 import DefaultFormControl, {
   FormLabel,
@@ -64,36 +58,7 @@ FormControlDefault.args = {
   children: (
     <>
       <FormLabel>First Name</FormLabel>
-      <Input />
-      <FormHelperText>Helper Text</FormHelperText>
-      <FormErrorMessage>Your First Name is invalid</FormErrorMessage>
-    </>
-  ),
-};
-
-export const FormControlWithInputGroup = FormControl.bind({});
-FormControlWithInputGroup.args = {
-  children: (
-    <>
-      <FormLabel>Email</FormLabel>
-      <InputGroup>
-        <InputLeftElement>✉️</InputLeftElement>
-        <Input placeholder='your-email@example.com' />
-        <InputRightAddon>✅</InputRightAddon>
-      </InputGroup>
-      <FormHelperText>Helper Text</FormHelperText>
-      <FormErrorMessage>Your Email is invalid</FormErrorMessage>
-    </>
-  ),
-};
-
-export const FormControlTextArea = FormControl.bind({});
-
-FormControlTextArea.args = {
-  children: (
-    <>
-      <FormLabel>First Name</FormLabel>
-      <TextArea />
+      <julo.input />
       <FormHelperText>Helper Text</FormHelperText>
       <FormErrorMessage>Your First Name is invalid</FormErrorMessage>
     </>
@@ -103,7 +68,7 @@ FormControlTextArea.args = {
 export const FormControlInvalid = () => (
   <FormControl isInvalid isRequired>
     <FormLabel>First Name</FormLabel>
-    <Input />
+    <julo.input />
     <FormHelperText>Helper Text</FormHelperText>
     <FormErrorMessage>Your First Name is invalid</FormErrorMessage>
   </FormControl>
@@ -115,7 +80,7 @@ export const FormControlWithCounter = () => {
   return (
     <FormControl isRequired>
       <FormLabel>First Name</FormLabel>
-      <Input onChange={(e) => setCounter(e.target.value.length)} />
+      <julo.input onChange={(e) => setCounter(e.target.value.length)} />
       <FormInfoGroup
         showCounter
         maxTextLength={100}
@@ -143,7 +108,7 @@ export const FormControlInvalidWithCounter = () => {
   return (
     <FormControl isRequired isInvalid>
       <FormLabel>First Name</FormLabel>
-      <Input onChange={(e) => setCounter(e.target.value.length)} />
+      <julo.input onChange={(e) => setCounter(e.target.value.length)} />
       <FormInfoGroup
         showCounter
         maxTextLength={100}

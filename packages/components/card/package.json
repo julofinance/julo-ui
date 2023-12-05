@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/card",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A React component to group and display content in a clear and concise format",
   "keywords": ["card"],
   "main": "src/index.ts",
@@ -33,7 +33,9 @@
     "@emotion/react": "^11.10.6"
   },
   "devDependencies": {
-    "@julo-ui/system": "workspace:*"
+    "@julo-ui/system": "workspace:*",
+    "@julo-ui/button": "workspace:*",
+    "@julo-ui/typography": "workspace:*"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.6",

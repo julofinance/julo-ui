@@ -1,6 +1,6 @@
 import type { ThemeProviderProps as EmotionThemeProviderProps } from '@emotion/react';
 
-import type { Dict } from '@julo-ui/react';
+import type { Dict } from '@julo-ui/system';
 
 import { DEFAULT_THEME } from './foundations';
 

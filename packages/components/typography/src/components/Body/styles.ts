@@ -1,4 +1,5 @@
-import { SystemStyleObject, TypographySize } from '@julo-ui/react';
+import { SystemStyleObject } from '@julo-ui/system';
+import { TypographySize } from '../../types';
 
 export const bodySizesSx: Record<TypographySize, SystemStyleObject> = {
   regular: {

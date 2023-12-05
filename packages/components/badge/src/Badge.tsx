@@ -1,5 +1,5 @@
 import { forwardRef, julo, cx } from '@julo-ui/system';
-import { Typography } from '@julo-ui/react';
+import { Typography } from '@julo-ui/typography';
 
 import type { BadgeProps } from './types';
 import { badgeCx, badgeSizeSx, badgeStatusSx } from './styles';
