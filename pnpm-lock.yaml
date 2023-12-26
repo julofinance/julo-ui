@@ -473,6 +473,9 @@ importers:
       '@julo-ui/sliders':
         specifier: workspace:*
         version: link:../sliders
+      '@julo-ui/switch':
+        specifier: workspace:*
+        version: link:../switch
       '@julo-ui/system':
         specifier: workspace:*
         version: link:../../core/system
@@ -526,6 +529,25 @@ importers:
         specifier: '>=18'
         version: 18.2.0
     devDependencies:
+      '@julo-ui/system':
+        specifier: workspace:*
+        version: link:../../core/system
+
+  packages/components/switch:
+    dependencies:
+      '@emotion/react':
+        specifier: ^11.10.6
+        version: 11.10.6(@types/react@18.2.6)(react@18.2.0)
+      '@julo-ui/checkbox':
+        specifier: workspace:*
+        version: link:../checkbox
+      react:
+        specifier: '>=18'
+        version: 18.2.0
+    devDependencies:
+      '@julo-ui/form-control':
+        specifier: workspace:*
+        version: link:../form-control
       '@julo-ui/system':
         specifier: workspace:*
         version: link:../../core/system
