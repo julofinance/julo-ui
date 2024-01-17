@@ -8,6 +8,7 @@
 /.storybook/ @fransiscus-hermanto @fransiscushermanto
 
 # packages
+/packages/components/alert @albertusip
 /packages/components/badge @fransiscus-hermanto @fransiscushermanto
 /packages/components/button @fransiscus-hermanto @fransiscushermanto
 /packages/components/card @albertusip

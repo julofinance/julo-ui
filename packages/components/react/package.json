@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/julofinance/julo-ui#readme",
   "dependencies": {
+    "@julo-ui/alert": "workspace:*",
     "@julo-ui/badge": "workspace:*",
     "@julo-ui/button": "workspace:*",
     "@julo-ui/card": "workspace:*",
