@@ -1,10 +1,6 @@
 import { Context, Provider } from 'react';
 
-export interface CreateContextOptions<T> {
-  /**
-   * @default true
-   */
-  strict?: boolean;
+interface BaseCreateContextOptions<T> {
   hookName?: string;
   providerName?: string;
   errorMessage?: string;
@@ -15,4 +11,18 @@ export interface CreateContextOptions<T> {
   defaultValue?: T;
 }
 
-export type CreateContextReturn<T> = [Provider<T>, () => T, Context<T>];
+export type CreateContextOptions<
+  T,
+  Strict extends boolean = true,
+> = BaseCreateContextOptions<T> &
+  (Strict extends true ? { strict?: true } : { strict: false });
+
+type ContextValue<T, Strict extends boolean = true> = Strict extends true
+  ? T
+  : T | undefined;
+
+export type CreateContextReturn<T, Strict extends boolean> = [
+  Provider<ContextValue<T, Strict>>,
+  (errorMessage?: string) => ContextValue<T, Strict>,
+  Context<ContextValue<T, Strict>>,
+];
