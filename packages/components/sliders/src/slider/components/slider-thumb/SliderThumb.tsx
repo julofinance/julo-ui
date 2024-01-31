@@ -13,12 +13,9 @@ const SliderThumb = forwardRef<SliderThumbProps, 'div'>((props, ref) => {
     ...resProps
   } = props;
 
-  const sliderContext = useSliderContext();
-
-  if (!sliderContext)
-    throw new Error('SliderThumb should be within Slider or SliderProvider');
-
-  const { getThumbProps, state } = sliderContext;
+  const { getThumbProps, state } = useSliderContext(
+    'SliderThumb should be within Slider or SliderProvider',
+  );
 
   return (
     <julo.div

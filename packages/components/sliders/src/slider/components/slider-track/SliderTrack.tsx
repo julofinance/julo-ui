@@ -10,12 +10,9 @@ import { SliderTrackProps } from './types';
 
 const SliderTrack = forwardRef<SliderTrackProps, 'div'>((props, ref) => {
   const { className, ...resProps } = props;
-  const sliderContext = useSliderContext();
-
-  if (!sliderContext)
-    throw Error('SliderTrack must be used within Slider or SliderProvider');
-
-  const { getTrackProps, state } = sliderContext;
+  const { getTrackProps, state } = useSliderContext(
+    'SliderTrack must be used within Slider or SliderProvider',
+  );
 
   return (
     <julo.div

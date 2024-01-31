@@ -6,14 +6,9 @@ import { RangeSliderMarkerProps } from './types';
 const RangeSliderMarker = forwardRef<RangeSliderMarkerProps, 'div'>(
   (props, ref) => {
     const { className, ...resProps } = props;
-    const rangeSliderContext = useRangeSliderContext();
-
-    if (!rangeSliderContext)
-      throw new Error(
-        'RangeSliderMarker should be within RangeSlider or RangeSliderProvider',
-      );
-
-    const { getMarkerProps } = rangeSliderContext;
+    const { getMarkerProps } = useRangeSliderContext(
+      'RangeSliderMarker should be within RangeSlider or RangeSliderProvider',
+    );
 
     return (
       <julo.div

@@ -381,9 +381,6 @@ importers:
 
   packages/components/provider:
     dependencies:
-      '@julo-ui/context':
-        specifier: workspace:*
-        version: link:../../hooks/context
       '@julo-ui/function-utils':
         specifier: workspace:*
         version: link:../../utilities/function-utils

@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/sliders",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A React Slider component that implements input[type&#x3D;&#x27;range&#x27;]",
   "keywords": ["sliders"],
   "main": "src/index.ts",

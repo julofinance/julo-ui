@@ -5,12 +5,9 @@ import { SliderMarkerProps } from './types';
 
 const SliderMarker = forwardRef<SliderMarkerProps, 'div'>((props, ref) => {
   const { className, ...resProps } = props;
-  const sliderContext = useSliderContext();
-
-  if (!sliderContext)
-    throw new Error('SliderMarker should be within Slider or SliderProvider');
-
-  const { getMarkerProps } = sliderContext;
+  const { getMarkerProps } = useSliderContext(
+    'SliderMarker should be within Slider or SliderProvider',
+  );
 
   return (
     <julo.div

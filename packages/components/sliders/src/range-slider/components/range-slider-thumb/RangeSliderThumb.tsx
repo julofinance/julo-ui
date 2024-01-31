@@ -17,14 +17,10 @@ const RangeSliderThumb = forwardRef<RangeSliderThumbProps, 'div'>(
       inputRef,
       ...resProps
     } = props;
-    const rangeSliderContext = useRangeSliderContext();
 
-    if (!rangeSliderContext)
-      throw new Error(
-        'RangeSliderThumb should be within RangeSlider or RangeSliderProvider',
-      );
-
-    const { getThumbProps, getInputProps, state } = rangeSliderContext;
+    const { getThumbProps, getInputProps, state } = useRangeSliderContext(
+      'RangeSliderThumb should be within RangeSlider or RangeSliderProvider',
+    );
 
     return (
       <julo.div
