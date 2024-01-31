@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/react",
-  "version": "0.0.1-alpha.29",
+  "version": "0.0.1-alpha.30",
   "description": "React UI components built with React and Emotion",
   "keywords": ["react"],
   "main": "src/index.ts",

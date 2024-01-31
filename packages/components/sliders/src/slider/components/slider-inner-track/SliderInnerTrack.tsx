@@ -7,14 +7,9 @@ import { SliderInnerTrackProps } from './types';
 const SliderInnerTrack = forwardRef<SliderInnerTrackProps, 'div'>(
   (props, ref) => {
     const { className, ...resProps } = props;
-    const sliderContext = useSliderContext();
-
-    if (!sliderContext)
-      throw new Error(
-        'SliderInnerTrack should be within Slider or SliderProvider',
-      );
-
-    const { getInnerTrackProps } = sliderContext;
+    const { getInnerTrackProps } = useSliderContext(
+      'SliderInnerTrack should be within Slider or SliderProvider',
+    );
 
     return (
       <julo.div

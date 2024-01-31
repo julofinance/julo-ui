@@ -6,8 +6,10 @@ export type CheckboxGroupContextProps = Pick<
   'onChange' | 'value' | 'isDisabled'
 >;
 
-export const [CheckboxGroupProvider, useCheckboxGroupContext] =
-  createContext<CheckboxGroupContextProps>({
-    name: 'CheckboxGroupContext',
-    strict: false,
-  });
+export const [CheckboxGroupProvider, useCheckboxGroupContext] = createContext<
+  CheckboxGroupContextProps,
+  false
+>({
+  name: 'CheckboxGroupContext',
+  strict: false,
+});

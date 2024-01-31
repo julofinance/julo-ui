@@ -7,14 +7,9 @@ import { RangeSliderInnerTrackProps } from './types';
 const RangeSliderInnerTrack = forwardRef<RangeSliderInnerTrackProps, 'div'>(
   (props, ref) => {
     const { className, ...resProps } = props;
-    const rangeSliderContext = useRangeSliderContext();
-
-    if (!rangeSliderContext)
-      throw new Error(
-        'RangeSliderInnerTrack should be within RangeSlider or RangeSliderProvider',
-      );
-
-    const { getInnerTrackProps } = rangeSliderContext;
+    const { getInnerTrackProps } = useRangeSliderContext(
+      'RangeSliderInnerTrack should be within RangeSlider or RangeSliderProvider',
+    );
 
     return (
       <julo.div

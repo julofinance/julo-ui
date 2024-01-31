@@ -11,14 +11,10 @@ import { RangeSliderTrackProps } from './types';
 const RangeSliderTrack = forwardRef<RangeSliderTrackProps, 'div'>(
   (props, ref) => {
     const { className, ...resProps } = props;
-    const rangeSliderContext = useRangeSliderContext();
 
-    if (!rangeSliderContext)
-      throw new Error(
-        'RangeSliderTrack should be within Slider or SliderProvider',
-      );
-
-    const { getTrackProps, state } = rangeSliderContext;
+    const { getTrackProps, state } = useRangeSliderContext(
+      'RangeSliderTrack should be within Slider or SliderProvider',
+    );
 
     return (
       <julo.div

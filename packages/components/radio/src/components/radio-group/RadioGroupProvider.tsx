@@ -7,8 +7,10 @@ export type RadioGroupContextProps = Pick<
   'value' | 'name' | 'isDisabled' | 'isFocusable' | 'onChange'
 >;
 
-export const [RadioGroupProvider, useRadioGroupContext] =
-  createContext<RadioGroupContextProps>({
-    name: 'RadioGroupContext',
-    strict: false,
-  });
+export const [RadioGroupProvider, useRadioGroupContext] = createContext<
+  RadioGroupContextProps,
+  false
+>({
+  name: 'RadioGroupContext',
+  strict: false,
+});

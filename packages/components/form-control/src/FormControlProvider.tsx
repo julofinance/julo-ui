@@ -13,7 +13,8 @@ type FormControlProviderProps = Omit<
 >;
 
 const [FormControlProvider, useFormControlContext] = createContext<
-  FormControlProviderProps | undefined
+  FormControlProviderProps | undefined,
+  false
 >({
   strict: false,
   name: 'FormControlContext',
