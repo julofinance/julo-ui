@@ -23,6 +23,7 @@ const AlertIcon = forwardRef<AlertIconProps, 'div'>((props, ref) => {
       {...(placement && { 'data-icon-placement': placement })}
       {...resProps}
       __css={alertIconCx}
+      {...resProps}
     >
       <Icon />
     </julo.div>
