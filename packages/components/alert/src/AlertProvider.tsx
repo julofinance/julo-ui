@@ -1,8 +1,8 @@
 import { createContext } from '@julo-ui/context';
 
-import type { UseAlertProps } from './types';
+import type { AlertProps } from './types';
 
-interface AlertContextProps extends UseAlertProps {}
+type AlertContextProps = Pick<AlertProps, 'status'>;
 
 const [AlertProvider, useAlertContext] = createContext<AlertContextProps>({
   name: 'AlertContext',

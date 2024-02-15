@@ -10,8 +10,11 @@ describe('Accessibility', () => {
 
 describe('Alert', () => {
   test('should render Alert correctly', () => {
-    render(<Alert>Hello World</Alert>);
+    const { container } = render(<Alert>Hello World</Alert>);
+    const svgEl =
+      container.firstElementChild?.getAttribute('data-alert-status');
 
+    expect(svgEl).toContain('neutrals');
     screen.getByText('Hello World');
   });
 
@@ -122,42 +125,42 @@ describe('Alert', () => {
   });
 
   test('should render Alert with Icon and Title correctly', () => {
-    const { getByTestId } = render(
+    const { container } = render(
       <Alert>
         <AlertIcon data-testid='icon' />
         <AlertTitle>Alert Icon and Title</AlertTitle>
       </Alert>,
     );
-    const icon = getByTestId('icon');
+    const svgEl = container.querySelector('svg');
 
-    expect(icon.dataset.icon?.toString()).toContain('neutrals');
+    expect(svgEl?.getAttribute('data-icon')).toContain('neutrals');
     screen.getByText('Alert Icon and Title');
   });
 
   test('should render Alert with Icon and Description correctly', () => {
-    const { getByTestId } = render(
+    const { container } = render(
       <Alert>
         <AlertIcon data-testid='icon' />
         <AlertDescription>Alert Icon and Description</AlertDescription>
       </Alert>,
     );
-    const icon = getByTestId('icon');
+    const svgEl = container.querySelector('svg');
 
-    expect(icon.dataset.icon?.toString()).toContain('neutrals');
+    expect(svgEl?.getAttribute('data-icon')).toContain('neutrals');
     screen.getByText('Alert Icon and Description');
   });
 
   test('should render Alert with Icon "Positive", Title and Description correctly', () => {
-    const { getByTestId } = render(
+    const { container } = render(
       <Alert status='positive'>
         <AlertIcon data-testid='icon' />
         <AlertTitle>Alert Title</AlertTitle>
         <AlertDescription>Alert Description</AlertDescription>
       </Alert>,
     );
-    const icon = getByTestId('icon');
+    const svgEl = container.querySelector('svg');
 
-    expect(icon.dataset.icon?.toString()).toContain('positive');
+    expect(svgEl?.getAttribute('data-icon')).toContain('positive');
     screen.getByText('Alert Title');
     screen.getByText('Alert Description');
   });

@@ -1,6 +1,6 @@
-import { julo, PropsOf } from '@julo-ui/system';
+import { julo, HTMLJuloProps } from '@julo-ui/system';
 
-export function InfoIcon(props: PropsOf<typeof julo.svg>) {
+export function InfoIcon(props: HTMLJuloProps<'svg'>) {
   return (
     <julo.svg
       width={16}
@@ -15,7 +15,7 @@ export function InfoIcon(props: PropsOf<typeof julo.svg>) {
   );
 }
 
-export function NegativeIcon(props: PropsOf<typeof julo.svg>) {
+export function NegativeIcon(props: HTMLJuloProps<'svg'>) {
   return (
     <julo.svg
       width={16}
@@ -34,7 +34,7 @@ export function NegativeIcon(props: PropsOf<typeof julo.svg>) {
   );
 }
 
-export function PositiveIcon(props: PropsOf<typeof julo.svg>) {
+export function PositiveIcon(props: HTMLJuloProps<'svg'>) {
   return (
     <julo.svg
       width={16}
@@ -53,7 +53,7 @@ export function PositiveIcon(props: PropsOf<typeof julo.svg>) {
   );
 }
 
-export function WarningIcon(props: PropsOf<typeof julo.svg>) {
+export function WarningIcon(props: HTMLJuloProps<'svg'>) {
   return (
     <julo.svg
       width={16}
@@ -72,7 +72,7 @@ export function WarningIcon(props: PropsOf<typeof julo.svg>) {
   );
 }
 
-export function NeutralsIcon(props: PropsOf<typeof julo.svg>) {
+export function NeutralsIcon(props: HTMLJuloProps<'svg'>) {
   return (
     <julo.svg
       width={16}

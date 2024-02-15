@@ -7,12 +7,12 @@ import { alertTitle } from './styles';
 import type { AlertTitleProps } from './types';
 
 const AlertTitle = forwardRef<AlertTitleProps, 'div'>((props, ref) => {
-  const { children, className, css, sx, ...resProps } = props;
+  const { children, className, sx, ...resProps } = props;
   const alertContext = useAlertContext();
 
   if (!alertContext) throw new Error('AlertIcon should be within Alert');
 
-  const { status } = alertContext;
+  const { status = 'neutrals' } = alertContext;
 
   return (
     <Typography
@@ -21,7 +21,6 @@ const AlertTitle = forwardRef<AlertTitleProps, 'div'>((props, ref) => {
       type='caption'
       ref={ref}
       sx={{ ...alertTitle[status], ...sx }}
-      css={css}
       className={cx('julo-alert__title', className)}
       {...resProps}
     >

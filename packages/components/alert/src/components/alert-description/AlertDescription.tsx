@@ -8,12 +8,12 @@ import type { AlertDescriptionProps } from './types';
 
 const AlertDescription = forwardRef<AlertDescriptionProps, 'div'>(
   (props, ref) => {
-    const { children, className, css, sx, ...resProps } = props;
+    const { children, className, sx, ...resProps } = props;
     const alertContext = useAlertContext();
 
     if (!alertContext) throw new Error('AlertIcon should be within Alert');
 
-    const { status } = alertContext;
+    const { status = 'neutrals' } = alertContext;
 
     return (
       <Typography
@@ -22,7 +22,6 @@ const AlertDescription = forwardRef<AlertDescriptionProps, 'div'>(
         type='caption'
         ref={ref}
         sx={{ ...alertDescription[status], ...sx }}
-        css={css}
         className={cx('julo-alert__description', className)}
         {...resProps}
       >

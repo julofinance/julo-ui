@@ -12,7 +12,7 @@ const AlertIcon = forwardRef<AlertIconProps, 'div'>((props, ref) => {
 
   if (!alertContext) throw new Error('AlertIcon should be within Alert');
 
-  const { status } = alertContext;
+  const { status = 'neutrals' } = alertContext;
   const Icon = useHandleIcon({ status: status });
 
   return (
@@ -22,8 +22,9 @@ const AlertIcon = forwardRef<AlertIconProps, 'div'>((props, ref) => {
       className={cx('julo-alert__icon', className)}
       sx={{ ...alertIconStatusSx[status], ...sx }}
       __css={alertIconCx}
+      {...resProps}
     >
-      <Icon {...resProps} />
+      <Icon />
     </julo.div>
   );
 });
