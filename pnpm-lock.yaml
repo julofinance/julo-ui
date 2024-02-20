@@ -708,6 +708,19 @@ importers:
         specifier: workspace:*
         version: link:../../core/system
 
+  packages/pluggables/pin:
+    dependencies:
+      '@emotion/react':
+        specifier: ^11.10.6
+        version: 11.10.6(@types/react@18.2.6)(react@18.2.0)
+      react:
+        specifier: '>=18'
+        version: 18.2.0
+    devDependencies:
+      '@julo-ui/system':
+        specifier: workspace:*
+        version: link:../../core/system
+
   packages/pluggables/plug:
     dependencies:
       '@julo-ui/text-field':
