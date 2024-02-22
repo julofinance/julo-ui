@@ -1,6 +1,6 @@
 import { callAllFn } from '@julo-ui/function-utils';
 import { CircularProgress } from '@julo-ui/progress';
-import { forwardRef } from '@julo-ui/system';
+import { cx, forwardRef } from '@julo-ui/system';
 import FormControl, {
   FormErrorMessage,
   FormHelperText,
@@ -50,13 +50,19 @@ const TextField = forwardRef<TextFieldProps, 'div'>((props, ref) => {
     value,
     optionalIndicator,
     requiredIndicator,
+    className,
     ...resProps
   } = props;
 
   const isShowLoadingIndicator = isLoading && !hideLoadingIndicator;
 
   return (
-    <FormControl ref={ref} isLoading={isLoading} {...resProps}>
+    <FormControl
+      className={cx('julo-text-field', className)}
+      ref={ref}
+      isLoading={isLoading}
+      {...resProps}
+    >
       {label && (
         <FormLabel
           optionalIndicator={optionalIndicator}

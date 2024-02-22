@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/text-field",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A complete form control that contains input, label, helper text, error message.",
   "keywords": ["text-field"],
   "main": "src/index.ts",
