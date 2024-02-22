@@ -8,16 +8,19 @@
 /.storybook/ @fransiscus-hermanto @fransiscushermanto
 
 # packages
+/packages/components/badge @fransiscus-hermanto @fransiscushermanto
 /packages/components/button @fransiscus-hermanto @fransiscushermanto
 /packages/components/card @albertusip
 /packages/components/checkbox @fransiscus-hermanto @fransiscushermanto
 /packages/components/form-control @fransiscus-hermanto @fransiscushermanto
 /packages/components/input @fransiscus-hermanto @fransiscushermanto
+/packages/components/otp-input @fransiscus-hermanto @fransiscushermanto
 /packages/components/progress @fransiscus-hermanto @fransiscushermanto
 /packages/components/provider @fransiscus-hermanto @fransiscushermanto
 /packages/components/radio @fransiscus-hermanto @fransiscushermanto
 /packages/components/react @fransiscus-hermanto @fransiscushermanto
 /packages/components/sliders @fransiscus-hermanto @fransiscushermanto
+/packages/components/switch @fransiscus-hermanto @fransiscushermanto
 /packages/components/textarea @fransiscus-hermanto @fransiscushermanto
 /packages/components/typography @fransiscus-hermanto @fransiscushermanto
 

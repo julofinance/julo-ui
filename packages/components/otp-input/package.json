@@ -1,8 +1,8 @@
 {
-  "name": "@julo-ui/react",
-  "version": "0.0.1-alpha.32",
-  "description": "React UI components built with React and Emotion",
-  "keywords": ["react"],
+  "name": "@julo-ui/otp-input",
+  "version": "0.0.1",
+  "description": "React Input Component for entering sequences of digits",
+  "keywords": ["otp-input"],
   "main": "src/index.ts",
   "files": ["dist"],
   "sideEffects": false,
@@ -21,7 +21,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/julofinance/julo-ui.git",
-    "directory": "packages/components/react"
+    "directory": "packages/components/otp-input"
   },
   "author": "Fransiscus Hermanto",
   "license": "ISC",
@@ -30,31 +30,21 @@
   },
   "homepage": "https://github.com/julofinance/julo-ui#readme",
   "dependencies": {
-    "@julo-ui/badge": "workspace:*",
-    "@julo-ui/button": "workspace:*",
-    "@julo-ui/card": "workspace:*",
-    "@julo-ui/checkbox": "workspace:*",
-    "@julo-ui/form-control": "workspace:*",
+    "@chakra-ui/descendant": "3.1.0",
+    "@emotion/react": "^11.10.6",
     "@julo-ui/input": "workspace:*",
-    "@julo-ui/otp-input": "workspace:*",
-    "@julo-ui/progress": "workspace:*",
-    "@julo-ui/provider": "workspace:*",
-    "@julo-ui/radio": "workspace:*",
-    "@julo-ui/sliders": "workspace:*",
-    "@julo-ui/switch": "workspace:*",
-    "@julo-ui/system": "workspace:*",
-    "@julo-ui/textarea": "workspace:*",
-    "@julo-ui/typography": "workspace:*"
+    "@julo-ui/use-controllable-state": "workspace:*",
+    "@julo-ui/function-utils": "workspace:*",
+    "@julo-ui/dom-utils": "workspace:*",
+    "@julo-ui/context": "workspace:*"
   },
   "devDependencies": {
-    "@emotion/react": "^11.10.6",
-    "react": ">=18",
-    "react-dom": ">=18"
+    "@julo-ui/system": "workspace:*"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.6",
-    "react": ">=18",
-    "react-dom": ">=18"
+    "@julo-ui/system": "workspace:*",
+    "react": ">=18"
   },
   "clean-package": "../../../clean-package.config.json",
   "tsup": {
