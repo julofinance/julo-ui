@@ -6,7 +6,7 @@ export const otpInputFieldCx = css`
 
   padding: 0.75rem 0.8125rem;
   border: 1px solid var(--colors-neutrals-30);
-  border-radius: 0.5rem;
+  border-radius: var(--corner-md);
 
   text-align: center;
 

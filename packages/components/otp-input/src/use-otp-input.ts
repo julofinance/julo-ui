@@ -13,10 +13,10 @@ import {
 import type { UseOtpInputProps } from './types';
 
 export const [
-  PinInputDescendantsProvider,
-  usePinInputDescendantsContext,
-  usePinInputDescendants,
-  usePinInputDescendant,
+  OtpInputDescendantsProvider,
+  useOtpInputDescendantsContext,
+  useOtpInputDescendants,
+  useOtpInputDescendant,
 ] = createDescendantContext<HTMLInputElement>();
 
 export type UseOtpInputReturn = ReturnType<typeof useOtpInput>;
@@ -44,7 +44,7 @@ export function useOtpInput(props: UseOtpInputProps) {
   const rootId = `otp-input-${id}`;
   const fieldId = `otp-input-field-${id}`;
 
-  const descendants = usePinInputDescendants();
+  const descendants = useOtpInputDescendants();
 
   const {
     focusedIndex,
