@@ -30,6 +30,9 @@
   },
   "homepage": "https://github.com/julofinance/julo-ui#readme",
   "dependencies": {
+    "@julo-ui/otp-input": "workspace:*",
+    "@julo-ui/dom-utils": "workspace:*",
+    "@julo-ui/function-utils": "workspace:*",
     "@emotion/react": "^11.10.6"
   },
   "devDependencies": { "@julo-ui/system": "workspace:*" },

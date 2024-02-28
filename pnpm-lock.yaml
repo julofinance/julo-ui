@@ -713,6 +713,15 @@ importers:
       '@emotion/react':
         specifier: ^11.10.6
         version: 11.10.6(@types/react@18.2.6)(react@18.2.0)
+      '@julo-ui/dom-utils':
+        specifier: workspace:*
+        version: link:../../utilities/dom-utils
+      '@julo-ui/function-utils':
+        specifier: workspace:*
+        version: link:../../utilities/function-utils
+      '@julo-ui/otp-input':
+        specifier: workspace:*
+        version: link:../../components/otp-input
       react:
         specifier: '>=18'
         version: 18.2.0

@@ -14,6 +14,8 @@ export default {
   },
 } as Meta<typeof Pin>;
 
-const Template: Story<PinProps> = (args) => <Pin {...args} />;
+const Template: Story<PinProps> = (args) => (
+  <Pin allowPhysicalKeyboard {...args} />
+);
 
 export const PinTest = Template.bind({});

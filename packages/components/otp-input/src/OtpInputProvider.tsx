@@ -1,9 +1,12 @@
 import { createContext } from '@julo-ui/context';
 
-import { OtpInputDescendantsProvider } from './use-otp-input';
+import {
+  OtpInputDescendantsProvider,
+  useOtpInputDescendants,
+} from './use-otp-input';
 import type { OtpInputProviderProps, UseOtpInputContextProps } from './types';
 
-export const [UseOtpInputProvider, useOtpInputContext] =
+export const [OtpInputHookProvider, useOtpInputHookContext] =
   createContext<UseOtpInputContextProps>({
     name: 'UseOtpInputContext',
     providerName: '<UseOtpInputProvider />',
@@ -17,7 +20,14 @@ export function OtpInputProvider(props: OtpInputProviderProps) {
 
   return (
     <OtpInputDescendantsProvider value={descendants}>
-      <UseOtpInputProvider value={context}>{children}</UseOtpInputProvider>
+      <OtpInputHookProvider value={context}>{children}</OtpInputHookProvider>
     </OtpInputDescendantsProvider>
   );
+}
+
+export function useOtpInputContext() {
+  const descendants = useOtpInputDescendants();
+  const hookContext = useOtpInputHookContext();
+
+  return { descendants, ...hookContext };
 }
