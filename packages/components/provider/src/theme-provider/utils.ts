@@ -32,21 +32,25 @@ export function generateCommonCssVar(
   return result;
 }
 
-interface CallBackThemeReturn {
-  colors?: Theme['colors'];
-  fontSizes?: Theme['fontSizes'];
-  lineHeights?: Theme['lineHeights'];
-}
-
-type CallbackTheme = (defaultTheme: Theme) => CallBackThemeReturn;
+type CallbackTheme = (defaultTheme: Theme) => Theme;
 
 export const extendsTheme = (theme: Theme | CallbackTheme): Theme => {
   if (isFn(theme)) theme = theme(DEFAULT_THEME) as unknown as Theme;
 
+  const defaultThemeKeys = Object.keys(DEFAULT_THEME);
+  const defaultThemeVals = defaultThemeKeys.reduce(
+    (prevThemeVals, currentKey) => ({
+      ...prevThemeVals,
+      [currentKey]: {
+        ...DEFAULT_THEME[currentKey as keyof typeof DEFAULT_THEME],
+        ...(theme as Theme)[currentKey as keyof Theme],
+      },
+    }),
+    {},
+  );
+
   return {
     ...theme,
-    colors: { ...DEFAULT_THEME.colors, ...theme.colors },
-    fontSizes: { ...DEFAULT_THEME.fontSizes, ...theme.fontSizes },
-    lineHeights: { ...DEFAULT_THEME.lineHeights, ...theme.lineHeights },
+    ...defaultThemeVals,
   };
 };

@@ -6,4 +6,4 @@ import radius from './radius';
 
 const DEFAULT_THEME = { colors, fontSizes, lineHeights, shadows, radius };
 
-export { DEFAULT_THEME, colors, fontSizes, lineHeights };
+export { DEFAULT_THEME, colors, fontSizes, lineHeights, shadows, radius };

@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/button",
-  "version": "1.0.9",
+  "version": "1.0.11",
   "description": "A simple and accessible button component for Julo UI",
   "main": "src/index.ts",
   "files": ["dist"],
