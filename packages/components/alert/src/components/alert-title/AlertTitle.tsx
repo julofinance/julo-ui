@@ -8,11 +8,9 @@ import type { AlertTitleProps } from './types';
 
 const AlertTitle = forwardRef<AlertTitleProps, 'div'>((props, ref) => {
   const { children, className, sx, ...resProps } = props;
-  const alertContext = useAlertContext();
-
-  if (!alertContext) throw new Error('AlertIcon should be within Alert');
-
-  const { status = 'neutrals' } = alertContext;
+  const { status = 'neutrals' } = useAlertContext(
+    'AlertTitle should be within Alert',
+  );
 
   return (
     <Typography

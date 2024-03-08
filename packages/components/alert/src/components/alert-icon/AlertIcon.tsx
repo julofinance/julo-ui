@@ -8,11 +8,10 @@ import { AlertIconProps } from './types';
 
 const AlertIcon = forwardRef<AlertIconProps, 'div'>((props, ref) => {
   const { className, sx, ...resProps } = props;
-  const alertContext = useAlertContext();
+  const { status = 'neutrals' } = useAlertContext(
+    'AlertIcon should be within Alert',
+  );
 
-  if (!alertContext) throw new Error('AlertIcon should be within Alert');
-
-  const { status = 'neutrals' } = alertContext;
   const Icon = useHandleIcon({ status: status });
 
   return (
