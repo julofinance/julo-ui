@@ -12,7 +12,8 @@ export const cardCx = css`
 
   width: 100%;
 
-  > :not(:first-of-type) {
+  .julo-card__header + .julo-card__body,
+  .julo-card__body + .julo-card__footer {
     margin-top: 0.75rem;
   }
 `;
