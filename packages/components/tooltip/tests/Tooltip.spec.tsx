@@ -1,6 +1,7 @@
 import { render, screen, waitFor, fireEvent } from '@julo-ui/rtl-utils';
+import { julo } from '@julo-ui/react';
 
-import Tooltip, { TooltipControllerProps } from '../src';
+import { TooltipProps, Tooltip } from '../src';
 
 global.ResizeObserver = jest.fn().mockImplementation(() => ({
   observe: jest.fn(),
@@ -9,11 +10,11 @@ global.ResizeObserver = jest.fn().mockImplementation(() => ({
 }));
 
 describe('Tooltip attributes', () => {
-  const TooltipAttrs = ({ id, ...anchorParams }: TooltipControllerProps) => (
+  const TooltipAttrs = ({ id, ...anchorParams }: TooltipProps) => (
     <>
-      <span data-tooltip-id={id} {...anchorParams}>
+      <julo.span data-tooltip-id={id} {...anchorParams}>
         Lorem Ipsum
-      </span>
+      </julo.span>
       <Tooltip id={id} />
     </>
   );
@@ -77,7 +78,7 @@ describe('Tooltip attributes', () => {
 });
 
 describe('tooltip props', () => {
-  const TooltipProps = ({ id, ...tooltipParams }: TooltipControllerProps) => (
+  const TooltipProps = ({ id, ...tooltipParams }: TooltipProps) => (
     <>
       <button id={id}>Lorem Ipsum</button>
       <Tooltip {...tooltipParams} />

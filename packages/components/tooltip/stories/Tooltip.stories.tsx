@@ -1,5 +1,5 @@
 import { Story, Meta } from '@storybook/react';
-import { Tooltip, TooltipControllerProps } from '../src';
+import { Tooltip, TooltipProps } from '../src';
 import { Button, Typography } from '@julo-ui/react';
 import docs from './Tooltip.md';
 
@@ -15,16 +15,17 @@ export default {
   },
 } as Meta<typeof Tooltip>;
 
-const Basic: Story<TooltipControllerProps> = (args) => (
+const Basic: Story<TooltipProps> = (args) => (
   <>
     <Button data-tooltip-id='my-tooltip' data-tooltip-content='Tooltip'>
       Button
     </Button>
+
     <Tooltip {...args} id='my-tooltip' />
   </>
 );
 
-const AnchorSelectTemplate: Story<TooltipControllerProps> = (args) => (
+const AnchorSelectTemplate: Story<TooltipProps> = (args) => (
   <>
     <Button id='anchor-element-id'>Button</Button>
     <Tooltip
@@ -35,7 +36,7 @@ const AnchorSelectTemplate: Story<TooltipControllerProps> = (args) => (
   </>
 );
 
-const ChildrenTemplate: Story<TooltipControllerProps> = (args) => (
+const ChildrenTemplate: Story<TooltipProps> = (args) => (
   <>
     <Button id='anchor-element-id'>Button</Button>
     <Tooltip {...args} anchorSelect='#anchor-element-id'>
@@ -55,7 +56,7 @@ const ChildrenTemplate: Story<TooltipControllerProps> = (args) => (
   </>
 );
 
-const ClickableTemplate: Story<TooltipControllerProps> = (args) => (
+const ClickableTemplate: Story<TooltipProps> = (args) => (
   <>
     <Button id='anchor-element-id'>Button</Button>
     <Tooltip clickable {...args} anchorSelect='#anchor-element-id'>

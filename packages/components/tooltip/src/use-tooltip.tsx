@@ -27,7 +27,9 @@ export const useTooltip = (props: ShowTooltipProps) => {
     children,
   } = props;
 
-  const tooltipHideDelayTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const tooltipHideDelayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
   const [showTooltip, setShowTooltip] = useState(false);
   const [rendered, setRendered] = useState(false);
 

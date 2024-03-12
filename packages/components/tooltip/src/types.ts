@@ -61,8 +61,8 @@ export interface TooltipProps extends TooltipCommonProps {
    * @description activeAnchor
    * is an element which tooltip shown
    */
-  activeAnchor: HTMLElement | null;
-  setActiveAnchor: (anchor: HTMLElement | null) => void;
+  activeAnchor?: HTMLElement | null;
+  setActiveAnchor?: (anchor: HTMLElement | null) => void;
   content?: ReactNode;
 }
 
