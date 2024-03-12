@@ -57,13 +57,26 @@ interface TooltipCommonProps {
 }
 
 export interface TooltipProps extends TooltipCommonProps {
+  /**
+   * @description activeAnchor
+   * is an element which tooltip shown
+   */
   activeAnchor: HTMLElement | null;
   setActiveAnchor: (anchor: HTMLElement | null) => void;
   content?: ReactNode;
 }
 
-export interface TooltipControllerProps extends TooltipCommonProps {
+export interface UseTooltipProps extends TooltipCommonProps {
   content?: string;
+  render?: (render: {
+    content: string | null;
+    activeAnchor: HTMLElement | null;
+  }) => ChildrenType;
+  children?: ReactNode;
+}
+
+export interface TooltipProps extends TooltipCommonProps {
+  content?: React.ReactNode;
   render?: (render: {
     content: string | null;
     activeAnchor: HTMLElement | null;
@@ -89,4 +102,15 @@ export interface UseToolipPositionProps {
   middlewares?: Middlewares;
   activeAnchor: HTMLElement | null;
   isMounted: boolean;
+}
+
+export interface ShowTooltipProps
+  extends Omit<
+    TooltipCommonProps,
+    'className' | 'classNameArrow' | 'noArrow' | 'style'
+  > {
+  content: React.ReactNode;
+  tooltipRef: RefObject<HTMLDivElement>;
+  tooltipArrowRef: RefObject<null>;
+  children?: ReactNode;
 }

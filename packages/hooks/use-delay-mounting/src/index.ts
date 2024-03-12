@@ -17,6 +17,11 @@ export type DelayMountingState =
   | 'mounting'
   | 'mounted';
 
+/**
+ * Custom hook that delays the mounting and unmounting of a component.
+ * @param time The delay time in milliseconds (default: 50ms).
+ * @returns An object containing the current state, and functions to show and hide the component.
+ */
 const useDelayedMounting = (time = 50) => {
   const [state, setState] = useState<DelayMountingState>('unmounted');
   const show = () => {

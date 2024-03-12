@@ -1,8 +1,13 @@
 import { useCallback, useState } from 'react';
 
-import { computeTooltipPosition } from '../utils/compute-positions';
-import { IPosition, PlacesType, UseToolipPositionProps } from './types';
+import { computeTooltipPosition } from '../../utils/compute-positions';
+import { IPosition, PlacesType, UseToolipPositionProps } from '../types';
 
+/**
+ * Custom hook for managing the position of a tooltip.
+ * @param {UseToolipPositionProps} props - The properties for configuring the tooltip position.
+ * @returns {Object} - An object containing the actual placement, tooltip styles, arrow styles, and a function to update the tooltip position.
+ */
 const useTooltipPosition = ({
   place,
   offset,
@@ -18,6 +23,10 @@ const useTooltipPosition = ({
   const [tooltipStyles, setTooltipStyles] = useState({});
   const [arrowStyles, setArrowStyles] = useState({});
 
+  /**
+   * Overrides the position of the tooltip based on the provided coordinates.
+   * @param {IPosition} position - The x and y coordinates of the tooltip.
+   */
   const overrideTooltipPosition = ({ x, y }: IPosition) => {
     // https://floating-ui.com/docs/virtual-elements
     const virtualElement = {
@@ -54,6 +63,11 @@ const useTooltipPosition = ({
     });
   };
 
+  /**
+   * Updates the position of the tooltip based on the provided parameters.
+   * If a specific position is set, it overrides the regular positioning.
+   * @returns {void}
+   */
   const updateTooltipPosition = useCallback(() => {
     if (position) {
       // if `position` is set, override regular positioning
