@@ -19,6 +19,7 @@ const Radio = forwardRef<RadioProps, 'input'>((props, ref) => {
     inputRef = null,
     value,
     name: nameProp,
+    size = '1rem',
     ...resProps
   } = props;
 
@@ -60,7 +61,7 @@ const Radio = forwardRef<RadioProps, 'input'>((props, ref) => {
       className={cx('julo-radio', className)}
       ref={ref}
       {...getRootProps()}
-      __css={radioCx}
+      __css={radioCx(size)}
     >
       <julo.input
         {...getInputProps(

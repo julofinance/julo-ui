@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 
-export const radioCx = css`
-  --radio-size: 1rem;
+export const radioCx = (size: string | number) => css`
+  --radio-size: ${typeof size === 'number' ? `${size}px` : size};
 
   cursor: pointer;
   display: inline-flex;

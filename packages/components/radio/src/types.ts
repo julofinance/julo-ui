@@ -10,7 +10,10 @@ type BaseInputProps = Pick<
   'onBlur' | 'checked' | 'defaultChecked'
 >;
 
-type RadioControlProps = Omit<HTMLJuloProps<'input'>, keyof UseRadioProps>;
+type RadioControlProps = Omit<
+  HTMLJuloProps<'input'>,
+  keyof UseRadioProps | 'size'
+>;
 
 export interface RadioProps
   extends UseRadioProps,
@@ -27,6 +30,7 @@ export interface RadioProps
    */
   inputProps?: DOMAttributes<HTMLInputElement>;
   inputRef?: React.RefObject<HTMLInputElement>;
+  size?: string | number;
 }
 
 export interface RadioState {

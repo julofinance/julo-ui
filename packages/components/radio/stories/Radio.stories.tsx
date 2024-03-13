@@ -33,6 +33,12 @@ const TemplateRadioGroup: Story<RadioGroupProps> = (args) => (
 );
 
 export const RadioDefault = Template.bind({});
+RadioDefault.argTypes = {
+  size: {
+    defaultValue: '1rem',
+    control: 'text',
+  },
+};
 
 export const RadioWithRadioGroup = () => {
   const [value, setValue] = useState('');
