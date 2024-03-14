@@ -1,4 +1,4 @@
-import { Dict, HTMLJuloProps } from '@julo-ui/system';
+import { HTMLJuloProps } from '@julo-ui/system';
 
 export interface RadioGroupProps
   extends UseRadioGroupProps,
@@ -16,7 +16,7 @@ export interface RadioGroupProps
   gap?: string | number;
 }
 
-export interface UseRadioGroupProps extends Dict {
+export interface UseRadioGroupProps {
   /**
    * The value of the radio to be `checked`
    * (in controlled mode)
