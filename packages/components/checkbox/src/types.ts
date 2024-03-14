@@ -63,6 +63,13 @@ export interface UseCheckboxProps {
    *
    * @default false
    */
+  checked?: boolean;
+  /**
+   * If `true`, the checkbox will be checked.
+   * You'll need to pass `onChange` to update its value (since it is now controlled)
+   *
+   * @default false
+   */
   isChecked?: boolean;
   /**
    * If `true`, the checkbox will be indeterminate.

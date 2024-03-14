@@ -46,6 +46,10 @@ export const CheckboxDisabled = () => (
   </Checkbox>
 );
 
+export const CheckboxCheckedNatively = () => (
+  <Checkbox checked>Disabled</Checkbox>
+);
+
 export const CheckboxNotFocusable = () => (
   <>
     <Checkbox isFocusable={false}>not focusable</Checkbox>

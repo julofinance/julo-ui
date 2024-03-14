@@ -17,6 +17,7 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
   const {
     defaultChecked,
     isChecked: isCheckedProp,
+    checked,
     isFocusable,
     onChange = _noop,
     isIndeterminate,
@@ -64,8 +65,13 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
   const [isRootLabelElement, setIsRootLabelElement] = useState(true);
   const [isCheckedLocal, setIsCheckedLocal] = useState(Boolean(defaultChecked));
 
+  const isControlledNative = checked !== undefined;
   const isControlled = isCheckedProp !== undefined;
-  const isChecked = isControlled ? isCheckedProp : isCheckedLocal;
+  const isChecked = isControlled
+    ? isCheckedProp
+    : isControlledNative
+    ? checked
+    : isCheckedLocal;
   const isTrulyDisabled = isDisabled && !isFocusable;
 
   const state: CheckboxState = {

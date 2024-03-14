@@ -20,12 +20,13 @@ const Radio = forwardRef<RadioProps, 'input'>((props, ref) => {
     value,
     name: nameProp,
     size = '1rem',
+    checked,
     ...resProps
   } = props;
 
   const groupContext = useRadioGroupContext();
 
-  let isChecked = isCheckedProp;
+  let isChecked = isCheckedProp || checked;
   let onChange = onChangeProp;
 
   if (!!groupContext) {

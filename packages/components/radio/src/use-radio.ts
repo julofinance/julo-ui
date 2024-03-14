@@ -18,6 +18,7 @@ export function useRadio(props: UseRadioProps = {}) {
   const {
     defaultChecked,
     isChecked: isCheckedProp,
+    checked,
     isFocusable,
     onChange = _noop,
     name,
@@ -69,8 +70,13 @@ export function useRadio(props: UseRadioProps = {}) {
   const [isRootLabelElement, setIsRootLabelElement] = useState(true);
   const [isCheckedLocal, setIsCheckedLocal] = useState(Boolean(defaultChecked));
 
+  const isControlledNatively = checked !== undefined;
   const isControlled = isCheckedProp !== undefined;
-  const isChecked = isControlled ? isCheckedProp : isCheckedLocal;
+  const isChecked = isControlled
+    ? isCheckedProp
+    : isControlledNatively
+    ? checked
+    : isCheckedLocal;
   const isTrulyDisabled = isDisabled && !isFocusable;
 
   const state: RadioState = {

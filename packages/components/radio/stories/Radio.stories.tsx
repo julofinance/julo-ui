@@ -40,6 +40,8 @@ RadioDefault.argTypes = {
   },
 };
 
+export const RadioCheckedNatively = () => <Radio checked value='one' />;
+
 export const RadioWithRadioGroup = () => {
   const [value, setValue] = useState('');
   return (

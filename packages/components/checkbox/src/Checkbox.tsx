@@ -18,6 +18,7 @@ const Checkbox = forwardRef<CheckboxProps, 'input'>((props, ref) => {
     iconColor,
     iconSize,
     icon = <CheckboxIcon />,
+    checked,
     isChecked: isCheckedProp,
     isDisabled,
     onChange: onChangeProp,
@@ -29,7 +30,7 @@ const Checkbox = forwardRef<CheckboxProps, 'input'>((props, ref) => {
 
   const groupContext = useCheckboxGroupContext();
 
-  let isChecked = isCheckedProp;
+  let isChecked = isCheckedProp || checked;
 
   if (groupContext?.value && value) {
     isChecked = groupContext.value.includes(value);
