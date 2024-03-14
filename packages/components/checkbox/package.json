@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/checkbox",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "A React Component for Checkbox used in forms",
   "keywords": ["checkbox"],
   "main": "src/index.ts",
