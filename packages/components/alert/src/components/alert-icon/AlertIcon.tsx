@@ -7,7 +7,7 @@ import { alertIconStatusSx, alertIconCx } from './styles';
 import { AlertIconProps } from './types';
 
 const AlertIcon = forwardRef<AlertIconProps, 'div'>((props, ref) => {
-  const { className, sx, ...resProps } = props;
+  const { placement, className, sx, ...resProps } = props;
   const { status = 'neutrals' } = useAlertContext(
     'AlertIcon should be within Alert',
   );
@@ -20,8 +20,9 @@ const AlertIcon = forwardRef<AlertIconProps, 'div'>((props, ref) => {
       data-status={status}
       className={cx('julo-alert__icon', className)}
       sx={{ ...alertIconStatusSx[status], ...sx }}
-      __css={alertIconCx}
+      data-element-placement={placement}
       {...resProps}
+      __css={alertIconCx}
     >
       <Icon />
     </julo.div>

@@ -4,10 +4,13 @@ import { SystemStyleObject } from '@julo-ui/system';
 import { AlertStatus } from '../../types';
 
 export const alertIconCx = css`
-  &.julo-alert__icon:first-of-type {
+  &[data-element-placement='left'] {
+    order: 0;
     margin-right: 0.5rem;
   }
-  &.julo-alert__icon:last-of-type {
+
+  &[data-element-placement='right'] {
+    order: 999;
     margin-left: 0.5rem;
   }
 `;

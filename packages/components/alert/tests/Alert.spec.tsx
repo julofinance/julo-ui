@@ -153,14 +153,27 @@ describe('Alert', () => {
   test('should render Alert with Icon "Positive", Title and Description correctly', () => {
     const { container } = render(
       <Alert status='positive'>
-        <AlertIcon data-testid='icon' />
+        <AlertIcon data-testid='iconLeft' placement='left' />
         <AlertTitle>Alert Title</AlertTitle>
+        <AlertIcon data-testid='iconMiddle' />
         <AlertDescription>Alert Description</AlertDescription>
+        <AlertIcon data-testid='iconRight' placement='right' />
       </Alert>,
     );
+    const iconLeftElement = screen.getByTestId('iconLeft');
+    const iconMiddleElement = screen.getByTestId('iconMiddle');
+    const iconRightElement = screen.getByTestId('iconRight');
     const svgEl = container.querySelector('svg');
 
+    expect(iconLeftElement.getAttribute('data-element-placement')).toContain(
+      'left',
+    );
+    expect(iconMiddleElement.getAttribute('data-element-placement')).toBeNull();
+    expect(iconRightElement.getAttribute('data-element-placement')).toContain(
+      'right',
+    );
     expect(svgEl?.getAttribute('data-icon')).toContain('positive');
+
     screen.getByText('Alert Title');
     screen.getByText('Alert Description');
   });

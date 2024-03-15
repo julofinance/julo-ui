@@ -1,13 +1,15 @@
 import { Story, Meta } from '@storybook/react';
 import { css } from '@emotion/react';
 
+import { julo } from '@julo-ui/system';
+import { Typography } from '@julo-ui/typography';
+
 import DefaultAlert, {
   AlertDescription,
   AlertIcon,
   AlertProps,
   AlertTitle,
 } from '../src';
-import { Typography } from '@julo-ui/typography';
 
 export default {
   title: 'Components/Alert',
@@ -26,7 +28,7 @@ const Alert: Story<AlertProps> = (args) => <DefaultAlert {...args} />;
 export const Info = () => {
   return (
     <Alert status='info'>
-      <AlertIcon />
+      <AlertIcon placement='left' />
       <div>
         <AlertTitle>Hello!</AlertTitle>
         <AlertDescription>
@@ -41,7 +43,7 @@ export const Info = () => {
 export const Negative = () => {
   return (
     <Alert status='negative'>
-      <AlertIcon />
+      <AlertIcon placement='left' />
       <div>
         <AlertTitle>500 Internal Server Error</AlertTitle>
         <AlertDescription>
@@ -56,7 +58,7 @@ export const Negative = () => {
 export const Positive = () => {
   return (
     <Alert status='positive'>
-      <AlertIcon />
+      <AlertIcon placement='left' />
       <div>
         <AlertTitle>Application submitted!</AlertTitle>
         <AlertDescription>
@@ -71,7 +73,7 @@ export const Positive = () => {
 export const Warning = () => {
   return (
     <Alert status='warning'>
-      <AlertIcon />
+      <AlertIcon placement='left' />
       <div>
         <AlertTitle>Hello User</AlertTitle>
         <AlertDescription>Seems your bill is due, pay it now</AlertDescription>
@@ -83,34 +85,46 @@ export const Warning = () => {
 export const Neutrals = () => {
   return (
     <Alert status='neutrals'>
-      <AlertIcon />
+      <AlertIcon placement='left' />
       <div>
         <AlertTitle>Hello User</AlertTitle>
-        <AlertDescription>Julo never ask your NIK and Password</AlertDescription>
+        <AlertDescription>
+          Julo never ask your NIK and Password
+        </AlertDescription>
       </div>
     </Alert>
   );
 };
 
-const style = css`
+export const AlertWithIconPlacement = () => {
+  return (
+    <Alert status='warning'>
+      <AlertIcon placement='left' />
+      <julo.div sx={{ width: '100%', flex: '1' }}>
+        <AlertTitle>Hello User</AlertTitle>
+        <AlertDescription>Seems your bill is due, pay it now</AlertDescription>
+      </julo.div>
+      <AlertIcon placement='right' />
+    </Alert>
+  );
+};
+
+const styleCustom = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top: 15px;
   padding-bottom: 15px;
 
-  .julo-alert__icon {
-    margin: 0px !important;
-    svg {
-      width: 50px;
-      height: 50px;
-    }
+  svg {
+    width: 50px;
+    height: 50px;
   }
 `;
 
 export const AlertCustom = () => {
   return (
-    <Alert status='positive' css={style}>
+    <Alert status='positive' css={styleCustom}>
       <AlertIcon />
       <AlertTitle>
         <Typography bold type='body'>
