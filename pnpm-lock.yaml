@@ -613,6 +613,9 @@ importers:
       '@floating-ui/dom':
         specifier: ^1.5.3
         version: 1.5.3
+      '@julo-ui/react':
+        specifier: workspace:*
+        version: link:../react
       '@julo-ui/use-delay-mounting':
         specifier: workspace:*
         version: link:../../hooks/use-delay-mounting
