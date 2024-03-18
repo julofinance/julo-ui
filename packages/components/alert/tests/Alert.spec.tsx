@@ -144,8 +144,10 @@ describe('Alert', () => {
         <AlertDescription>Alert Icon and Description</AlertDescription>
       </Alert>,
     );
+    const iconLeft = screen.getByTestId('icon');
     const svgEl = container.querySelector('svg');
 
+    expect(iconLeft.getAttribute('data-icon-placement')).toContain('left');
     expect(svgEl?.getAttribute('data-icon')).toContain('neutrals');
     screen.getByText('Alert Icon and Description');
   });
@@ -155,23 +157,19 @@ describe('Alert', () => {
       <Alert status='positive'>
         <AlertIcon data-testid='iconLeft' placement='left' />
         <AlertTitle>Alert Title</AlertTitle>
-        <AlertIcon data-testid='iconMiddle' />
+        <AlertIcon data-testid='iconMiddle' placement={null} />
         <AlertDescription>Alert Description</AlertDescription>
         <AlertIcon data-testid='iconRight' placement='right' />
       </Alert>,
     );
-    const iconLeftElement = screen.getByTestId('iconLeft');
-    const iconMiddleElement = screen.getByTestId('iconMiddle');
-    const iconRightElement = screen.getByTestId('iconRight');
+    const iconLeft = screen.getByTestId('iconLeft');
+    const iconMiddle = screen.getByTestId('iconMiddle');
+    const iconRight = screen.getByTestId('iconRight');
     const svgEl = container.querySelector('svg');
 
-    expect(iconLeftElement.getAttribute('data-element-placement')).toContain(
-      'left',
-    );
-    expect(iconMiddleElement.getAttribute('data-element-placement')).toBeNull();
-    expect(iconRightElement.getAttribute('data-element-placement')).toContain(
-      'right',
-    );
+    expect(iconLeft.getAttribute('data-icon-placement')).toContain('left');
+    expect(iconMiddle.getAttribute('data-icon-placement')).toBeNull();
+    expect(iconRight.getAttribute('data-icon-placement')).toContain('right');
     expect(svgEl?.getAttribute('data-icon')).toContain('positive');
 
     screen.getByText('Alert Title');

@@ -10,6 +10,7 @@ export type AlertStatus =
 export interface AlertProps extends HTMLJuloProps<'div'> {
   /**
    * @default "neutrals"
+   * The `status` of the Alert will affect style colors and Typography
    */
   status?: AlertStatus;
 }

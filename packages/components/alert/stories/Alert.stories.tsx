@@ -109,23 +109,22 @@ export const AlertWithIconPlacement = () => {
   );
 };
 
-const styleCustom = css`
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-top: 15px;
-  padding-bottom: 15px;
-
-  svg {
-    width: 50px;
-    height: 50px;
-  }
-`;
-
 export const AlertCustom = () => {
+  const styleCustom = css`
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    svg {
+      width: 50px;
+      height: 50px;
+    }
+  `;
   return (
     <Alert status='positive' css={styleCustom}>
-      <AlertIcon />
+      <AlertIcon placement={null} />
       <AlertTitle>
         <Typography bold type='body'>
           Application submitted!
