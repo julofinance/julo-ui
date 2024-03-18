@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { autoUpdate } from '@floating-ui/dom';
 import { useSafeLayoutEffect } from '@julo-ui/use-safe-layout-effect';
 import useDelayedMounting from '@julo-ui/use-delay-mounting';
@@ -26,6 +26,10 @@ export const useTooltip = (props: ShowTooltipProps) => {
     tooltipRef,
     children,
   } = props;
+
+  const uuid = useId();
+  const uid = id ?? uuid;
+  const tooltipId = `tooltip-${uid}`;
 
   const tooltipHideDelayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(
     null,
@@ -66,6 +70,14 @@ export const useTooltip = (props: ShowTooltipProps) => {
     show: showElement,
     hide: hideElement,
   } = useDelayedMounting();
+
+  const getRootProps = useCallback(
+    () => ({
+      role: 'tooltip',
+      'aria-describedby': tooltipId,
+    }),
+    [tooltipId],
+  );
 
   /**
    * useLayoutEffect runs before useEffect,
@@ -369,5 +381,6 @@ export const useTooltip = (props: ShowTooltipProps) => {
     arrowStyles,
     tooltipStyles,
     renderedContent,
+    getRootProps,
   };
 };

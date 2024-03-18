@@ -2,7 +2,6 @@ import { useRef, useImperativeHandle } from 'react';
 
 import { cx, forwardRef, julo } from '@julo-ui/system';
 
-import { useSafeLayoutEffect } from '@julo-ui/use-safe-layout-effect';
 import { useTooltip } from './use-tooltip';
 
 import { arrowCx, tooltipCx } from './styles';
@@ -32,9 +31,6 @@ const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
 
   const tooltipRef = useRef<HTMLDivElement>(null);
   const tooltipArrowRef = useRef(null);
-
-  const mounted = useRef(false);
-
   const {
     isShow,
     mountState,
@@ -42,6 +38,7 @@ const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
     arrowStyles,
     tooltipStyles,
     renderedContent,
+    getRootProps,
   } = useTooltip({
     id,
     place,
@@ -69,23 +66,10 @@ const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
     [],
   );
 
-  /**
-   * useLayoutEffect runs before useEffect,
-   * but should be used carefully because of caveats
-   * https://beta.reactjs.org/reference/react/useLayoutEffect#caveats
-   */
-  useSafeLayoutEffect(() => {
-    mounted.current = true;
-    return () => {
-      mounted.current = false;
-    };
-  }, []);
-
   return isShow ? (
     <julo.div
       id={id}
       ref={tooltipRef}
-      role='tooltip'
       className={cx(
         'julo-tooltip',
         `julo-tooltip__place-${actualPlacement}`,
@@ -98,6 +82,7 @@ const Tooltip = forwardRef<TooltipProps, 'div'>((props, ref) => {
         clickable,
         fixed: positionStrategy === 'fixed',
       })}
+      {...getRootProps()}
     >
       {renderedContent}
       <julo.div
