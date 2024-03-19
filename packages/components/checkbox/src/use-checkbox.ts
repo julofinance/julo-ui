@@ -65,11 +65,12 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
   const [isRootLabelElement, setIsRootLabelElement] = useState(true);
   const [isCheckedLocal, setIsCheckedLocal] = useState(Boolean(defaultChecked));
 
-  const isControlledNative = checked !== undefined;
+  const isControlledNatively = checked !== undefined;
   const isControlled = isCheckedProp !== undefined;
+  const isTrullyControlled = isControlledNatively && isControlled;
   const isChecked = isControlled
     ? isCheckedProp
-    : isControlledNative
+    : isControlledNatively
     ? checked
     : isCheckedLocal;
   const isTrulyDisabled = isDisabled && !isFocusable;
@@ -111,7 +112,7 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
         return;
       }
 
-      if (!isControlled) {
+      if (!isTrullyControlled) {
         if (isChecked) {
           setIsCheckedLocal(event.target.checked);
         } else {
@@ -122,12 +123,12 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
       onChangeProp(event);
     },
     [
-      isChecked,
-      isControlled,
-      isDisabled,
-      isIndeterminate,
       isReadOnly,
+      isDisabled,
+      isTrullyControlled,
       onChangeProp,
+      isChecked,
+      isIndeterminate,
     ],
   );
 
