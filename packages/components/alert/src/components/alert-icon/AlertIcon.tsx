@@ -20,10 +20,8 @@ const AlertIcon = forwardRef<AlertIconProps, 'div'>((props, ref) => {
       data-status={status}
       className={cx('julo-alert__icon', className)}
       sx={{ ...alertIconStatusSx[status], ...sx }}
-      {...{
-        ...(placement && { 'data-icon-placement': placement }),
-        ...resProps,
-      }}
+      {...(placement && { 'data-icon-placement': placement })}
+      {...resProps}
       __css={alertIconCx}
     >
       <Icon />
