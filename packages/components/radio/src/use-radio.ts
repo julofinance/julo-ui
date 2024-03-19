@@ -72,6 +72,7 @@ export function useRadio(props: UseRadioProps = {}) {
 
   const isControlledNatively = checked !== undefined;
   const isControlled = isCheckedProp !== undefined;
+  const isTrullyControlled = isControlledNatively && isControlled;
   const isChecked = isControlled
     ? isCheckedProp
     : isControlledNatively
@@ -115,13 +116,13 @@ export function useRadio(props: UseRadioProps = {}) {
         return;
       }
 
-      if (!isControlled) {
+      if (!isTrullyControlled) {
         setIsCheckedLocal(event.target.checked);
       }
 
       onChangeProp(event);
     },
-    [isControlled, isDisabled, isReadOnly, onChangeProp],
+    [isTrullyControlled, isDisabled, isReadOnly, onChangeProp],
   );
 
   const handleInputKeyDown = useCallback((event: React.KeyboardEvent) => {
