@@ -1,3 +1,4 @@
+export * from '@julo-ui/alert';
 export * from '@julo-ui/badge';
 export * from '@julo-ui/button';
 export * from '@julo-ui/card';
