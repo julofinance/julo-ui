@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/form-control",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "React component to provide validation states for form fields",
   "keywords": ["form-control"],
   "main": "src/index.ts",
