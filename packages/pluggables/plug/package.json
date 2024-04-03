@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/plug",
-  "version": "0.0.1-alpha.22",
+  "version": "0.0.1-alpha.25",
   "description": "React UI pluggables component",
   "keywords": ["plug"],
   "main": "src/index.ts",
