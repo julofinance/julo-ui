@@ -67,9 +67,7 @@ function useHandleChildren({ children, inputRef }: UseHandleChildrenOptions) {
     if (child.type.id === 'input' || child.type.id === 'textarea') {
       const isTextArea = child.type.id === 'textarea';
       return cloneElement(child, {
-        ...(!isAddonExist && {
-          ref: mergeRefs<HTMLElement>(inputRef, child.ref),
-        }),
+        ref: mergeRefs<HTMLElement>(inputRef, child.ref),
         sx: inputElementSx({
           leftAddon,
           rightAddon,

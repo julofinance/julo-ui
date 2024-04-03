@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/textarea",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A React Component for Text Area Field",
   "keywords": ["text-area"],
   "main": "src/index.ts",
