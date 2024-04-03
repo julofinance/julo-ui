@@ -78,7 +78,7 @@ export function useFormControl<T extends HTMLElement>(
     disabled: isDisabled,
     required: isRequired,
     readOnly: isReadOnly,
-    ...(!isDisabled && !isReadOnly && { 'aria-invalid': ariaAttr(isInvalid) }),
+    'aria-invalid': ariaAttr(isInvalid),
     'aria-required': ariaAttr(isRequired),
     'aria-readonly': ariaAttr(isReadOnly),
     'aria-busy': ariaAttr(isLoading),

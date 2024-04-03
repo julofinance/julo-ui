@@ -36,6 +36,7 @@ function useHandleChildren({ children, inputRef }: UseHandleChildrenOptions) {
     rightAddon,
     leftElement,
     rightElement,
+    isElementExist,
   } = validChildren.reduce<Record<string, boolean>>(
     (prevValue, child) => {
       return {
@@ -44,6 +45,10 @@ function useHandleChildren({ children, inputRef }: UseHandleChildrenOptions) {
         ...((child.type.id === 'input-left-addon' ||
           child.type.id === 'input-right-addon') && {
           isAddonExist: true,
+        }),
+        ...((child.type.id === 'input-left-element' ||
+          child.type.id === 'input-right-element') && {
+          isElementExist: true,
         }),
         ...(child.type.id === 'input-left-addon' && { leftAddon: true }),
         ...(child.type.id === 'input-right-addon' && { rightAddon: true }),
@@ -60,6 +65,7 @@ function useHandleChildren({ children, inputRef }: UseHandleChildrenOptions) {
       rightAddon: false,
       leftElement: false,
       rightElement: false,
+      isElementExist: false,
     },
   );
 
@@ -67,15 +73,13 @@ function useHandleChildren({ children, inputRef }: UseHandleChildrenOptions) {
     if (child.type.id === 'input' || child.type.id === 'textarea') {
       const isTextArea = child.type.id === 'textarea';
       return cloneElement(child, {
-        ...(!isAddonExist && {
-          ref: mergeRefs<HTMLElement>(inputRef, child.ref),
-        }),
+        ref: mergeRefs<HTMLElement>(inputRef, child.ref),
         sx: inputElementSx({
           leftAddon,
           rightAddon,
           leftElement,
           rightElement,
-          isOnlyElement: !isAddonExist,
+          isOnlyElement: !isAddonExist && isElementExist,
         }),
         ...(isTextArea && { isResizeable: false }),
       });
@@ -86,7 +90,11 @@ function useHandleChildren({ children, inputRef }: UseHandleChildrenOptions) {
 
   const extendedInputGroupCx = [
     isTextArea && inputGroupWithTextAreaCx,
-    isAddonExist ? inputGroupWithAddonCx : inputGroupWithElementCx,
+    isAddonExist
+      ? inputGroupWithAddonCx
+      : isElementExist
+      ? inputGroupWithElementCx
+      : null,
   ].filter(Boolean) as Array<SerializedStyles>;
 
   return { clones, extendedInputGroupCx };
