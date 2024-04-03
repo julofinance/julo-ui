@@ -18,23 +18,43 @@ export const inputGroupWithTextAreaCx = css`
 `;
 
 export const inputGroupWithElementCx = css`
-  border: 1px solid var(--colors-neutrals-40);
-  border-radius: 0.5rem;
+  position: relative;
 
-  &[data-input-disabled='true'] {
-    border-color: var(--colors-neutrals-50);
-    background-color: var(--colors-neutrals-30);
-    * {
-      background-color: transparent;
+  &::after {
+    content: '';
+    position: absolute;
+
+    user-select: none;
+    pointer-events: none;
+
+    border: 1px solid var(--colors-neutrals-40);
+    border-radius: 0.5rem;
+    border-radius: inherit;
+
+    width: 100%;
+    height: 100%;
+
+    transition: all ease 0.2s;
+  }
+
+  &[data-input-readonly='false'] {
+    &[data-input-invalid='true']::after {
+      border-color: var(--colors-red-30);
     }
-  }
 
-  &[data-input-invalid='true'] {
-    border-color: var(--colors-red-30);
-  }
+    &[data-input-disabled='true'] {
+      &::after {
+        border-color: var(--colors-neutrals-50);
+      }
+      background-color: var(--colors-neutrals-30);
+      * {
+        background-color: transparent;
+      }
+    }
 
-  &[data-input-focus='true'] {
-    border-color: var(--colors-primary-20);
+    &[data-input-focus='true']::after {
+      border-color: var(--colors-primary-20);
+    }
   }
 `;
 
@@ -78,19 +98,19 @@ export const inputElementSx = ({
     border: 'none',
   }),
   ...(!isOnlyElement && {
-    ...(leftAddon && {
-      borderTopLeftRadius: '0',
-      borderBottomLeftRadius: '0',
-    }),
-    ...(rightAddon && {
-      borderTopRightRadius: '0',
-      borderBottomRightRadius: '0',
-    }),
     ...(leftElement && {
       paddingLeft: '3rem',
     }),
     ...(rightElement && {
       paddingRight: '3rem',
     }),
+  }),
+  ...((leftAddon || (leftElement && isOnlyElement)) && {
+    borderTopLeftRadius: '0',
+    borderBottomLeftRadius: '0',
+  }),
+  ...((rightAddon || (rightElement && isOnlyElement)) && {
+    borderTopRightRadius: '0',
+    borderBottomRightRadius: '0',
   }),
 });

@@ -9,6 +9,7 @@ const attributes = {
   disabled: 'data-input-disabled',
   invalid: 'data-input-invalid',
   focus: 'data-input-focus',
+  readonly: 'data-input-readonly',
 };
 
 function useListenInput({ groupRef, inputRef }: UseListenInputOptions) {
@@ -24,16 +25,15 @@ function useListenInput({ groupRef, inputRef }: UseListenInputOptions) {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((record) => {
         if (record.type === 'attributes') {
-          const isInvalid = (record.target as HTMLElement).getAttribute(
-            'aria-invalid',
-          );
+          const element = record.target as HTMLElement;
 
-          const disabled = (record.target as HTMLElement).getAttribute(
-            'disabled',
-          );
+          const isInvalid = element.getAttribute('aria-invalid');
+          const disabled = element.getAttribute('disabled');
+          const readOnly = element.getAttribute('aria-readonly');
 
           syncGroupAttribute(attributes.invalid, Boolean(isInvalid));
           syncGroupAttribute(attributes.disabled, Boolean(disabled !== null));
+          syncGroupAttribute(attributes.readonly, Boolean(readOnly));
         }
       });
     });
@@ -55,10 +55,13 @@ function useListenInput({ groupRef, inputRef }: UseListenInputOptions) {
         attributes.disabled,
         Boolean(input.getAttribute('disabled') !== null),
       );
-
       syncGroupAttribute(
         attributes.invalid,
         Boolean(input.getAttribute('aria-invalid')),
+      );
+      syncGroupAttribute(
+        attributes.readonly,
+        Boolean(input.getAttribute('aria-readonly')),
       );
     }
 
