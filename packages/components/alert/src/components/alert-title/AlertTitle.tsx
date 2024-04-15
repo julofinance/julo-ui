@@ -27,6 +27,7 @@ const AlertTitle = forwardRef<AlertTitleProps, 'div'>((props, ref) => {
   );
 });
 
+AlertTitle.id = 'alert-title';
 AlertTitle.displayName = 'AlertTitle';
 
 export default AlertTitle;

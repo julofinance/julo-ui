@@ -122,6 +122,7 @@ export const AlertCustom = () => {
       height: 50px;
     }
   `;
+
   return (
     <Alert status='positive' css={styleCustom}>
       <AlertIcon placement={null} />

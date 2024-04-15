@@ -29,6 +29,7 @@ const AlertDescription = forwardRef<AlertDescriptionProps, 'div'>(
   },
 );
 
+AlertDescription.id = 'alert-description';
 AlertDescription.displayName = 'AlertDescription';
 
 export default AlertDescription;

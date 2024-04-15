@@ -29,6 +29,7 @@ const AlertIcon = forwardRef<AlertIconProps, 'div'>((props, ref) => {
   );
 });
 
+AlertIcon.id = 'alert-icon';
 AlertIcon.displayName = 'AlertIcon';
 
 export default AlertIcon;

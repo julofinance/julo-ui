@@ -141,15 +141,23 @@ describe('Alert', () => {
     const { container } = render(
       <Alert>
         <AlertIcon data-testid='icon' />
-        <AlertDescription>Alert Icon and Description</AlertDescription>
+        <div>
+          <AlertTitle>Alert Title</AlertTitle>
+          <AlertDescription data-testid='description'>
+            Alert Description
+          </AlertDescription>
+        </div>
       </Alert>,
     );
     const iconLeft = screen.getByTestId('icon');
     const svgEl = container.querySelector('svg');
+    const description = screen.getByTestId('description');
 
     expect(iconLeft.getAttribute('data-icon-placement')).toContain('left');
     expect(svgEl?.getAttribute('data-icon')).toContain('neutrals');
-    screen.getByText('Alert Icon and Description');
+    expect(description).toHaveStyleRule('margin-top', '0.25rem');
+
+    screen.getByText('Alert Description');
   });
 
   test('should render Alert with Icon "Positive", Title and Description correctly', () => {
