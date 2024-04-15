@@ -121,6 +121,10 @@ export const AlertCustom = () => {
       width: 50px;
       height: 50px;
     }
+
+    .julo-alert__description {
+      text-align: center;
+    }
   `;
 
   return (
