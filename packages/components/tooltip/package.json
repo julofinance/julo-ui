@@ -1,8 +1,8 @@
 {
-  "name": "@julo-ui/react",
-  "version": "0.0.1-alpha.50",
-  "description": "React UI components built with React and Emotion",
-  "keywords": ["react"],
+  "name": "@julo-ui/tooltip",
+  "version": "0.0.1",
+  "description": "React Tooltip Component",
+  "keywords": ["tooltip"],
   "main": "src/index.ts",
   "files": ["dist"],
   "sideEffects": false,
@@ -21,7 +21,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/julofinance/julo-ui.git",
-    "directory": "packages/components/react"
+    "directory": "packages/components/tooltip"
   },
   "author": "Fransiscus Hermanto",
   "license": "ISC",
@@ -30,33 +30,23 @@
   },
   "homepage": "https://github.com/julofinance/julo-ui#readme",
   "dependencies": {
-    "@julo-ui/alert": "workspace:*",
-    "@julo-ui/badge": "workspace:*",
-    "@julo-ui/button": "workspace:*",
-    "@julo-ui/card": "workspace:*",
-    "@julo-ui/checkbox": "workspace:*",
-    "@julo-ui/form-control": "workspace:*",
-    "@julo-ui/input": "workspace:*",
-    "@julo-ui/otp-input": "workspace:*",
-    "@julo-ui/progress": "workspace:*",
-    "@julo-ui/provider": "workspace:*",
-    "@julo-ui/radio": "workspace:*",
-    "@julo-ui/sliders": "workspace:*",
-    "@julo-ui/switch": "workspace:*",
-    "@julo-ui/system": "workspace:*",
-    "@julo-ui/textarea": "workspace:*",
-    "@julo-ui/typography": "workspace:*",
-    "@julo-ui/tooltip": "workspace:*"
+    "@chakra-ui/popper": "3.1.0",
+    "@emotion/react": "^11.10.6",
+    "@julo-ui/context": "workspace:*",
+    "@julo-ui/dom-utils": "workspace:*",
+    "@julo-ui/function-utils": "workspace:*",
+    "@julo-ui/use-disclosure": "workspace:*",
+    "@julo-ui/use-event-listener": "workspace:*"
   },
   "devDependencies": {
-    "@emotion/react": "^11.10.6",
-    "react": ">=18",
-    "react-dom": ">=18"
+    "@julo-ui/system": "workspace:*",
+    "@types/react-dom": "^18.2.4"
   },
   "peerDependencies": {
     "@emotion/react": "^11.10.6",
     "react": ">=18",
-    "react-dom": ">=18"
+    "react-dom": ">=18",
+    "@julo-ui/system": "workspace:*"
   },
   "clean-package": "../../../clean-package.config.json",
   "tsup": {

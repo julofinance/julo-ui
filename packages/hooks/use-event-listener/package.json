@@ -1,0 +1,44 @@
+{
+  "name": "@julo-ui/use-event-listener",
+  "version": "0.0.1",
+  "description": "React hook for event listener",
+  "keywords": ["use-event-listener"],
+  "main": "src/index.ts",
+  "files": ["dist"],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup --dts",
+    "build:fast": "tsup",
+    "clean": "rimraf dist .turbo",
+    "prebuild": "pnpm run clean",
+    "dev": "pnpm run build:fast",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julofinance/julo-ui.git",
+    "directory": "packages/hooks/use-event-listener"
+  },
+  "author": "Arga Tahta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julofinance/julo-ui/issues"
+  },
+  "homepage": "https://github.com/julofinance/julo-ui#readme",
+  "dependencies": { "@julo-ui/use-callback-ref": "workspace:*" },
+  "devDependencies": { "@julo-ui/system": "workspace:*" },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "clean-package": "../../../clean-package.config.json",
+  "tsup": {
+    "entry": ["src", "!src/**/*.md"],
+    "clean": true,
+    "target": "es2019",
+    "format": ["cjs", "esm"]
+  }
+}
