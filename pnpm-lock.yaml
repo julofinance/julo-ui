@@ -650,6 +650,9 @@ importers:
       '@julo-ui/function-utils':
         specifier: workspace:*
         version: link:../../utilities/function-utils
+      '@julo-ui/use-delay-unmount':
+        specifier: workspace:*
+        version: link:../../hooks/use-delay-unmount
       '@julo-ui/use-disclosure':
         specifier: workspace:*
         version: link:../../hooks/use-disclosure
@@ -733,6 +736,19 @@ importers:
       '@julo-ui/use-callback-ref':
         specifier: workspace:*
         version: link:../use-callback-ref
+      react:
+        specifier: '>=18'
+        version: 18.2.0
+    devDependencies:
+      '@julo-ui/system':
+        specifier: workspace:*
+        version: link:../../core/system
+
+  packages/hooks/use-delay-unmount:
+    dependencies:
+      '@julo-ui/use-safe-layout-effect':
+        specifier: workspace:*
+        version: link:../use-safe-layout-effect
       react:
         specifier: '>=18'
         version: 18.2.0

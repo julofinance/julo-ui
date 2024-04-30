@@ -1,8 +1,8 @@
 {
-  "name": "@julo-ui/tooltip",
+  "name": "@julo-ui/use-delay-unmount",
   "version": "0.0.1",
-  "description": "React Tooltip Component",
-  "keywords": ["tooltip"],
+  "description": "React hook for delay unmount",
+  "keywords": ["use-delay-unmount"],
   "main": "src/index.ts",
   "files": ["dist"],
   "sideEffects": false,
@@ -21,33 +21,18 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/julofinance/julo-ui.git",
-    "directory": "packages/components/tooltip"
+    "directory": "packages/hooks/use-delay-unmount"
   },
-  "author": "Arga Tahta",
+  "author": "Fransiscus Hermanto",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/julofinance/julo-ui/issues"
   },
   "homepage": "https://github.com/julofinance/julo-ui#readme",
-  "dependencies": {
-    "@chakra-ui/popper": "3.1.0",
-    "@emotion/react": "^11.10.6",
-    "@julo-ui/context": "workspace:*",
-    "@julo-ui/dom-utils": "workspace:*",
-    "@julo-ui/function-utils": "workspace:*",
-    "@julo-ui/use-disclosure": "workspace:*",
-    "@julo-ui/use-delay-unmount": "workspace:*",
-    "@julo-ui/use-event-listener": "workspace:*"
-  },
-  "devDependencies": {
-    "@julo-ui/system": "workspace:*",
-    "@types/react-dom": "^18.2.4"
-  },
+  "dependencies": { "@julo-ui/use-safe-layout-effect": "workspace:*" },
+  "devDependencies": { "@julo-ui/system": "workspace:*" },
   "peerDependencies": {
-    "@emotion/react": "^11.10.6",
-    "react": ">=18",
-    "react-dom": ">=18",
-    "@julo-ui/system": "workspace:*"
+    "react": ">=18"
   },
   "clean-package": "../../../clean-package.config.json",
   "tsup": {

@@ -1,7 +1,5 @@
 import { css } from '@emotion/react';
 
-export const tooltipCx = css``;
-
 export const contentTooltipCx = css`
   --popper-arrow-bg: var(--colors-neutrals-90);
   background: var(--colors-neutrals-90);
@@ -18,6 +16,6 @@ export const contentTooltipCx = css`
 export const positionerTooltipCx = ({ open }: { open: boolean }) => css`
   opacity: ${open ? 1 : 0};
   visibility: ${open ? 'visible' : 'hidden'};
-  transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s ease-in-out;
   pointer-events: none;
 `;
