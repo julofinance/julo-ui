@@ -538,6 +538,9 @@ importers:
       '@julo-ui/textarea':
         specifier: workspace:*
         version: link:../textarea
+      '@julo-ui/tooltip':
+        specifier: workspace:*
+        version: link:../tooltip
       '@julo-ui/typography':
         specifier: workspace:*
         version: link:../typography
@@ -630,6 +633,46 @@ importers:
         specifier: workspace:*
         version: link:../../core/system
 
+  packages/components/tooltip:
+    dependencies:
+      '@chakra-ui/popper':
+        specifier: 3.1.0
+        version: 3.1.0(react@18.2.0)
+      '@emotion/react':
+        specifier: ^11.10.6
+        version: 11.10.6(@types/react@18.2.6)(react@18.2.0)
+      '@julo-ui/context':
+        specifier: workspace:*
+        version: link:../../hooks/context
+      '@julo-ui/dom-utils':
+        specifier: workspace:*
+        version: link:../../utilities/dom-utils
+      '@julo-ui/function-utils':
+        specifier: workspace:*
+        version: link:../../utilities/function-utils
+      '@julo-ui/use-delay-unmount':
+        specifier: workspace:*
+        version: link:../../hooks/use-delay-unmount
+      '@julo-ui/use-disclosure':
+        specifier: workspace:*
+        version: link:../../hooks/use-disclosure
+      '@julo-ui/use-event-listener':
+        specifier: workspace:*
+        version: link:../../hooks/use-event-listener
+      react:
+        specifier: '>=18'
+        version: 18.2.0
+      react-dom:
+        specifier: '>=18'
+        version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@julo-ui/system':
+        specifier: workspace:*
+        version: link:../../core/system
+      '@types/react-dom':
+        specifier: ^18.2.4
+        version: 18.2.4
+
   packages/components/typography:
     dependencies:
       '@emotion/react':
@@ -689,6 +732,45 @@ importers:
         version: link:../../core/system
 
   packages/hooks/use-controllable-state:
+    dependencies:
+      '@julo-ui/use-callback-ref':
+        specifier: workspace:*
+        version: link:../use-callback-ref
+      react:
+        specifier: '>=18'
+        version: 18.2.0
+    devDependencies:
+      '@julo-ui/system':
+        specifier: workspace:*
+        version: link:../../core/system
+
+  packages/hooks/use-delay-unmount:
+    dependencies:
+      '@julo-ui/use-safe-layout-effect':
+        specifier: workspace:*
+        version: link:../use-safe-layout-effect
+      react:
+        specifier: '>=18'
+        version: 18.2.0
+    devDependencies:
+      '@julo-ui/system':
+        specifier: workspace:*
+        version: link:../../core/system
+
+  packages/hooks/use-disclosure:
+    dependencies:
+      '@julo-ui/use-callback-ref':
+        specifier: workspace:*
+        version: link:../use-callback-ref
+      react:
+        specifier: '>=18'
+        version: 18.2.0
+    devDependencies:
+      '@julo-ui/system':
+        specifier: workspace:*
+        version: link:../../core/system
+
+  packages/hooks/use-event-listener:
     dependencies:
       '@julo-ui/use-callback-ref':
         specifier: workspace:*
@@ -2379,8 +2461,27 @@ packages:
     resolution: {integrity: sha512-IGM/yGUHS+8TOQrZGpAKOJl/xGBrmRYJrmbHfUE7zrG3PpQyXvbLDP1M+RggkCFVgHlJi2wpYIf0QtQlU0XZfw==}
     dev: false
 
+  /@chakra-ui/popper@3.1.0(react@18.2.0):
+    resolution: {integrity: sha512-ciDdpdYbeFG7og6/6J8lkTFxsSvwTdMLFkpVylAF6VNC22jssiWfquj2eyD4rJnzkRFPvIWJq8hvbfhsm+AjSg==}
+    peerDependencies:
+      react: '>=18'
+    dependencies:
+      '@chakra-ui/react-types': 2.0.7(react@18.2.0)
+      '@chakra-ui/react-use-merge-refs': 2.1.0(react@18.2.0)
+      '@popperjs/core': 2.11.8
+      react: 18.2.0
+    dev: false
+
   /@chakra-ui/react-context@2.1.0(react@18.2.0):
     resolution: {integrity: sha512-iahyStvzQ4AOwKwdPReLGfDesGG+vWJfEsn0X/NoGph/SkN+HXtv2sCfYFFR9k7bb+Kvc6YfpLlSuLvKMHi2+w==}
+    peerDependencies:
+      react: '>=18'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /@chakra-ui/react-types@2.0.7(react@18.2.0):
+    resolution: {integrity: sha512-12zv2qIZ8EHwiytggtGvo4iLT0APris7T0qaAWqzpUGS0cdUtR8W+V1BJ5Ocq+7tA6dzQ/7+w5hmXih61TuhWQ==}
     peerDependencies:
       react: '>=18'
     dependencies:
@@ -4472,6 +4573,10 @@ packages:
       source-map: 0.7.4
       webpack: 5.76.1(@swc/core@1.3.57)(esbuild@0.15.18)
     dev: true
+
+  /@popperjs/core@2.11.8:
+    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
+    dev: false
 
   /@rollup/plugin-babel@5.3.1(@babel/core@7.22.15)(rollup@2.79.1):
     resolution: {integrity: sha512-WFfdLWU/xVWKeRQnKmIAQULUI7Il0gZnBIH/ZFO069wYIfPu+8zrfp/KMW0atmELoRDq8FbiP3VCss9MhCut7Q==}
