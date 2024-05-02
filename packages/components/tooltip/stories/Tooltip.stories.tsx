@@ -13,34 +13,70 @@ export default {
       },
     },
   },
+  decorators: [
+    (story) => (
+      <julo.div sx={{ maxWidth: '400px', margin: 'auto', marginTop: '50px' }}>
+        {story()}
+      </julo.div>
+    ),
+  ],
 } as Meta<typeof Tooltip>;
 
 const Template: Story<TooltipProps> = (args) => (
-  <Tooltip placement='bottom' label='testing' {...args}>
-    <button> testing aja nih bos hehe </button>
+  <Tooltip {...args}>
+    <button>Hover me</button>
   </Tooltip>
 );
 
-const Template2: Story<TooltipProps> = (args) => (
-  <div
-    style={{
-      position: 'fixed',
-      background: 'red',
-      height: '100px',
-      width: '200px',
-    }}
-  >
-    <Tooltip open placement='right' label='testing' {...args}>
-      testing aja nih bos hehe
-    </Tooltip>
-  </div>
-);
-
-const Template3: Story<TooltipProps> = (args) => (
-  <Tooltip open placement='bottom-end' label='testing' {...args}>
-    <julo.div> testing aja nih bos hehe </julo.div>
+const WithIconTemplate: Story<TooltipProps> = (args) => (
+  <Tooltip label='With Icon' {...args}>
+    <button>
+      <span role='img' aria-label='notification'>
+        🔔
+      </span>
+      {'  '}
+      <span>Hover me</span>
+    </button>
   </Tooltip>
 );
-export const TooltipTest = Template.bind({});
-export const TooltipTest2 = Template2.bind({});
-export const TooltipTest3 = Template3.bind({});
+
+export const Basic = Template.bind({});
+Basic.argTypes = {
+  label: {
+    control: 'text',
+    defaultValue: 'This is tooltip',
+  },
+  closeDelay: {
+    control: 'number',
+  },
+  closeOnClick: {
+    control: 'boolean',
+  },
+  disabled: {
+    control: 'boolean',
+    defaultValue: false,
+  },
+  gutter: {
+    control: 'number',
+    defaultValue: 8,
+  },
+  open: {
+    control: 'boolean',
+  },
+  defaultOpen: {
+    control: 'boolean',
+  },
+  hasArrow: {
+    control: 'boolean',
+  },
+  openDelay: {
+    control: 'number',
+  },
+  placement: {
+    control: 'radio',
+    options: ['bottom', 'left', 'right', 'top'],
+    defaultValue: 'bottom',
+  },
+};
+
+export const WithIcon = WithIconTemplate.bind({});

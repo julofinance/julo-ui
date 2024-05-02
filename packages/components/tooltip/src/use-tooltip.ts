@@ -7,7 +7,7 @@ import { useDisclosure } from '@julo-ui/use-disclosure';
 import { useEventListener } from '@julo-ui/use-event-listener';
 import type { PropGetter } from '@julo-ui/system';
 
-import { getDocument, getWindow, useCloseEvent } from './usecase';
+import { getWindow, useCloseEvent } from './usecase';
 import { UseTooltipProps, UseTooltipReturn } from './types';
 
 export function useTooltip(
@@ -17,8 +17,6 @@ export function useTooltip(
     openDelay = 0,
     closeDelay = 0,
     closeOnClick = true,
-    closeOnPointerDown,
-    closeOnEsc = true,
     onOpen: onOpenProp,
     onClose: onCloseProp,
     placement,
@@ -31,6 +29,7 @@ export function useTooltip(
     disabled,
     gutter,
     offset,
+    'aria-invalid': ariaInvalid,
   } = props;
 
   const { open, onOpen, onClose } = useDisclosure({
@@ -99,27 +98,6 @@ export function useTooltip(
     }
   }, [closeOnClick, closeWithDelay, open]);
 
-  const onPointerDown = useCallback(() => {
-    if (open && closeOnPointerDown) {
-      closeWithDelay();
-    }
-  }, [closeOnPointerDown, closeWithDelay, open]);
-
-  const onKeyDown = useCallback(
-    (event: KeyboardEvent) => {
-      if (open && event.key === 'Escape') {
-        closeWithDelay();
-      }
-    },
-    [open, closeWithDelay],
-  );
-
-  useEventListener(
-    () => getDocument(ref),
-    'keydown',
-    closeOnEsc ? onKeyDown : undefined,
-  );
-
   useEffect(() => {
     if (!disabled) return;
     clearEnterTimeout();
@@ -147,20 +125,20 @@ export function useTooltip(
           openWithDelay();
         }),
         onClick: callAllFn(props.onClick, onClick),
-        onPointerDown: callAllFn(props.onPointerDown, onPointerDown),
         onFocus: callAllFn(props.onFocus, openWithDelay),
         onBlur: callAllFn(props.onBlur, closeWithDelay),
         'aria-describedby': open ? tooltipId : undefined,
+        'aria-invalid': ariaInvalid ?? ariaInvalid,
       };
     },
     [
       openWithDelay,
       closeWithDelay,
-      onPointerDown,
       open,
       tooltipId,
       onClick,
       referenceRef,
+      ariaInvalid,
     ],
   );
 

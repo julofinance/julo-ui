@@ -44,16 +44,6 @@ export interface UseTooltipProps
    */
   closeOnClick?: boolean;
   /**
-   * If `true`, the tooltip will hide while the pointer is down
-   * @default true
-   */
-  closeOnPointerDown?: boolean;
-  /**
-   * If `true`, the tooltip will hide on pressing Esc key
-   * @default true
-   */
-  closeOnEsc?: boolean;
-  /**
    * Callback to run when the tooltip shows
    */
   onOpen?(): void;
@@ -83,4 +73,8 @@ export interface UseTooltipProps
    * @default 10
    */
   arrowSize?: number;
+  /**
+   * Refers to the `id` of the element that labels the checkbox element.
+   */
+  'aria-invalid'?: boolean;
 }
