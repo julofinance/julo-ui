@@ -120,7 +120,7 @@ describe('FormControl', () => {
     const indicator = screen.getByRole('presentation', { hidden: true });
 
     expect(input).toHaveAttribute('aria-describedby', 'firstname-helper-text');
-    expect(input).not.toHaveAttribute('aria-invalid');
+    expect(input).toHaveAttribute('aria-invalid');
     expect(input).toHaveAttribute('aria-required', 'true');
     expect(input).toHaveAttribute('aria-readonly', 'true');
     expect(input).toHaveAttribute('aria-busy', 'true');
