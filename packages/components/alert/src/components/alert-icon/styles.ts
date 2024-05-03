@@ -4,6 +4,8 @@ import { SystemStyleObject } from '@julo-ui/system';
 import { AlertStatus } from '../../types';
 
 export const alertIconCx = css`
+  display: flex;
+
   &[data-icon-placement='left'] {
     order: 0;
     margin-right: 0.5rem;
