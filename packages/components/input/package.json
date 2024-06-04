@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/input",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "A React Component for Input Text Field",
   "keywords": ["input"],
   "main": "src/index.ts",
