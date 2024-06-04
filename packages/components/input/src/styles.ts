@@ -19,16 +19,16 @@ export const inputCx = css`
     width: auto;
   }
 
-  &:disabled {
-    color: var(--colors-neutrals-70);
-    border-color: var(--colors-neutrals-50);
-    background-color: var(--colors-neutrals-30);
-    &::placeholder {
-      color: var(--colors-neutrals-50);
+  &:not([aria-readonly='true']) {
+    &:disabled {
+      color: var(--colors-neutrals-70);
+      border-color: var(--colors-neutrals-50);
+      background-color: var(--colors-neutrals-30);
+      &::placeholder {
+        color: var(--colors-neutrals-50);
+      }
     }
-  }
 
-  &:not(:read-only) {
     &[aria-invalid='true'] {
       border-color: var(--colors-red-30);
     }
@@ -37,5 +37,10 @@ export const inputCx = css`
       caret-color: var(--colors-primary-30);
       border-color: var(--colors-primary-20);
     }
+  }
+
+  &[aria-readonly='true'] {
+    background-color: transparent;
+    cursor: default;
   }
 `;
