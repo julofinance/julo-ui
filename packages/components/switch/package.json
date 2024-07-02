@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/switch",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A React Component to view and switch between on or off states",
   "keywords": ["switch"],
   "main": "src/index.ts",

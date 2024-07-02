@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/alert",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A React component used to communicate a state that affect a system, feature or page",
   "keywords": ["alert"],
   "main": "src/index.ts",
