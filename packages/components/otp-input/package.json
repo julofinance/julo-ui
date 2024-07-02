@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/otp-input",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "React Input Component for entering sequences of digits",
   "keywords": ["otp-input"],
   "main": "src/index.ts",
