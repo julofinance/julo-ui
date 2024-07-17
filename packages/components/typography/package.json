@@ -8,8 +8,6 @@
   "scripts": {
     "build": "tsup --dts",
     "build:fast": "tsup",
-    "clean": "rimraf dist .turbo",
-    "prebuild": "pnpm run clean",
     "dev": "pnpm run build:fast",
     "prepack": "clean-package",
     "postpack": "clean-package restore"
