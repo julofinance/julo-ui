@@ -1,6 +1,6 @@
 {
   "name": "@julo-ui/radio",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "A React Component for Radio used in forms",
   "keywords": ["radio"],
   "main": "src/index.ts",
