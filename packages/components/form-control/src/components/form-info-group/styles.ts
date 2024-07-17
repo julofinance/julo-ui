@@ -20,6 +20,10 @@ export const formInfoGroupCx = css`
   .julo-form__counter-text {
     color: var(--colors-neutrals-80);
     display: flex;
+    margin-left: auto;
+  }
+
+  .julo-form__helper-text + .julo-form__counter-text {
     margin-left: 0.625rem;
   }
 `;
