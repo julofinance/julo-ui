@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "prebuild": "pnpx rimraf packages/**/**/{dist,.turbo}",
     "build": "turbo run build --filter=!./examples/*",
     "build:fast": "turbo run build:fast --filter=!./examples/*",
     "dev": "turbo run dev --filter=!./examples/*",
@@ -82,7 +83,7 @@
   },
   "engines": {
     "node": ">=16.x",
-    "pnpm": ">=8.4.0 <8.7.0"
+    "pnpm": ">=9.5.0"
   },
-  "packageManager": "pnpm@8.6.12"
+  "packageManager": "pnpm@9.5.0"
 }
