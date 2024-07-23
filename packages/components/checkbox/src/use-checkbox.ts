@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { trackFocusVisible } from '@zag-js/focus-visible';
 
 import { PropGetter } from '@julo-ui/system';
@@ -9,7 +9,7 @@ import { useCallbackRef } from '@julo-ui/use-callback-ref';
 import { useSafeLayoutEffect } from '@julo-ui/use-safe-layout-effect';
 import { useFormControlProps } from '@julo-ui/form-control';
 
-import { CheckboxState, UseCheckboxProps } from './types';
+import type { CheckboxProps, CheckboxState, UseCheckboxProps } from './types';
 
 export type UseCheckboxReturn = ReturnType<typeof useCheckbox>;
 
@@ -41,16 +41,20 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
     'aria-describedby': ariaDescribedBy,
   } = useFormControlProps(props);
 
-  const htmlProps = omit(rootResProps, [
-    'isDisabled',
-    'isReadOnly',
-    'isRequired',
-    'isInvalid',
-    'id',
-    'onBlur',
-    'onFocus',
-    'aria-describedby',
-  ]);
+  const htmlProps = useMemo(
+    () =>
+      omit<CheckboxProps>(rootResProps, [
+        'isDisabled',
+        'isReadOnly',
+        'isRequired',
+        'isInvalid',
+        'id',
+        'onBlur',
+        'onFocus',
+        'aria-describedby',
+      ]),
+    [rootResProps],
+  );
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -266,7 +270,7 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
           if (!node) return;
           setIsRootLabelElement(node.tagName === 'LABEL');
         }),
-        onClick: callAllFn(handleRootOnClick, onClick),
+        onClick: callAllFn(handleRootOnClick, htmlProps.onClick, onClick),
         'data-disabled': dataAttr(isDisabled),
         'data-checked': dataAttr(isChecked),
         'data-invalid': dataAttr(isInvalid),
