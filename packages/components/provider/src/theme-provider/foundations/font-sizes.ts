@@ -1,6 +1,6 @@
 const fontSizes = {
   bodyRegular: '1rem',
-  bodySmall: '0.9rem',
+  bodySmall: '0.875rem',
   captionRegular: '0.75rem',
   captionSmall: '0.625rem',
   h1: '4rem',
