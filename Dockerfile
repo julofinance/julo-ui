@@ -23,13 +23,13 @@ COPY . .
 COPY --from=deps /app/node_modules ./node_modules
 
 # Build the app
-RUN pnpm build
+RUN pnpm build-storybook
 
 # NGINX stage
 FROM nginx:1.19
 ADD ./nginx/nginx.conf /etc/nginx/nginx.conf
 
 # Copy the build output to replace the default nginx contents
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/storybook-static /usr/share/nginx/html
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
