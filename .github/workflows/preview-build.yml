@@ -1,0 +1,222 @@
+name: PR Cloud Run Preview
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+jobs:
+  deploy-stg-preview:
+    name: "🚀 Staging Deploy Cloud Run Preview"
+    if: github.event.action != 'closed'
+    runs-on: julofinance-gha-runner
+    outputs:
+      deploy_url: ${{ steps.deploy.outputs.deploy_url }}
+      run_url: ${{ steps.deploy.outputs.run_url }}
+    steps:
+      - name: Repository Name
+        id: repoName
+        run: |
+              REPO="${{ github.repository }}"
+              echo "REPO_NAME=${REPO##*/}" >> $GITHUB_ENV
+      - name: Image Name
+        id: image
+        run: echo "IMAGE_NAME=gcr.io/julo-stg-web-service/$REPO_NAME:${{ github.sha }}" >> $GITHUB_ENV
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Write secure .npmrc
+        run: |
+          echo "@julofinance:registry=https://npm.pkg.github.com" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" >> .npmrc
+      - name: Setup GCloud Auth
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCR_STG_SA_KEY }}
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2.1.1
+      - name: Configure Docker
+        run: gcloud auth configure-docker gcr.io --quiet
+      - name: Build Docker image
+        run: docker build . -t "$IMAGE_NAME" --build-arg release_mode=staging
+      - name: Push Docker image
+        run: docker push "$IMAGE_NAME"
+      - name: Deploy to Cloud Run
+        id: deploy
+        run: |
+          SERVICE_NAME=$REPO_NAME-${{ github.event.pull_request.number }}
+          gcloud run deploy $SERVICE_NAME \
+            --image=$IMAGE_NAME \
+            --platform=managed \
+            --memory=128Mi \
+            --region=asia-southeast2 \
+            --allow-unauthenticated \
+            --service-account="julo-stg-web-service-account@julo-stg-web-service.iam.gserviceaccount.com"
+          URL=$(gcloud run services describe $SERVICE_NAME \
+            --platform=managed \
+            --region=asia-southeast2 \
+            --format='value(status.url)')
+          echo "run_url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
+          echo "deploy_url=$URL" >> $GITHUB_OUTPUT
+  deploy-uat-preview:
+    name: "🚀 UAT Deploy Cloud Run Preview"
+    if: github.event.action != 'closed'
+    runs-on: julofinance-gha-runner
+    outputs:
+      deploy_url: ${{ steps.deploy.outputs.deploy_url }}
+      run_url: ${{ steps.deploy.outputs.run_url }}
+    steps:
+      - name: Repository Name
+        id: repoName
+        run: |
+              REPO="${{ github.repository }}"
+              echo "REPO_NAME=${REPO##*/}" >> $GITHUB_ENV
+      - name: Image Name
+        id: image
+        run: echo "IMAGE_NAME=gcr.io/julo-uat-web-service/$REPO_NAME:${{ github.sha }}" >> $GITHUB_ENV
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Write secure .npmrc
+        run: |
+          echo "@julofinance:registry=https://npm.pkg.github.com" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" >> .npmrc
+      - name: Setup GCloud Auth
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCR_UAT_SA_KEY }}
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2.1.1
+      - name: Configure Docker
+        run: gcloud auth configure-docker gcr.io --quiet
+      - name: Build Docker image
+        run: docker build . -t "$IMAGE_NAME" --build-arg release_mode=uat
+      - name: Push Docker image
+        run: docker push "$IMAGE_NAME"
+      - name: Deploy to Cloud Run
+        id: deploy
+        run: |
+          SERVICE_NAME=$REPO_NAME-${{ github.event.pull_request.number }}
+          gcloud run deploy $SERVICE_NAME \
+            --image=$IMAGE_NAME \
+            --platform=managed \
+            --memory=128Mi \
+            --region=asia-southeast2 \
+            --allow-unauthenticated \
+            --service-account="julo-uat-web-service-account@julo-uat-web-service.iam.gserviceaccount.com"
+          URL=$(gcloud run services describe $SERVICE_NAME \
+            --platform=managed \
+            --region=asia-southeast2 \
+            --format='value(status.url)')
+          echo "run_url=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_OUTPUT
+          echo "deploy_url=$URL" >> $GITHUB_OUTPUT
+  deployment-notification:
+    needs: [deploy-stg-preview, deploy-uat-preview]
+    name: 🔔 Notify Cloud Run Deployment
+    if: always() && github.event.action != 'closed'
+    runs-on: julofinance-gha-runner
+    steps:
+      - name: Comment on PR with preview URL
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}
+          script: |
+            const commentHeader = "### 🚀 Deployment Preview";
+            // Get current UTC time and convert to GMT+7
+            const now = new Date();
+            const utc = now.getTime() + now.getTimezoneOffset() * 60000;
+            const gmt7 = new Date(utc + 7 * 60 * 60000);
+            const formattedTime = gmt7.toISOString().replace("T", " ").substring(0, 16);
+            const stagingDeployUrl = "${{ needs.deploy-stg-preview.outputs.deploy_url }}";
+            const uatDeployUrl = "${{ needs.deploy-uat-preview.outputs.deploy_url }}";
+            const body = `${commentHeader}
+              | Name     | Status   | Preview       | Updated (GMT+7)       |
+              |----------|----------|----------------|----------------------|
+              | staging  | ${stagingDeployUrl ? '✅ Ready' : '🚫 Failed'} ([Inspect](${{ needs.deploy-stg-preview.outputs.run_url }})) | [Visit Preview](${stagingDeployUrl || "#"}) | ${formattedTime} |
+              | uat      | ${uatDeployUrl ? '✅ Ready' : '🚫 Failed'} ([Inspect](${{ needs.deploy-uat-preview.outputs.run_url }}))     | [Visit Preview](${uatDeployUrl || "#"})     | ${formattedTime} |
+              `;
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const existingComment = comments.find(c => c.body.trimStart().startsWith(commentHeader));
+            if (existingComment) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existingComment.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
+  cleanup-stg-preview:
+    if: github.event.action == 'closed'
+    name: "🧹 Staging Remove Cloud Run Preview"
+    runs-on: julofinance-gha-runner
+    steps:
+      - name: Repository Name
+        id: repoName
+        run: |
+              REPO="${{ github.repository }}"
+              echo "REPO_NAME=${REPO##*/}" >> $GITHUB_ENV
+      - name: Setup GCloud Auth
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCR_STG_SA_KEY }}
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2.1.1
+      - name: Delete Cloud Run preview
+        run: |
+          SERVICE_NAME=$REPO_NAME-${{ github.event.pull_request.number }}
+          gcloud run services delete $SERVICE_NAME \
+            --platform=managed \
+            --region=asia-southeast2 \
+            --quiet
+  cleanup-uat-preview:
+    if: github.event.action == 'closed'
+    name: "🧹 UAT Remove Cloud Run Preview"
+    runs-on: julofinance-gha-runner
+    steps:
+      - name: Setup GCloud Auth
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCR_UAT_SA_KEY }}
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2.1.1
+      - name: Delete Cloud Run preview
+        run: |
+          SERVICE_NAME=$REPO_NAME-${{ github.event.pull_request.number }}
+          gcloud run services delete $SERVICE_NAME \
+            --platform=managed \
+            --region=asia-southeast2 \
+            --quiet
+  delete-preview-comment:
+    name: 🧹 Delete Preview Comment on PR Close
+    if: github.event.action == 'closed'
+    runs-on: julofinance-gha-runner
+    steps:
+      - name: Delete Deployment Comment
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GH_TOKEN }}
+          script: |
+            const header = "### 🚀 Deployment Preview";
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+            const target = comments.find(c => c.body.trimStart().startsWith(header));
+            if (target) {
+              await github.rest.issues.deleteComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: target.id,
+              });
+            }
